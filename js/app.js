@@ -2,19 +2,51 @@ var app = angular.module('myApp', ['ionic']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     //路由
-    $urlRouterProvider.otherwise("/tab/home");
+    $urlRouterProvider.otherwise("/tab/test");
     $stateProvider
         .state('tabs', {
             url: "/tab",
             abstract: true,
             templateUrl: "html/tabs.html"
         })
-        .state('tabs.home', {
-            url: "/home",
+        .state('tabs.test', {
+            url: "/test",
             views: {
-                'home-tab': {
-                    templateUrl: "html/home.html",
-                    controller: 'HomeTabCtrl'
+                'test-tab': {
+                    templateUrl: "html/tab_test.html",
+                    controller: 'tebTestCtrl'
+                }
+            }
+        })
+        .state('tabs.social', {
+            url: "/social",
+            views: {
+                'social-tab': {
+                    templateUrl: "html/tab_social.html"
+                }
+            }
+        })
+        .state('tabs.radio', {
+            url: "/radio",
+            views: {
+                'radio-tab': {
+                    templateUrl: "html/tab_radio.html"
+                }
+            }
+        })
+        .state('tabs.reading', {
+            url: "/reading",
+            views: {
+                'reading-tab': {
+                    templateUrl: "html/tab_reading.html"
+                }
+            }
+        })
+        .state('tabs.user', {
+            url: "/user",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user.html"
                 }
             }
         })
@@ -31,30 +63,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             views: {
                 'home-tab': {
                     templateUrl: "html/facts2.html"
-                }
-            }
-        })
-        .state('tabs.about', {
-            url: "/about",
-            views: {
-                'about-tab': {
-                    templateUrl: "html/about.html"
-                }
-            }
-        })
-        .state('tabs.navstack', {
-            url: "/navstack",
-            views: {
-                'about-tab': {
-                    templateUrl: "html/nav_stack.html"
-                }
-            }
-        })
-        .state('tabs.contact', {
-            url: "/contact",
-            views: {
-                'contact-tab': {
-                    templateUrl: "html/contact.html"
                 }
             }
         });
