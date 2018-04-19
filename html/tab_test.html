@@ -1,9 +1,16 @@
-<ion-view view-title="tab_test">
+<ion-view view-title="测试页面">
 
 
-    <div class="bar bar-header">
-        <div class="title">基础测试</div>
-    </div>
+
+    <ion-header-bar>
+        <div class="h1 title">基础测试</div>
+        <div class="buttons">
+            <button class="button no-animation button-icon icon ion-android-search">
+            </button>
+            <button class="button no-animation button-icon icon ion-android-add">
+            </button>
+        </div>
+    </ion-header-bar>
 
     <ion-content>
         <div style=" background: #32db64;margin-top: 50px;height: 562px;">
@@ -15,13 +22,13 @@
                 <br><br><br>
 
                 <div style="margin-left: 140px">
-                    <a class="button " ng-click="$scope.show_question_windows = true">开始测试</a>
+                    <div class="button " ng-show="show_question_windows == false" ng-click="show_question_windows = true">开始测试</div>
                 </div>
             </div>
 
         </div>
 
-        <div ng-show="$scope.show_question_windows" style="background: #000;height: 200px;width: 200px; ">
+        <div ng-show="show_question_windows" style="background: #000;height: 200px;width: 200px; ">
 
         </div>
     </ion-content>
