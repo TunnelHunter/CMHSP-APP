@@ -24,6 +24,15 @@ app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $url
                 }
             }
         })
+        .state('tabs.test.start_answer', {
+            url: "/startAnswer",
+            views: {
+                'start-answer': {
+                    templateUrl: "html/tab_test_startAnswer.html",
+                    controller: 'startAnswerCtrl'
+                }
+            }
+        })
         .state('tabs.social', {
             url: "/social",
             views: {
