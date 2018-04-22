@@ -1,19 +1,7 @@
-<ion-view view-title="测试页面">
+<ion-view title=" 测试页面 ">
 
-
-
-    <ion-header-bar>
-        <div class="h1 title">基础测试</div>
-        <div class="buttons">
-            <button class="button no-animation button-icon icon ion-android-search">
-            </button>
-            <button class="button no-animation button-icon icon ion-android-add">
-            </button>
-        </div>
-    </ion-header-bar>
-
-    <ion-content>
-        <div style=" background: #32db64;margin-top: 50px;height: 562px;" ng-hide="show_question_windows">
+    <ion-content has-header="true" padding="true">
+        <div style=" background: #32db64;height: 562px;">
             <div>
                 <br><br><br><br><br>
 
@@ -21,13 +9,12 @@
                 <h4 style="margin-left: 105px;">希望我们聊天愉快</h4>
                 <br><br><br>
 
-                <div style="margin-left: 140px">
-                    <a class="button " ng-click="show_question_windows = true" href="#/tab/test/startAnswer">开始测试</a>
+                <div style="margin-left: 120px">
+                    <a class="button icon icon-right ion-chevron-right" href="#/tab/startAnswer">开始测试</a>
                 </div>
             </div>
 
         </div>
-
 
 
         <!--<div ng-show="show_question_windows" style="background: #000;height: 200px;width: 200px; ">-->
@@ -37,68 +24,74 @@
 </ion-view>
 
 
-
-
-
 <!--<ion-header-bar class="bar-positive change_common_bg">-->
-    <!--<h1 class="title" style="font-size:15px;text-align:center;">-->
-        <!--设施农业物联网控制系统-->
-        <!--<span ng-hide="process > 99" ng-bind="'(下载:'+process+'%)'"></span>-->
-    <!--</h1>-->
+<!--<h1 class="title" style="font-size:15px;text-align:center;">-->
+<!--设施农业物联网控制系统-->
+<!--<span ng-hide="process > 99" ng-bind="'(下载:'+process+'%)'"></span>-->
+<!--</h1>-->
 <!--</ion-header-bar>-->
 
 <!--<div class="top">-->
-    <!--<div class="top_div_three" ng-click="fn_login_out()">-->
-        <!--<i class="ion-android-person ion_css" style="color: #fff;"></i>-->
-        <!--{{ userName || '用户登录' }}-->
-    <!--</div>-->
-    <!--<div class="top_div_three" ng-click="fn_goto_('factoryInfo')">-->
-        <!--<i class="ion-android-desktop ion_css" style="color:#fff"></i>工厂概况-->
-    <!--</div>-->
-    <!--<div class="top_div_three" ng-click="fn_goto_('warning')">-->
-        <!--<i class="ion-alert-circled ion_css" style="color: #fff;"></i>-->
-        <!--报警({{  var_common_warning_num>0?var_common_warning_num:'0' }})-->
-    <!--</div>-->
+<!--<div class="top_div_three" ng-click="fn_login_out()">-->
+<!--<i class="ion-android-person ion_css" style="color: #fff;"></i>-->
+<!--{{ userName || '用户登录' }}-->
+<!--</div>-->
+<!--<div class="top_div_three" ng-click="fn_goto_('factoryInfo')">-->
+<!--<i class="ion-android-desktop ion_css" style="color:#fff"></i>工厂概况-->
+<!--</div>-->
+<!--<div class="top_div_three" ng-click="fn_goto_('warning')">-->
+<!--<i class="ion-alert-circled ion_css" style="color: #fff;"></i>-->
+<!--报警({{  var_common_warning_num>0?var_common_warning_num:'0' }})-->
+<!--</div>-->
 <!--</div>-->
 <!--<div style="clear:both;"></div>-->
 
 <!--<div class="box_title"><i class="ion-settings top_user_a"></i>配置管理</div>-->
 <!--<div class="container">-->
-    <!--<div class="box3" ng-click="fn_goto_('plantFactory')">-->
-        <!--<i class="ion-android-desktop ion_css" style="color: #5891f3;"></i>-->
-        <!--工厂管理-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('modbusRTU')">-->
-        <!--<i class="ion-shuffle ion_css" style="color: green;"></i>-->
-        <!--modbus配置-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('hortimax')">-->
-        <!--<i class="ion-map ion_css" style="color: #5891f3;"></i>-->
-        <!--hortimax配置-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('sensor')">-->
-        <!--<i class="ion-fork-repo ion_css" style="color: #5891f3;"></i>-->
-        <!--传感器-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('actuator')">-->
-        <!--<i class="ion-playstation ion_css" style="color: red;"></i>-->
-        <!--执行机构-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('lowerComputer')">-->
-        <!--<i class="ion-android-list ion_css" style="color: green;"></i>-->
-        <!--下位机配置-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('script')">-->
-        <!--<i class="ion-android-options ion_css" style="color: green;"></i>-->
-        <!--执行脚本-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('log_check')">-->
-        <!--<i class="ion-ios-paper ion_css" style="color: green;"></i>-->
-        <!--日志管理-->
-    <!--</div>-->
-    <!--<div class="box3" ng-click="fn_goto_('user')">-->
-        <!--<i class="ion-person-stalker ion_css" style="color: #5891f3;"></i>-->
-        <!--账号管理-->
-    <!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('plantFactory')">-->
+<!--<i class="ion-android-desktop ion_css" style="color: #5891f3;"></i>-->
+<!--工厂管理-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('modbusRTU')">-->
+<!--<i class="ion-shuffle ion_css" style="color: green;"></i>-->
+<!--modbus配置-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('hortimax')">-->
+<!--<i class="ion-map ion_css" style="color: #5891f3;"></i>-->
+<!--hortimax配置-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('sensor')">-->
+<!--<i class="ion-fork-repo ion_css" style="color: #5891f3;"></i>-->
+<!--传感器-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('actuator')">-->
+<!--<i class="ion-playstation ion_css" style="color: red;"></i>-->
+<!--执行机构-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('lowerComputer')">-->
+<!--<i class="ion-android-list ion_css" style="color: green;"></i>-->
+<!--下位机配置-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('script')">-->
+<!--<i class="ion-android-options ion_css" style="color: green;"></i>-->
+<!--执行脚本-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('log_check')">-->
+<!--<i class="ion-ios-paper ion_css" style="color: green;"></i>-->
+<!--日志管理-->
+<!--</div>-->
+<!--<div class="box3" ng-click="fn_goto_('user')">-->
+<!--<i class="ion-person-stalker ion_css" style="color: #5891f3;"></i>-->
+<!--账号管理-->
+<!--</div>-->
 
 <!--</div>-->
+
+
+
+
+
+
+
+
+
