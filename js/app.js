@@ -1,10 +1,10 @@
 var app = angular.module('myApp', ['ionic']);
-//这个地方的config不能少哦, 不然安卓平台的tabs会跑到顶部的
-// app.config(['$ionicConfigProvider', function($ionicConfigProvider) {
-//
-//     $ionicConfigProvider.tabs.position('bottom'); // other values: top
-//
-// }]);
+// 这个地方的config不能少哦, 不然安卓平台的tabs会跑到顶部的
+app.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}]);
 
 app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
     //路由
@@ -20,7 +20,7 @@ app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $url
             views: {
                 'test-tab': {
                     templateUrl: "html/tab_test.html",
-                    controller: 'tebTestCtrl'
+                    controller: 'tabTestCtrl'
                 }
             }
         })
