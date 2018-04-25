@@ -30,30 +30,31 @@
 
             <div class="item item-body" style="border-bottom-style: hidden;">
                 <!--<div ng-repeat="list in questions" >-->
-                    <!--<p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">-->
-                       <!--{{list.questionName}}</p>-->
-                    <!--<div>-->
-                        <!--<button class="button button-outline button-block button-positive" style="border-radius: 30px;" ng-repeat="list1 in list.questionOptions">-->
-                           <!--{{list1.optionName}}-->
-                        <!--</button>-->
+                <!--<p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">-->
+                <!--{{list.questionName}}</p>-->
+                <!--<div>-->
+                <!--<button class="button button-outline button-block button-positive" style="border-radius: 30px;" ng-repeat="list1 in list.questionOptions">-->
+                <!--{{list1.optionName}}-->
+                <!--</button>-->
 
-                    <!--</div>-->
+                <!--</div>-->
                 <!--</div>-->
 
-                <ion-slide-box show-pager="false" delegate-handle="aaa">
-                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions" >
+                <ion-slide-box show-pager="false" >
+                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions">
 
                         <p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">
                             {{list.questionName}}</p>
                         <div>
-                            <button class="button button-outline button-block button-positive" style="border-radius: 30px;" ng-repeat="list1 in list.questionOptions">
+                            <button class="button  button-block button-positive"
+                                    style="border-radius: 8px;" ng-repeat="list1 in list.questionOptions"
+                                    ng-click="nextSlide()">
                                 {{list1.optionName}}
                             </button>
 
                         </div>
                     </ion-slide>
                 </ion-slide-box>
-
 
 
             </div>
