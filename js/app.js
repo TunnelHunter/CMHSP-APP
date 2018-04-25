@@ -8,45 +8,54 @@ app.config(['$ionicConfigProvider', function ($ionicConfigProvider) {
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     //路由
-    $urlRouterProvider.otherwise("/slides");
+    $urlRouterProvider.otherwise("/tabs/test");
     $stateProvider
         .state('slides', {
             url: "/slides",
-            templateUrl: "html/hello_slides.html"
+            // prefetchTemplate:"",//按需加载html文件 对项目请求进行优化
+            views: {
+                'main': {
+                    templateUrl: "html/hello_slides.html"
+                }
+            }
 
         })
         .state('tabs', {
             url: "/tabs",
-            abstract: true,
-            templateUrl: "html/tabs.html"
+            views: {
+                'main': {
+                    abstract: true,
+                    templateUrl: "html/tabs.html",
+                    controller: 'tabsCtrl'
+                }
+            }
         })
         .state('tabs.test', {
             url: "/test",
             views: {
                 'test-tab': {
-                    templateUrl: "html/tab_test.html"
+                    templateUrl: "html/tab_test.html",
+                    controller: 'tabTestCtrl'
                 }
-            },
-            controller: 'tabTestCtrl'
+            }
         })
         .state('tabs.startAnswer', {
             url: "/startAnswer",
             views: {
                 'test-tab': {
-                    templateUrl: "html/tab_test_startAnswer.html"
+                    templateUrl: "html/tab_test_startAnswer.html",
+                    controller: 'tabTestStartAnswerCtrl'
                 }
             }
         })
         .state('tabs.historyRecords', {
-            url: "/historyRecodes",
+            url: "/historyRecords",
             views: {
                 'test-tab': {
-                    templateUrl: "html/tab_test_historyRecords.html"
-
+                    templateUrl: "html/tab_test_historyRecords.html",
+                    controller: 'tabTestHistoryRecordsCtrl'
                 }
-            },
-
-            controller: 'tabTestHistoryRecordsCtrl'
+            }
         })
         .state('tabs.social', {
             url: "/social",
@@ -90,8 +99,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         })
         .state('tabs.facts2', {
             url: "/facts2",
+
             views: {
                 'home-tab': {
+                    prefetchTemplate:false, //按需加载
                     templateUrl: "html/facts2.html"
                 }
             }

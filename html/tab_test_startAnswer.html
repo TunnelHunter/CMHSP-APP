@@ -3,15 +3,16 @@
         <!--<div class="buttons">-->
         <!--<button class="button icon icon-left ion-chevron-left" ng-click="doSomething()">上一题</button>-->
         <!--</div>-->
-        <a class="button icon-left ion-chevron-left button-clear button-dark" href="#/tabs/test">返回</a>
+        <a class="button icon-left ion-chevron-left button-clear button-dark" href="#/tabs/test"
+           nav-direction="back">返回</a>
         <h1 class="title">测试中</h1>
         <!--<div class="buttons">-->
         <!--<button class="button icon icon-right ion-chevron-right">下一题</button>-->
         <!--</div>-->
     </ion-header-bar>
-    <ion-content >
+    <ion-content>
         <!--<div class="list card">-->
-        <div >
+        <div>
 
             <div class="item" align="center" style="border-top-style: hidden;">
 
@@ -28,32 +29,31 @@
             </div>
 
             <div class="item item-body" style="border-bottom-style: hidden;">
-                <!--<img class="full-image" src="http://bpic.588ku.com/element_origin_min_pic/18/04/05/f81868b100d7ff98ce5449cdbfb74866.jpg">-->
-                <div>
-                    <p style="margin-left: 40px;
-                    margin-right: 40px;
-                    font-size: 20px;
-                    line-height: 30px;
-                    text-indent: 40px;
-                    color: #000;">
-                        人生难免起起落落，快乐悲伤都是我们生活的调味剂呢，亲爱的最近是否有点闷闷不乐，情绪低沉呢？
+                <!--<div ng-repeat="list in questions" >-->
+                    <!--<p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">-->
+                       <!--{{list.questionName}}</p>-->
+                    <!--<div>-->
+                        <!--<button class="button button-outline button-block button-positive" style="border-radius: 30px;" ng-repeat="list1 in list.questionOptions">-->
+                           <!--{{list1.optionName}}-->
+                        <!--</button>-->
 
-                    </p>
-                    <div>
-                        <button class="button button-outline button-block button-positive" style="border-radius: 30px;">
-                            A 、 没有呀
-                        </button>
-                        <button class="button button-outline button-block button-positive" style="border-radius: 30px;">
-                            B 、 有时候是会有些不开心
-                        </button>
-                        <button class="button button-outline button-block button-positive" style="border-radius: 30px;">
-                            C 、 我总会感觉伤心呢，但是又无法摆脱
-                        </button>
-                        <button class="button button-outline button-block button-positive" style="border-radius: 30px;">
-                            D 、 我感到悲伤极了，甚至不能控制我自己了
-                        </button>
-                    </div>
-                </div>
+                    <!--</div>-->
+                <!--</div>-->
+
+                <ion-slide-box show-pager="false" delegate-handle="aaa">
+                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions" >
+
+                        <p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">
+                            {{list.questionName}}</p>
+                        <div>
+                            <button class="button button-outline button-block button-positive" style="border-radius: 30px;" ng-repeat="list1 in list.questionOptions">
+                                {{list1.optionName}}
+                            </button>
+
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+
 
 
             </div>

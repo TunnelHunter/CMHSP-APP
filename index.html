@@ -12,6 +12,14 @@
     <!--<link href="build/main.css" rel="stylesheet">-->
     <script src="js/app.js"></script>
     <script src="js/controller/tab_testCtrl.js"></script>
+    <script src="js/controller/tab_test_historyRecords.js"></script>
+    <script src="js/controller/common_tabsCtrl.js"></script>
+    <script src="js/controller/hello_slidesCtrl.js"></script>
+    <script src="js/controller/tab_radioCtrl.js"></script>
+    <script src="js/controller/tab_readingCtrl.js"></script>
+    <script src="js/controller/tab_socialCtrl.js"></script>
+    <script src="js/controller/tab_test_startAnswerCtrl.js"></script>
+    <script src="js/controller/tab_userCtrl.js"></script>
 
 <body ng-app="myApp">
 
@@ -20,7 +28,8 @@
              <!--type="bar-positive"-->
              <!--back-button-type="button-icon"-->
              <!--back-button-icon="ion-arrow-left-c"></ion-nav-bar>-->
-<ion-nav-view animation="slide-left-right"></ion-nav-view>
+<ion-nav-view animation="slide-left-right" name="main"></ion-nav-view>
+<!--<ion-nav-view animation="slide-left-right" name="slides" ng-hide="window.location.hash.indexOf(slides)==0"></ion-nav-view>-->
 
 
 
