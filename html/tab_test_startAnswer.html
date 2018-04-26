@@ -41,13 +41,13 @@
                 <!--</div>-->
 
                 <ion-slide-box show-pager="false" >
-                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions">
+                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions.questionsMessage">
 
                         <p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">
                             {{list.questionName}}</p>
                         <div>
                             <button class="button  button-block button-positive"
-                                    style="border-radius: 8px;" ng-repeat="list1 in list.questionOptions"
+                                    style="border-radius: 25px;" ng-repeat="list1 in list.questionOptions"
                                     ng-click="nextSlide()">
                                 {{list1.optionName}}
                             </button>

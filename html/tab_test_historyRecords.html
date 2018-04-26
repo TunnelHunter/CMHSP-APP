@@ -72,11 +72,11 @@
 
             <ion-item ng-repeat="item in items"
                       item="item"
-                      href="#/item/{{item.id}}" class="item-remove-animate">
+                      ng-click="showAlert(item)" class="item-remove-animate">
                 历史记录 - {{ item.id }}
 
                 <ion-option-button class="button-assertive"
-                                   ng-click="onItemDelete(item)">
+                                   ng-click="showConfirm(item)">
                     删除
                 </ion-option-button>
                 <!--<ion-reorder-button class="ion-navicon"-->
