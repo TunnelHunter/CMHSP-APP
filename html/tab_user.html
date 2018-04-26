@@ -1,11 +1,7 @@
-<ion-view title="账户信息" hide-nav-bar="true">
+<ion-view title="用户信息" hide-nav-bar="true">
     <ion-header-bar align-title="center">
-        <!--<div class="buttons">-->
-        <!--<button class="button button-icon button-dark ion-compose" ng-click="modal.show()">-->
-        <!--</button>-->
-        <!--</div>-->
-        <h1 class="title">账户信息</h1>
-        <a class="button button-clear icon-right ion-navicon button-dark" ng-click="modal.show()"></a>
+        <h1 class="title">用户信息</h1>
+        <a class="button button-clear icon-right  ion-ios-more button-dark" ng-click="modal.show()"></a>
     </ion-header-bar>
     <ion-content>
         <div>
@@ -15,7 +11,7 @@
                 <div style="background: #4787f6;border-radius: 30px;">
                     <!--男-->
                     <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png@1280w_1l_2o_100sh.webp"
-                         style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;" ng-click="modal.show()">
+                         style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">
                     <!--女-->
                     <!--<img src="http://bpic.588ku.com/element_origin_min_pic/18/04/05/f81868b100d7ff98ce5449cdbfb74866.jpg"-->
                     <!--style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">-->
@@ -28,124 +24,118 @@
                 </div>
 
             </div>
-            <ion-list>
-                <ion-item ng-repeat="contact in contacts">
-                    {{contact.name}}
-                </ion-item>
-            </ion-list>
             <div>
 
                 <div class="list">
 
                     <a class="item item-icon-left" href="#">
-                        <i class="icon ion-email"></i>
-                        Check mail
-                    </a>
+                        <i class="icon ion-ios-email-outline"></i>
+                        我的消息
+                        <span class="badge badge-assertive">99+</span>
 
-                    <a class="item item-icon-left item-icon-right" href="#">
-                        <i class="icon ion-chatbubble-working"></i>
-                        Call Ma
-                        <i class="icon ion-ios-telephone-outline"></i>
                     </a>
-
-                    <a class="item item-icon-left" href="#">
-                        <i class="icon ion-mic-a"></i>
-                        Record album
-                        <span class="item-note">
-            Grammy
-          </span>
-                    </a>
-
-                    <a class="item item-icon-left" href="#">
-                        <i class="icon ion-person-stalker"></i>
-                        Friends
-                        <span class="badge badge-assertive">0</span>
-                    </a>
-
-                    <div class="item item-divider">
-                        Activities
+                    <div class="item item-divider" style="border-style: hidden;">
                     </div>
 
-                    <a class="item item-icon-left" href="#">
-                        <i class="icon ion-beaker"></i>
-                        Breaking Bad
-                        <span class="item-note">
-            Blue, yellow, pink
-          </span>
-                    </a>
-
-                    <a class="item item-icon-left" href="#">
-                        <i class="icon ion-music-note"></i>
-                        Music
-                        <span class="item-note">
-            JT
-          </span>
-                    </a>
-
-                    <a class="item item-icon-left" href="#">
-                        <i class="icon ion-ios-game-controller-b"></i>
-                        Games
-                        <span class="item-note">
-            Super Mario
-          </span>
+                    <a class="item item-icon-left item-icon-right" href="#" style="border-top-style: hidden;">
+                        <i class="icon ion-ios-gear-outline"></i>
+                        设置
+                        <i class="icon ion-ios-arrow-right"></i>
                     </a>
 
                     <a class="item item-icon-left item-icon-right" href="#">
-                        <i class="icon ion-bag"></i>
-                        Shopping
-                        <i class="icon ion-arrow-right-c"></i>
+                        <i class="icon  ion-ios-list-outline"></i>
+                        测试记录
+                        <i class="icon ion-ios-arrow-right"></i>
                     </a>
 
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon  ion-ios-pulse"></i>
+                        个人分析
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon  ion-ios-briefcase-outline"></i>
+                        收藏
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-left item-icon-right" href="#">
+                        <i class="icon  ion-ios-barcode-outline"></i>
+                        扫一扫
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <ion-toggle ng-model="pushNotification.checked" toggle-class="toggle-positive"
+                                ng-change="pushNotificationChange()" class="item-icon-left " >
+                        <i class="icon  ion-ios-lightbulb-outline"></i>
+                        夜间模式
+                    </ion-toggle>
+
+                    <div class="item item-divider" style="border-style: hidden;">
+                    </div>
+
+                    <a class="item item-icon-left item-icon-right" href="#" style="border-top-style: hidden;">
+                        <i class="icon  ion-ios-upload-outline"></i>
+                        分享-从心开始APP-
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-left item-icon-right" href="#" style="border-bottom-style: hidden;">
+                        <i class="icon ion-ios-information-outline"></i>
+                        关于
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <div class="item item-divider">
+                    </div>
+
+                    <div class="item " ui-sref=""  style="border-style: hidden;" align="center">
+                        <a class="button button-block button-assertive" style="border-radius: 30px;">退出登录</a>
+                    </div>
+                    <!--<div class="item item-body" style="border-style: hidden;">-->
+                    <!--</div>-->
                 </div>
 
             </div>
 
+            <!--<div class="list">-->
 
-            <div class="item item-body" style="border-bottom-style: hidden;">
+                <!--<div class="item item-divider">-->
+                    <!--Settings-->
+                <!--</div>-->
 
+                <!--<ion-toggle ng-repeat="item in settingsList"-->
+                            <!--ng-model="item.checked"-->
+                            <!--ng-checked="item.checked">-->
+                    <!--{{ item.text }}-->
+                <!--</ion-toggle>-->
 
-            </div>
-            <div class="list">
+                <!--<div class="item">-->
+                    <!--<pre ng-bind="settingsList | json"></pre>-->
+                <!--</div>-->
 
-                <div class="item item-divider">
-                    Settings
-                </div>
+                <!--<div class="item item-divider">-->
+                    <!--Notifications-->
+                <!--</div>-->
 
-                <ion-toggle ng-repeat="item in settingsList"
-                            ng-model="item.checked"
-                            ng-checked="item.checked">
-                    {{ item.text }}
-                </ion-toggle>
+                <!--<ion-toggle ng-model="pushNotification.checked"-->
+                            <!--ng-change="pushNotificationChange()">-->
+                    <!--Push Notifications-->
+                <!--</ion-toggle>-->
 
-                <div class="item">
-                    <pre ng-bind="settingsList | json"></pre>
-                </div>
+                <!--<div class="item">-->
+                    <!--<pre ng-bind="pushNotification | json"></pre>-->
+                <!--</div>-->
 
-                <div class="item item-divider">
-                    Notifications
-                </div>
+                <!--<ion-toggle toggle-class="toggle-assertive"-->
+                            <!--ng-model="emailNotification"-->
+                            <!--ng-true-value="'Subscribed'"-->
+                            <!--ng-false-value="'Unubscribed'">-->
+                    <!--Newsletter-->
+                <!--</ion-toggle>-->
 
-                <ion-toggle ng-model="pushNotification.checked"
-                            ng-change="pushNotificationChange()">
-                    Push Notifications
-                </ion-toggle>
+                <!--<div class="item">-->
+                    <!--<pre ng-bind="emailNotification | json"></pre>-->
+                <!--</div>-->
 
-                <div class="item">
-                    <pre ng-bind="pushNotification | json"></pre>
-                </div>
-
-                <ion-toggle toggle-class="toggle-assertive"
-                            ng-model="emailNotification"
-                            ng-true-value="'Subscribed'"
-                            ng-false-value="'Unubscribed'">
-                    Newsletter
-                </ion-toggle>
-
-                <div class="item">
-                    <pre ng-bind="emailNotification | json"></pre>
-                </div>
-
-            </div>
+            <!--</div>-->
 
         </div>
     </ion-content>
