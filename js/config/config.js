@@ -85,7 +85,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: "/user",
             views: {
                 'user-tab': {
-                    templateUrl: "html/tab_user.html"
+                    templateUrl: "html/tab_user.html",
+                    controller: 'tabUserCtrl'
                 }
             }
         })
