@@ -90,6 +90,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
+        .state('tabs.user_data_analysis', {
+            url: "/userDataAnalysis",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_dataAnalysis.html",
+                    controller: 'tabUserDataAnalysisCtrl'
+                }
+            }
+        })
         .state('tabs.facts', {
             url: "/facts",
             views: {
