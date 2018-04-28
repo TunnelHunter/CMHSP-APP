@@ -1,0 +1,67 @@
+<ion-view view-title="我的消息">
+
+    <ion-header-bar align-title="center">
+        <a class="button icon-left ion-ios-arrow-left button-clear button-dark" href="#/tabs/user"
+           nav-direction="back">返回</a>
+        <h1 class="title">我的消息</h1>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <div icon="bubbles" class="spinner-positive spinner spinner-bubbles" ng-hide="user_messages" align="center"
+             style="margin-top: 60%;">
+            <svg style="width: 64px ;height: 64px ;">
+                <g stroke-width="0">
+                    <circle cx="24" cy="0" transform="translate(32,32)" r="5.5421">
+                        <animate attributeName="r" dur="750ms" values="8;7;6;5;4;3;2;1;8"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="16.970562748477143" cy="16.97056274847714" transform="translate(32,32)" r="6.5421">
+                        <animate attributeName="r" dur="750ms" values="1;8;7;6;5;4;3;2;1"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="1.4695761589768238e-15" cy="24" transform="translate(32,32)" r="7.5421">
+                        <animate attributeName="r" dur="750ms" values="2;1;8;7;6;5;4;3;2"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="-16.97056274847714" cy="16.970562748477143" transform="translate(32,32)" r="4.20527">
+                        <animate attributeName="r" dur="750ms" values="3;2;1;8;7;6;5;4;3"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="-24" cy="2.9391523179536475e-15" transform="translate(32,32)" r="1.5421">
+                        <animate attributeName="r" dur="750ms" values="4;3;2;1;8;7;6;5;4"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="-16.970562748477143" cy="-16.97056274847714" transform="translate(32,32)" r="2.5421">
+                        <animate attributeName="r" dur="750ms" values="5;4;3;2;1;8;7;6;5"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="-4.408728476930472e-15" cy="-24" transform="translate(32,32)" r="3.5421">
+                        <animate attributeName="r" dur="750ms" values="6;5;4;3;2;1;8;7;6"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                    <circle cx="16.970562748477136" cy="-16.970562748477143" transform="translate(32,32)" r="4.5421">
+                        <animate attributeName="r" dur="750ms" values="7;6;5;4;3;2;1;8;7"
+                                 repeatCount="indefinite"></animate>
+                    </circle>
+                </g>
+            </svg>
+        </div>
+
+        <div class="list">
+
+            <a class="item item-avatar" href="#" ng-repeat="list in user_messages" style="border-style: hidden;">
+                <img src={{list.img}}>
+                <h2>{{list.name}}</h2>
+                <p>{{list.content}}</p>
+            </a>
+
+
+        </div>
+
+    </ion-content>
+
+
+</ion-view>
+
+

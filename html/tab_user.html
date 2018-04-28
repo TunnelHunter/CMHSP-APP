@@ -4,16 +4,16 @@
         <a class="button button-clear icon-right  ion-ios-more button-dark" ng-click="modal.show()"></a>
     </ion-header-bar>
     <ion-content>
-        <div>
+        <div padding="true">
 
-            <div class="item" align="center" style="border-top-style: hidden;">
+            <div class="item" align="center" style="border-top-style: hidden;" >
 
                 <div style="background: #4787f6;border-radius: 30px;">
                     <!--男-->
                     <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png@1280w_1l_2o_100sh.webp"
                          style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">
                     <!--女-->
-                    <!--<img src="http://bpic.588ku.com/element_origin_min_pic/18/04/05/f81868b100d7ff98ce5449cdbfb74866.jpg"-->
+                    <!--<img src="http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png"-->
                     <!--style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">-->
                     <!--默认-->
                     <!--<img src="http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp"-->
@@ -28,7 +28,7 @@
 
                 <div class="list">
 
-                    <a class="item item-icon-left" href="#">
+                    <a class="item item-icon-left" href="#/tabs/userMessages" nav-direction="forward">
                         <i class="icon ion-ios-email-outline"></i>
                         我的消息
                         <span class="badge badge-assertive">99+</span>
@@ -37,7 +37,7 @@
                     <div class="item item-divider" style="border-style: hidden;">
                     </div>
 
-                    <a class="item item-icon-left item-icon-right" href="#" style="border-top-style: hidden;">
+                    <a class="item item-icon-left item-icon-right" href="#/tabs/userInformationSettings" style="border-top-style: hidden;" nav-direction="forward">
                         <i class="icon ion-ios-gear-outline"></i>
                         设置
                         <i class="icon ion-ios-arrow-right"></i>
@@ -83,60 +83,14 @@
                         关于
                         <i class="icon ion-ios-arrow-right"></i>
                     </a>
-                    <div class="item item-divider">
+                    <div class="item item-divider" style="border-style: hidden;">
                     </div>
 
-                    <div class="item " ui-sref=""  style="border-style: hidden;" align="center">
-                        <a class="button button-block button-assertive" style="border-radius: 30px;">退出登录</a>
-                    </div>
                     <!--<div class="item item-body" style="border-style: hidden;">-->
                     <!--</div>-->
                 </div>
 
             </div>
-
-            <!--<div class="list">-->
-
-                <!--<div class="item item-divider">-->
-                    <!--Settings-->
-                <!--</div>-->
-
-                <!--<ion-toggle ng-repeat="item in settingsList"-->
-                            <!--ng-model="item.checked"-->
-                            <!--ng-checked="item.checked">-->
-                    <!--{{ item.text }}-->
-                <!--</ion-toggle>-->
-
-                <!--<div class="item">-->
-                    <!--<pre ng-bind="settingsList | json"></pre>-->
-                <!--</div>-->
-
-                <!--<div class="item item-divider">-->
-                    <!--Notifications-->
-                <!--</div>-->
-
-                <!--<ion-toggle ng-model="pushNotification.checked"-->
-                            <!--ng-change="pushNotificationChange()">-->
-                    <!--Push Notifications-->
-                <!--</ion-toggle>-->
-
-                <!--<div class="item">-->
-                    <!--<pre ng-bind="pushNotification | json"></pre>-->
-                <!--</div>-->
-
-                <!--<ion-toggle toggle-class="toggle-assertive"-->
-                            <!--ng-model="emailNotification"-->
-                            <!--ng-true-value="'Subscribed'"-->
-                            <!--ng-false-value="'Unubscribed'">-->
-                    <!--Newsletter-->
-                <!--</ion-toggle>-->
-
-                <!--<div class="item">-->
-                    <!--<pre ng-bind="emailNotification | json"></pre>-->
-                <!--</div>-->
-
-            <!--</div>-->
-
         </div>
     </ion-content>
 

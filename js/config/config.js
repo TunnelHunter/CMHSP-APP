@@ -90,12 +90,39 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
-        .state('tabs.user_data_analysis', {
+        .state('tabs.userDataAnalysis', {
             url: "/userDataAnalysis",
             views: {
                 'user-tab': {
                     templateUrl: "html/tab_user_dataAnalysis.html",
                     controller: 'tabUserDataAnalysisCtrl'
+                }
+            }
+        })
+        .state('tabs.userMessages', {
+            url: "/userMessages",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_messages.html",
+                    controller: 'tabUserMessagesCtrl'
+                }
+            }
+        })
+        .state('tabs.userInformationSettings', {
+            url: "/userInformationSettings",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_information_settings.html",
+                    controller: 'tabUserInformationSettingsCtrl'
+                }
+            }
+        })
+        .state('tabs.userInformationSettingsSetHeadPicture', {
+            url: "/setHeadPicture",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_information_settings_set_head_picture.html",
+                    controller: 'setHeadPictureCtrl'
                 }
             }
         })
