@@ -1,0 +1,113 @@
+@charset "utf-8";
+/*--------------------------------------------------------------------
+[ 格式化页面 ]
+*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var,
+i {
+  font-style: normal;
+  font-weight: normal;
+}
+/*
+  i { display:inline-block } 便于 雪碧图 小图标的引入 eg: <i class="icon-logo"></i>
+*/
+i {
+  display: inline-block;
+}
+/*
+th 的 display:inline-block 会影响整个表格的 thead 样式，
+所以 th 一定不要设置 display:inline-block
+*/
+ol,
+ul {
+  list-style: none;
+  overflow: hidden;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  overflow: hidden;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+}
+input,
+select,
+option,
+textarea {
+  font-size: 12px;
+  font-family: "微软雅黑,hei,宋体";
+}
+/* 移除HTML5 input在type="number"时的上下小箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+textarea {
+  resize: none;
+}
+br {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
