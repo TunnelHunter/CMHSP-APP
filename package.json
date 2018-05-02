@@ -1,0 +1,47 @@
+{
+  "name": "cmhsp-app",
+  "description": "Comprehensive Mental Health Service Platform. The app features include: Privacy , Relax , Guide.",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-declare": "^0.3.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-less": "^3.0.2",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-ruby-sass": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.1",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.4",
+    "gulp-watch-path": "^0.1.0",
+    "gulp-wrap": "^0.11.0",
+    "stream-combiner2": "^1.0.2"
+  },
+  "dependencies": {
+    "gulp.spritesmith": "^6.3.0",
+    "handlebars": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MC44/CMHSP-APP.git"
+  },
+  "keywords": [
+    "CMHSP"
+  ],
+  "author": "MC44",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MC44/CMHSP-APP/issues"
+  },
+  "homepage": "https://github.com/MC44/CMHSP-APP#readme"
+}
