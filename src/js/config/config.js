@@ -45,6 +45,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 'test-tab': {
                     templateUrl: "html/tab_test_startAnswer.html",
                     controller: 'tabTestStartAnswerCtrl'
+                    // controller: 'tabTestCtrl'
                 }
             }
         })
