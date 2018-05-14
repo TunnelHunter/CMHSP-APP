@@ -129,6 +129,15 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
         };
 
 
+        $scope.total_score = 0;
+
+        //计算分数 - 每次点击选项按钮，累加选项分数
+        $scope.fn_calculate_score = function (option_score) {
+            $scope.total_score = $scope.total_score + option_score;
+            console.log($scope.total_score);
+        };
+
+
         //获取题信息
         var get_questions_data = {
             "pagenum": "2000",
