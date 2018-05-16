@@ -62,7 +62,20 @@
                                 <h3 style="color: #fff;;font-size: 20px">测试完成</h3>
                             </div>
                             <div style="position: relative;top: 80px;">
-                                <a class="button" style="width: 190px;border-radius: 30px;" nav-direction="forward">点击查看测试结果</a>
+                                <a class="button" style="width: 190px;border-radius: 30px;" ng-click="nextSlide();fn_view_results(total_score)">点击查看测试结果</a>
+                            </div>
+                        </div>
+
+
+                    </ion-slide>
+                    <ion-slide on-slide-changed="slideHasChanged(index)" >
+                        <div style="background: #4787f6;border-radius: 30px;height: 470px;position: relative;top:-16px" align="center">
+                            <div style="position:  relative;top: 20px">
+                                <h3 style="color: #fff;;font-size: 20px">——> 测试结果 <——</h3>
+                                <h3 style="color: #fff;;font-size: 20px">{{last_results.summary}}</h3>
+                                <p align="justify" style="margin-left: 20px;margin-right: 20px;font-size: 16px;line-height: 20px;text-indent: 33px;color: #fff;">
+                                    {{last_results.queConclusion}}</p>
+
                             </div>
                         </div>
 

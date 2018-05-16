@@ -136,6 +136,22 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
             $scope.total_score = $scope.total_score + option_score;
             console.log($scope.total_score);
         };
+        $scope.show_view_results = false;
+        var questionsConclusion = [];
+
+        questionsConclusion = $rootScope.questions.questionsConclusion;
+        $scope.last_results = {};
+        //根据计算分数 查看测评结果
+        $scope.fn_view_results = function (sum_score) {
+            // $scope.show_view_results = true;
+            for(var i = 0 ,len = questionsConclusion.length;i < len;i++){
+                if(sum_score <= questionsConclusion[i].scoreRange){
+                    $scope.last_results = questionsConclusion[i];
+                    console.log($scope.last_results);
+                    return;
+                }
+            }
+        };
 
 
         //获取题信息
