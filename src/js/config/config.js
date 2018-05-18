@@ -62,7 +62,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: "/social",
             views: {
                 'social-tab': {
-                    templateUrl: "html/tab_social.html"
+                    templateUrl: "html/tab_social.html",
+                    controller: 'tabSocialCtrl'
                 }
             }
         })

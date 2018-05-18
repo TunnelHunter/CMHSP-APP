@@ -5,12 +5,13 @@
         <h1 class="title" >社区</h1>
     </ion-header-bar>
     <ion-content>
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
         <div class="list card">
 
             <div class="item item-avatar">
-                <img src="http://www.runoob.com/try/demo_source/mcfly.jpg">
-                <h2>Marty McFly</h2>
-                <p>November 05, 1955</p>
+                <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png@1280w_1l_2o_100sh.webp">
+                <h2>小薛</h2>
+                <p>2018年5月16日</p>
             </div>
 
             <div class="item item-body">
@@ -21,24 +22,16 @@
                     菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
                     菜鸟教程 -- 学的不仅是技术，更是梦想！
                 </p>
-                <p>
-                    <a href="#" class="subdued">1 喜欢</a>
-                    <a href="#" class="subdued">5 评论</a>
-                </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" href="#">
                     <i class="icon ion-thumbsup"></i>
-                    喜欢
+                    点赞
                 </a>
                 <a class="tab-item" href="#">
                     <i class="icon ion-chatbox"></i>
                     评论
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    分享
                 </a>
             </div>
         </div>
@@ -59,24 +52,47 @@
                     菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
                     菜鸟教程 -- 学的不仅是技术，更是梦想！
                 </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    点赞
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    评论
+                </a>
+
+            </div>
+        </div>
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="http://www.runoob.com/try/demo_source/mcfly.jpg">
+                <h2>Marty McFly</h2>
+                <p>November 05, 1955</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" style="height:20%; width:100%" src="http://www.runoob.com/try/demo_source/delorean.jpg">
                 <p>
-                    <a href="#" class="subdued">1 喜欢</a>
-                    <a href="#" class="subdued">5 评论</a>
+                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
+                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
+                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
+                    菜鸟教程 -- 学的不仅是技术，更是梦想！
                 </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" href="#">
                     <i class="icon ion-thumbsup"></i>
-                    喜欢
+                    点赞
                 </a>
                 <a class="tab-item" href="#">
                     <i class="icon ion-chatbox"></i>
                     评论
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    分享
                 </a>
             </div>
         </div>
@@ -97,24 +113,16 @@
                     菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
                     菜鸟教程 -- 学的不仅是技术，更是梦想！
                 </p>
-                <p>
-                    <a href="#" class="subdued">1 喜欢</a>
-                    <a href="#" class="subdued">5 评论</a>
-                </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" href="#">
                     <i class="icon ion-thumbsup"></i>
-                    喜欢
+                    点赞
                 </a>
                 <a class="tab-item" href="#">
                     <i class="icon ion-chatbox"></i>
                     评论
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    分享
                 </a>
             </div>
         </div>
@@ -135,64 +143,60 @@
                     菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
                     菜鸟教程 -- 学的不仅是技术，更是梦想！
                 </p>
-                <p>
-                    <a href="#" class="subdued">1 喜欢</a>
-                    <a href="#" class="subdued">5 评论</a>
-                </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" href="#">
                     <i class="icon ion-thumbsup"></i>
-                    喜欢
+                    点赞
                 </a>
                 <a class="tab-item" href="#">
                     <i class="icon ion-chatbox"></i>
                     评论
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    分享
-                </a>
-            </div>
-        </div>
-
-        <div class="list card">
-
-            <div class="item item-avatar">
-                <img src="http://www.runoob.com/try/demo_source/mcfly.jpg">
-                <h2>Marty McFly</h2>
-                <p>November 05, 1955</p>
-            </div>
-
-            <div class="item item-body">
-                <img class="full-image" style="height:20%; width:100%" src="http://www.runoob.com/try/demo_source/delorean.jpg">
-                <p>
-                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
-                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
-                    菜鸟教程 -- 学的不仅是技术，更是梦想！<br>
-                    菜鸟教程 -- 学的不仅是技术，更是梦想！
-                </p>
-                <p>
-                    <a href="#" class="subdued">1 喜欢</a>
-                    <a href="#" class="subdued">5 评论</a>
-                </p>
-            </div>
-
-            <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#">
-                    <i class="icon ion-thumbsup"></i>
-                    喜欢
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-chatbox"></i>
-                    评论
-                </a>
-                <a class="tab-item" href="#">
-                    <i class="icon ion-share"></i>
-                    分享
                 </a>
             </div>
         </div>
     </ion-content>
 </ion-view>
+
+
+
+<!--<ion-view view-title="{{title}}" id="category">-->
+    <!--<ion-nav-buttons side="left" class="has-header">-->
+        <!--<button class="button button-icon icon ion-ios-arrow-back" ui-sref="page6"></button>-->
+    <!--</ion-nav-buttons>-->
+    <!--<ion-nav-buttons side="right" class="has-header">-->
+        <!--<button class="button button-icon icon ion-android-home" ui-sref="page6"></button>-->
+    <!--</ion-nav-buttons>-->
+    <!--<ion-content padding="true" class="has-header">-->
+        <!--<ion-refresher-->
+                <!--pulling-text="Pull to refresh..."-->
+                <!--on-refresh="doRefresh()">-->
+        <!--</ion-refresher>-->
+        <!--<ion-list id="page5-list5">-->
+            <!--<ion-item ng-repeat="item in lists" class="item-grid-two" id="page5-list-item{{item.product_id}}">-->
+                <!--<div class="pic">-->
+                    <!--<a href="/wap/product-{{item.product_id}}.html">-->
+                        <!--<img src="http://pics.imopark.com/{{item.default_image}}"></a><i></i>-->
+                <!--</div>-->
+                <!--<div class="product-info">-->
+                    <!--<div class="p-price-bar">-->
+              <!--<span class="fl p-price"> <em class="price">￥{{item.price}}</em>-->
+              <!--</span>-->
+                        <!--<span class="fl p-discount"> <em class="">{{item.zk}}折</em>-->
+              <!--</span>-->
+                        <!--<span class="fr p-sale-num">已售 {{item.codersum}}</span>-->
+                    <!--</div>-->
+                    <!--<h2 class="p-name">-->
+                        <!--<a href="/wap/product-{{item.product_id}}.html" class="split">{{item.name}}</a>-->
+                    <!--</h2>-->
+                <!--</div>-->
+            <!--</ion-item>-->
+        <!--</ion-list>-->
+        <!--<ion-infinite-scroll-->
+                <!--ng-if="can_loadmore()"-->
+                <!--on-infinite="loadMore()"-->
+                <!--distance="1%">-->
+        <!--</ion-infinite-scroll>-->
+    <!--</ion-content>-->
+<!--</ion-view>-->
