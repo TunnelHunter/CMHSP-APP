@@ -16,7 +16,7 @@
 
             <div class="item" align="center" style="border-top-style: hidden;">
 
-                <div style="background: #4787f6;border-radius: 30px;">
+                <div style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);;border-radius: 30px;">
                     <img src="http://bpic.588ku.com/element_origin_min_pic/18/04/05/f81868b100d7ff98ce5449cdbfb74866.jpg"
                          style="top: 5px;max-width: 70px;max-height: 70px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">
                     <!--<img src="../assets/imgs/rebotphoto.png" />-->
@@ -46,8 +46,8 @@
                         <p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">
                             {{list.questionName}}</p>
                         <div>
-                            <button class="button  button-block button-positive"
-                                    style="border-radius: 25px;" ng-repeat="list1 in list.questionOptions"
+                            <button class="button  button-block "
+                                    style="border-radius: 25px;background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);" ng-repeat="list1 in list.questionOptions"
                                     ng-click="nextSlide();fn_calculate_score(list1.optionValue)"
                                     ng-model="list1.optionValue">
                                 {{list1.optionName}}
@@ -56,7 +56,7 @@
                         </div>
                     </ion-slide>
                     <ion-slide on-slide-changed="slideHasChanged(index)">
-                        <div style="background: #4787f6;border-radius: 30px;height: 470px;" align="center">
+                        <div style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);border-radius: 30px;height: 470px;" align="center">
                             <img src="imgs/1.svg" height="90" width="90" style="position: relative;top:30px;"/>
                             <div style="position:  relative;top: 20px">
                                 <h3 style="color: #fff;;font-size: 20px">测试完成</h3>
@@ -69,7 +69,7 @@
 
                     </ion-slide>
                     <ion-slide on-slide-changed="slideHasChanged(index)" >
-                        <div style="background: #4787f6;border-radius: 30px;height: 470px;position: relative;top:-16px" align="center">
+                        <div style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);border-radius: 30px;height: 470px;position: relative;top:-16px" align="center">
                             <div style="position:  relative;top: 20px">
                                 <h3 style="color: #fff;;font-size: 20px">——> 测试结果 <——</h3>
                                 <h3 style="color: #fff;;font-size: 20px">{{last_results.summary}}</h3>

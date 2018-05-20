@@ -71,7 +71,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: "/radio",
             views: {
                 'radio-tab': {
-                    templateUrl: "html/tab_radio.html"
+                    templateUrl: "html/tab_radio.html",
+                    controller: 'tabRadioCtrl'
                 }
             }
         })
