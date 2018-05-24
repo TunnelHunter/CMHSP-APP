@@ -105,6 +105,7 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
         //
         //         ]
         // };
+
         //创建加载动作
         $ionicLoading.show({
             content: 'Loading',
@@ -113,6 +114,12 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
             maxWidth: 200,
             showDelay: 0
         });
+
+
+        // $scope.show();
+        // setTimeout(function () {
+        //     $scope.hide();
+        // },1000);
 
 
         // 定时关闭加载动作

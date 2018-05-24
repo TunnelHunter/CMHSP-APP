@@ -6,8 +6,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),//js压缩
     watchPath = require('gulp-watch-path'),
     htmlmin = require('gulp-htmlmin'),//html压缩
-    combiner = require('stream-combiner2'),
-    sourcemaps = require('gulp-sourcemaps'),
+    combiner = require('stream-combiner2'),      //合并
+    sourcemaps = require('gulp-sourcemaps'),     //生成sourcemap文件便于压缩后查看与调试
     autoprefixer = require('gulp-autoprefixer'), //根据设置浏览器版本自动处理浏览器前缀
     sass = require('gulp-ruby-sass'),
     imagemin = require('gulp-imagemin'),
@@ -23,6 +23,45 @@ var gulp = require('gulp'),
 
 var SRC_DIR = './src/**/*.js';
 var DIST_DIR = './dist/';
+
+
+
+
+var handleError = function (err) {
+    var colors = gutil.colors;
+    console.log('\n');
+    gutil.log(colors.red('Error!'));
+    gutil.log('fileName: ' + colors.red(err.fileName));
+    gutil.log('lineNumber: ' + colors.red(err.lineNumber));
+    gutil.log('message: ' + err.message);
+    gutil.log('plugin: ' + colors.yellow(err.plugin));
+};
+gulp.task('watchjs', function () {
+    gulp.watch('src/js/**/*.js', function (event) {
+        var paths = watchPath(event, 'src/', 'dist/');
+        /*
+         paths
+         { srcPath: 'src/js/index.js',
+         srcDir: 'src/js/',
+         distPath: 'dist/js/index.js',
+         distDir: 'dist/js/',
+         srcFilename: 'index.js',
+         distFilename: 'index.js' }
+         */
+        gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath);
+        gutil.log('Dist ' + paths.distPath);
+
+        var combined = combiner.obj([
+            gulp.src(paths.srcPath),
+            sourcemaps.init(),
+            uglify(),
+            sourcemaps.write('./'),
+            gulp.dest(paths.distDir)
+        ]);
+
+        combined.on('error', handleError);
+    })
+});
 
 //定义一个testLess任务
 gulp.task('lessToCss', function () {
@@ -62,34 +101,34 @@ gulp.task('testAutoFx', function () {
 
 
 gulp.task('testConcat', function () {
-    gulp.src('src/js/*.js')
-        .pipe(concat('all.js'))//合并后的文件名
+    gulp.src(['src/js/config/*.js','src/js/controller/*.js','src/js/service/*.js'])
+        .pipe(concat('cmhsp_concat.js'))//合并后的文件名
         .pipe(gulp.dest('dist/js'));
 });
 
 
 gulp.task('jsmin', function () {
-    gulp.src(['src/js/index.js','src/js/detail.js']) //多个文件以数组形式传入
+    gulp.src('dist/js/cmhsp_concat.js') //多个文件以数组形式传入
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('dist/js/cmhsp_concat'));
 
-
-    //压缩src/js目录下的所有js文件
-    //除了test1.js和test2.js（**匹配src/js的0个或多个子文件夹）
-    gulp.src(['src/js/*.js', '!src/js/**/{test1,test2}.js'])
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
-
-
-    gulp.src(['src/js/*.js', '!src/js/**/{test1,test2}.js'])
-        .pipe(uglify({
-            //mangle: true,//类型：Boolean 默认：true 是否修改变量名
-            //mangle: {except: ['require' ,'exports' ,'module' ,'$']}//排除混淆关键字
-            mangle: true,//类型：Boolean 默认：true 是否修改变量名
-            compress: true,//类型：Boolean 默认：true 是否完全压缩
-            preserveComments: 'all' //保留所有注释
-        }))
-        .pipe(gulp.dest('dist/js'));
+    //
+    // //压缩src/js目录下的所有js文件
+    // //除了test1.js和test2.js（**匹配src/js的0个或多个子文件夹）
+    // gulp.src(['src/js/*.js', '!src/js/**/{test1,test2}.js'])
+    //     .pipe(uglify())
+    //     .pipe(gulp.dest('dist/js'));
+    //
+    //
+    // gulp.src(['src/js/*.js', '!src/js/**/{test1,test2}.js'])
+    //     .pipe(uglify({
+    //         //mangle: true,//类型：Boolean 默认：true 是否修改变量名
+    //         //mangle: {except: ['require' ,'exports' ,'module' ,'$']}//排除混淆关键字
+    //         mangle: true,//类型：Boolean 默认：true 是否修改变量名
+    //         compress: true,//类型：Boolean 默认：true 是否完全压缩
+    //         preserveComments: 'all' //保留所有注释
+    //     }))
+    //     .pipe(gulp.dest('dist/js'));
 });
 
 
