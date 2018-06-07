@@ -76,6 +76,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
+        .state('tabs.socialDetail', {
+            url: "/socialDetail",
+            params: {'item':null},//设置为对象，用于接受对象型数据
+            views: {
+                'social-tab': {
+                    templateUrl: "html/tab_socialDetail.html",
+                    controller: 'tabSocialDetailCtrl'
+                }
+            }
+        })
         .state('tabs.radio', {
             url: "/radio",
             views: {
