@@ -1,24 +1,79 @@
-app.controller('tabSocialCtrl',['$scope','$http',function ($scope,$http) {
-    $scope.doRefresh = function() {
+app.controller('tabSocialCtrl', ['$scope', '$http', 'ajax_service', '$stateParams', '$ionicLoading', function ($scope, $http, ajax_service, $stateParams, $ionicLoading) {
+    $scope.doRefreshDown = function () {
         $http({
             method: "get",
-            //url: ajax_service.get_questions(),
-            url:"http://localhost:8080/ti/1",
+            url: ajax_service.get_socialFreshDown(),
+            //url:"http://localhost:8080/ti/1",
             //data: JSON.stringify(get_questions_data),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
-            .success(function(response) {
+            .success(function (response) {
                 $scope.items = response;
             })
-            .finally(function() {
+            .finally(function () {
                 $scope.$broadcast('scroll.refreshComplete');
             });
 
     };
-}]);
 
+    $scope.items = [];
+    $scope.loadMore = function() {
+        $http.get('/more-items').success(function(items) {
+            useItems(items);
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+    };
+
+    $scope.$on('stateChangeSuccess', function() {
+        $scope.loadMore();
+    });
+
+
+    // var _arguments = arguments;
+    // $scope.lists = [];
+    // var page_no = 1;
+    // var page_size = 20;
+    // var page_total = 0;
+    //
+    // $scope.can_loadmore = function () {
+    //     return page_no < page_total;
+    // };
+    //
+    // $scope.$on('$ionicView.loaded', function (event, data) {
+    //     page_no = 1;
+    //     get_goods_list(_arguments, {
+    //         'cat_id': $stateParams.cat_id,
+    //         'page_no': page_no,
+    //         'page_size': page_size
+    //     }, function (res) {
+    //         page_total = res.pager.total;
+    //     });
+    // });
+    //
+    // $scope.doRefresh = function () {
+    //     page_no = 1;
+    //     get_goods_list(_arguments, {
+    //         'cat_id': $stateParams.cat_id,
+    //         'page_no': page_no,
+    //         'page_size': page_size
+    //     }, function () {
+    //         $scope.$broadcast('scroll.refreshComplete');
+    //     });
+    // };
+    //
+    // $scope.loadMore = function () {
+    //     page_no += 1;
+    //     get_goods_list(_arguments, {
+    //         'cat_id': $stateParams.cat_id,
+    //         'page_no': page_no,
+    //         'page_size': page_size
+    //     }, function () {
+    //         $scope.$broadcast('scroll.infiniteScrollComplete');
+    //     });
+    // };
+}]);
 
 
 // angular.module('app.controllers', [])

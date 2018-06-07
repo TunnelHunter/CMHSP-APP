@@ -39,6 +39,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
+        .state('tabs.examinationsBank', {
+            url: "/examinationsBank",
+            views: {
+                'test-tab': {
+                    templateUrl: "html/tab_test_examinationsBank.html",
+                    controller: 'tabTestExaminationsBankCtrl'
+                }
+            }
+        })
         .state('tabs.startAnswer', {
             url: "/startAnswer",
             views: {
@@ -52,9 +61,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         .state('tabs.historyRecords', {
             url: "/historyRecords",
             views: {
-                'test-tab': {
-                    templateUrl: "html/tab_test_historyRecords.html",
-                    controller: 'tabTestHistoryRecordsCtrl'
+                'user-tab': {
+                    templateUrl: "html/tab_user_testHistoryRecords.html",
+                    controller: 'tabUserTestHistoryRecordsCtrl'
                 }
             }
         })

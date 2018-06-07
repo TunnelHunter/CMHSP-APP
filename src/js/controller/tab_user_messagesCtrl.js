@@ -9,7 +9,7 @@ $timeout(function () {
             'content':'你好啊！'
         },
         {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp',
+            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
             'name':'小李',
             'content':'你在哪里？'
         },
@@ -19,7 +19,7 @@ $timeout(function () {
             'content':'评论666'
         },
         {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp',
+            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
             'name':'小机',
             'content':'键盘侠！'
         },
@@ -29,7 +29,7 @@ $timeout(function () {
             'content':'我起飞了！'
         },
         {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp',
+            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
             'name':'小机',
             'content':'键盘侠！'
         },
@@ -44,7 +44,7 @@ $timeout(function () {
             'content':'键盘侠！'
         },
         {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp',
+            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
             'name':'小机',
             'content':'键盘侠！'
         },
@@ -54,7 +54,7 @@ $timeout(function () {
             'content':'键盘侠！'
         },
         {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp',
+            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
             'name':'小机',
             'content':'键盘侠！'
         },

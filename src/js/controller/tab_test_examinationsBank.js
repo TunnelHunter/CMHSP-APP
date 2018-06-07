@@ -1,5 +1,5 @@
-app.controller('tabTestHistoryRecordsCtrl', ['$scope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout',
-    function ($scope, $ionicLoading, $ionicPopup, ajax_service, $http, $timeout) {
+app.controller('tabTestExaminationsBankCtrl', ['$scope', '$rootScope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout',
+    function ($scope, $rootScope,$ionicLoading, $ionicPopup, ajax_service, $http, $timeout) {
         $scope.show = false;
 
 
@@ -14,82 +14,69 @@ app.controller('tabTestHistoryRecordsCtrl', ['$scope', '$ionicLoading', '$ionicP
         // });
 
 
+
+
+
+        $scope.fn_get_questions_data = function () {
+            $http({
+                method: "get",
+                url: ajax_service.get_questions(),
+                data: JSON.stringify(get_questions_data),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function (response) {
+
+                    $rootScope.questions = response;
+                    console.log($rootScope.questions);
+
+                })
+                .error(function (response) {
+                    //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
+
+                });
+        };
+        // $scope.fn_get_questions_data();
+
+
+
+        $scope.data1 = "11111";
+
+        $scope.serverSideChange = function(item) {
+            console.log("Selected Serverside, text:", item.text, "value:", item.value);
+        };
+
+
+
+
         // 定时关闭加载动作
         $timeout(function () {
             // $ionicLoading.hide();
-            $scope.items = [
-                {id: 0},
-                {id: 1},
-                {id: 2},
-                {id: 3},
-                {id: 4},
-                {id: 5},
-                {id: 6},
-                {id: 7},
-                {id: 8},
-                {id: 9},
-                {id: 10},
-                {id: 11},
-                {id: 12},
-                {id: 13},
-                {id: 14},
-                {id: 15},
-                {id: 16},
-                {id: 17},
-                {id: 18},
-                {id: 19},
-                {id: 20},
-                {id: 21},
-                {id: 22},
-                {id: 23},
-                {id: 24},
-                {id: 25},
-                {id: 26},
-                {id: 27},
-                {id: 28},
-                {id: 29},
-                {id: 30},
-                {id: 31},
-                {id: 32},
-                {id: 33},
-                {id: 34},
-                {id: 35},
-                {id: 36},
-                {id: 37},
-                {id: 38},
-                {id: 39},
-                {id: 40},
-                {id: 41},
-                {id: 42},
-                {id: 43},
-                {id: 44},
-                {id: 45},
-                {id: 46},
-                {id: 47},
-                {id: 48},
-                {id: 49},
-                {id: 50}
-            ];
+            // $scope.items = [
+            //     {id: 0},
+            //     {id: 1},
+            //     {id: 2},
+            //     {id: 3},
+            //     {id: 4},
+            //     {id: 5},
+            //     {id: 6},
+            //     {id: 7},
+            //     {id: 8},
+            //     {id: 9}
+            // ];
+            //
+            // $scope.serverSideList = [
+            //     { text: "抑郁症测试题1", value: "11111" },
+            //     { text: "抑郁症测试题2", value: "22222" },
+            //     { text: "狂躁症测试题1", value: "33333" }
+            // ];
+            $scope.examinations_list1 = {};
+            $scope.examinations_list1 = $rootScope.examinations_list;
         }, 1000);
 
         $scope.data = {
             showDelete: false
-        };
-
-        $scope.edit = function (item) {
-            alert('Edit Item: ' + item.id);
-        };
-        $scope.share = function (item) {
-            alert('Share Item: ' + item.id);
-        };
-
-        $scope.moveItem = function (item, fromIndex, toIndex) {
-            $scope.items.splice(fromIndex, 1);
-            $scope.items.splice(toIndex, 0, item);
-        };
-
-        $scope.onItemDelete = function (item) {
-            $scope.items.splice($scope.items.indexOf(item), 1);
         };
 
 

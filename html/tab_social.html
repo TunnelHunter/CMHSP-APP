@@ -7,11 +7,11 @@
 
     </ion-header-bar>
     <ion-content style="bottom: 49px;background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);" >
-        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefreshDown()"></ion-refresher>
         <div class="list card" style="border-radius: 20px;box-shadow: 0px 0px 10px 0px #33333394;">
 
             <div class="item item-avatar" style="height: 20px;">
-                <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png@1280w_1l_2o_100sh.webp">
+                <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png">
                 <div style="display: inline-block;">
                     <h2>小薛</h2>
                     <p>2018年5月18日</p>
@@ -41,6 +41,11 @@
             <!--</a>-->
             <!--</div>-->
         </div>
+        <ion-infinite-scroll
+                icon="ion-loading-c"
+                on-infinite="loadMore()"
+                distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 
     <ion-footer-bar  style="bottom: 89px;

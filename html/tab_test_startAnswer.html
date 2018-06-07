@@ -41,7 +41,7 @@
                 <!--</div>-->
 
                 <ion-slide-box show-pager="false">
-                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in questions.questionsMessage">
+                    <ion-slide on-slide-changed="slideHasChanged(index)" ng-repeat="list in examination_default.questionsMessage">
 
                         <p style="margin-left: 40px;margin-right: 40px;font-size: 20px; line-height: 30px;text-indent: 40px; color: #000;">
                             {{list.questionName}}</p>
@@ -62,7 +62,7 @@
                                 <h3 style="color: #fff;;font-size: 20px">测试完成</h3>
                             </div>
                             <div style="position: relative;top: 80px;">
-                                <a class="button" style="width: 190px;border-radius: 30px;" ng-click="nextSlide();fn_view_results(total_score)">点击查看测试结果</a>
+                                <a class="button" style="width: 190px;border-radius: 30px;" ng-click="nextSlide();fn_view_results(total_score);fn_return_user_test_results()">点击查看测试结果</a>
                             </div>
                         </div>
 

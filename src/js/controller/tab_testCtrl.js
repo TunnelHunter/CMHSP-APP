@@ -1,27 +1,30 @@
-app.controller('tabTestCtrl',['$scope','$rootScope','$http',function ($scope,$rootScope,$http) {
-    $rootScope.questions = {};
-    $scope.fn_get_questions_data = function () {
+app.controller('tabTestCtrl',['$scope','$rootScope','$http','ajax_service',function ($scope,$rootScope,$http,ajax_service) {
+    $rootScope.examinations_list = [];
+    $rootScope.examination_default = {};
+
+    $scope.fn_get_examinations_list = function () {
         $http({
             method: "get",
-            //url: ajax_service.get_questions(),
-            url:"http://localhost:8080/ti/1",
-            //data: JSON.stringify(get_questions_data),
+            // url: ajax_service.get_examinationsList(),
+            url:"http://192.168.43.214:8080/CMHSP/examinationsList",
+            // data: JSON.stringify(get_questions_data),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
             .success(function (response) {
 
-                $rootScope.questions = response;
-                console.log($rootScope.questions);
+                $rootScope.examinations_list = response.data[0];
+                $rootScope.examination_default = $rootScope.examinations_list[0];
+                console.log($rootScope.examinations_list);
+                console.log($rootScope.examination_default);
 
             })
             .error(function (response) {
-                //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
 
             });
     };
-    $scope.fn_get_questions_data();
+    $scope.fn_get_examinations_list();
 
 
 

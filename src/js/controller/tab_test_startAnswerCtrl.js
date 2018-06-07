@@ -144,17 +144,28 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
             console.log($scope.total_score);
         };
         $scope.show_view_results = false;
-        var questionsConclusion = [];
 
-        questionsConclusion = $rootScope.questions.questionsConclusion;
+        var questionsConclusion = [];
+        var examinationName = "";
+        var examinationId = 0;
+
+        questionsConclusion = $rootScope.examination_default.questionsConclusion;
+        examinationName = $rootScope.examination_default.examinationName;
+        examinationId = $rootScope.examination_default.examinationId;
+
         $scope.last_results = {};
+        $scope.last_conclusionId = 0;
+        $scope.last_summary = '';
         //根据计算分数 查看测评结果
         $scope.fn_view_results = function (sum_score) {
             // $scope.show_view_results = true;
             for(var i = 0 ,len = questionsConclusion.length;i < len;i++){
                 if(sum_score <= questionsConclusion[i].scoreRange){
                     $scope.last_results = questionsConclusion[i];
+                    $scope.last_conclusionId = questionsConclusion[i].conclusionId;
+                    $scope.last_summary = questionsConclusion[i].summary;
                     console.log($scope.last_results);
+                    console.log($scope.last_conclusionId);
                     return;
                 }
             }
@@ -199,56 +210,46 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
 
         //返回用户测试结果信息
         $scope.user_test_results = {
-            "device_number": '',
-            "modbus_id": '',
-            "modbus_type": '',
-            "data": '',
-            "open_address": '',
-            "open_channel": ''
+            "userId": 0,
+            "userName": "",
+            "examinationId": 0,
+            "examinationName": '',
+            "examinationScore": 0,
+            "summary":'',
+            "examinationConclusionId": 0
         };
 
-        $scope.fn_user_test_results = function () {
+        $scope.fn_return_user_test_results = function () {
             //赋值
-            $scope.user_test_results.device_number = $scope.plcChannelAdd.device_number;
-
-
-            //判断 满足条件才能测试
-            if ($scope.user_test_results.device_number === '') {
-                $rootScope.fn_common_showAlertTxt('请输入PLC设备地址！', 1);
-                return;
-            }
-            if (isNaN($scope.user_test_results.device_number)) {
-                $rootScope.fn_common_showAlertTxt('PLC设备地址只能输入数字！', 1);
-                return;
-            }
-            if ($scope.user_test_results.data != 0 && $scope.user_test_results.data != 1) {
-                $rootScope.fn_common_showAlertTxt('下发数据只能输入 0 或 1！', 1);
-                return;
-            }
+            $scope.user_test_results.userId = 1;
+            $scope.user_test_results.userName = "老徐";
+            $scope.user_test_results.examinationId = examinationId;
+            $scope.user_test_results.examinationName = examinationName;
+            $scope.user_test_results.examinationScore = $scope.total_score;
+            $scope.user_test_results.summary = $scope.last_summary;
+            $scope.user_test_results.examinationConclusionId = $scope.last_conclusionId;
 
             $http({
                 method: "post",
-                url: ajax_service.write_plcChannel(),
+                // url: ajax_service.return_examinationsResults(),
+                url:"http://192.168.43.214:8080/CMHSP/examinationsResults",
                 data: JSON.stringify($scope.user_test_results),
                 cache: true,
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             })
                 .success(function (response) {
-                    $rootScope.fn_common_WaitingDivShow(false);
                     if (response.error_code == 0) {
-                        $rootScope.fn_common_showAlertTxt('下发数据测试成功！', 1);
+                        console.log("返回用户测试数据成功")
                     } else {
-                        $rootScope.fn_common_showAlertTxt(response.data, 1);
+                        console.log("返回用户测试数据失败")
 
                     }
 
                 })
                 .error(function (response) {
-                    $rootScope.fn_common_WaitingDivShow(false);
-                    $rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
-
+                    console.log("返回用户测试数据失败")
                 });
 
         }
