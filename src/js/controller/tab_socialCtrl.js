@@ -482,7 +482,7 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
 
         setTimeout(function () {
             $scope.close_social_add_modal();
-        },100);
+        },1000);
     };
 
     $scope.open_social_add_modal = function () {
