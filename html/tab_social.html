@@ -24,7 +24,7 @@
 
 
             <div class="item item-body" style="background: linear-gradient(to bottom right, #fff , #fff);" ng-click="fn_socialDetail(item)">
-                <p style="margin-top: 0px;font-size: 16px;font-family: cursive;">{{item.textData.substr(0,67)}} <span ng-show="item.textData != item.social_text.substr(0,67)"> . . . 展开 >></span></p>
+                <p style="margin-top: 0px;font-size: 16px;">{{item.textData.substr(0,67)}} <span ng-show="item.textData != item.textData.substr(0,67)"> . . . 展开 >></span></p>
 
                 <img class="full-image" style="height:20%; width:100% ;border-radius: 10px;"
                      src="{{item.imgData}}">
@@ -40,21 +40,39 @@
         </ion-infinite-scroll>
     </ion-content>
 
-    <ion-footer-bar style="bottom: 89px;
-    background: rgba(56, 126, 245, 0.89);
+    <!--<ion-footer-bar style="bottom: 89px;-->
+    <!--background: rgba(56, 126, 245, 0.89);-->
+    <!--border-radius: 50%;-->
+    <!--top: 83.5%;-->
+    <!--left: 83.4%;-->
+    <!--max-width: 55px;-->
+    <!--max-height: 55px;-->
+    <!--width: 100%;-->
+    <!--height: 100%;-->
+    <!--box-shadow: 0px 0px 10px 0px #387ef5;">-->
+
+        <!--<div class="title" style="color: #fff;font-size: 35px;top: 8%; left: 5%;">-->
+            <!--<i class="icon  ion-compose"></i>-->
+        <!--</div>-->
+
+
+    <!--</ion-footer-bar>-->
+
+    <div ng-click="open_social_add_modal()" style="position: fixed;
+    background: rgba(49, 195, 163, .85);
     border-radius: 50%;
-    top: 83.5%;
-    left: 83.4%;
+    right: 15px;
+    bottom: 65px;
     max-width: 55px;
     max-height: 55px;
     width: 100%;
     height: 100%;
-    box-shadow: 0px 0px 10px 0px #387ef5;">
+    box-shadow: 0px 0px 10px 0px #2fbea4;">
 
-        <div class="title" style="color: #fff;font-size: 35px;top: 8%; left: 5%;">
+        <div class="title" style="position: relative;color: #fff;font-size: 35px;top: 15%;left: 29%;">
             <i class="icon  ion-compose"></i>
         </div>
 
 
-    </ion-footer-bar>
+    </div>
 </ion-view>

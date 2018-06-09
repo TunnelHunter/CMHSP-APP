@@ -111,3 +111,10 @@ br {
   font-size: 0;
   line-height: 0;
 }
+
+.favorite {
+  color:#21ABA5
+}
+.not_favorite {
+  color: #acabb3
+}

@@ -1,4 +1,4 @@
-app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicLoading', function ($scope, $state, $http, ajax_service, $stateParams, $ionicLoading) {
+app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicLoading', '$ionicModal', function ($scope, $state, $http, ajax_service, $stateParams, $ionicLoading, $ionicModal) {
     $scope.items = [
         {
             "socialId": "1",
@@ -197,6 +197,8 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
             ]
         }
     ];
+
+
     $scope.items_test = [
         {
             "socialId": "1",
@@ -271,6 +273,77 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
         }
     ];
 
+
+    //获取当前时间
+    var get_time = function () {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+        var week = now.getDay();            //星期
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+
+        var clock = year + "-";
+
+        if (month < 10) {
+            clock += "0";
+        }
+
+        clock += month + "-";
+
+        if (day < 10) {
+            clock += "0";
+        }
+
+        clock += day + " ";
+
+        switch (week) {
+            case 0:
+                clock += "Sun";
+                break;
+            case 1:
+                clock += "Mon";
+                break;
+            case 2:
+                clock += "Tues";
+                break;
+            case 3:
+                clock += "Wed";
+                break;
+            case 4:
+                clock += "Thur";
+                break;
+            case 5:
+                clock += "Fri";
+                break;
+            case 6:
+                clock += "Sat";
+                break;
+            default:
+                break;
+        }
+
+        clock += " ";
+
+
+        if (hh < 10) {
+            clock += "0";
+        }
+
+        clock += hh + ":";
+        if (mm < 10) {
+            clock += '0';
+        }
+        clock += mm;
+        console.log(clock);
+
+        return clock;
+    };
+
+
     $scope.currentPage = 1;//定义下拉加载分页的初始值
 
     $scope.doRefreshDown = function () {
@@ -343,6 +416,93 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
         // console.log(item);
         // console.log(angular.toJson(item));
         $state.go('tabs.socialDetail', {'item': angular.toJson(item)})
-    }
+    };
+
+
+    $scope.new_social = {
+        "imgData": "",
+        "textData": ""
+    };
+
+    //个性签名设置 模态窗口
+    $ionicModal.fromTemplateUrl('html/tab_social_add_modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.social_add_modal = modal;
+    });
+    $scope.fn_social_add = function () {
+        // $scope.new_social.textData = '';
+        var new_social = {
+            "userId": 0,
+            "userName": "",
+            "imgData": "",
+            "textData": "",
+            "socialAddtime": "",
+        };
+
+        new_social.userId = window.localStorage.getItem("userId");
+        new_social.userName = window.localStorage.getItem("userName");
+        new_social.imgData = "https://hellorfimg.zcool.cn/preview260/630662054.jpg";
+        new_social.textData = $scope.new_social.textData;
+        new_social.socialAddtime = get_time();
+
+
+        $http({
+            method: "get",
+            url: ajax_service.add_socialComment(),
+            //url:"http://localhost:8080/ti/1",
+            data: JSON.stringify(new_social),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .success(function (response) {
+
+            })
+            .error(function () {
+                var aa = {
+                    "userId": "",
+                    "userName": "",
+                    "userImg": "http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png",
+                    "socialAddtime": "",
+                    "imgData": "https://hellorfimg.zcool.cn/preview260/630662054.jpg",
+                    "textData": "",
+                    "comments": []
+                };
+
+                aa.userId = 11;
+                aa.userName = "小明";
+                aa.imgData = "https://img.zcool.cn/community/018cdc5b192e73a8012034f72fd3de.jpeg";
+                aa.textData = $scope.new_social.textData;
+                aa.socialAddtime = get_time();
+                $scope.items.unshift(aa)
+            });
+        $scope.social_add_modal.hide();
+
+        setTimeout(function () {
+            $scope.close_social_add_modal();
+        },100);
+    };
+
+    $scope.open_social_add_modal = function () {
+        $scope.social_add_modal.show();
+    };
+    $scope.close_social_add_modal = function () {
+        $scope.new_social.textData = '';
+        $scope.social_add_modal.hide();
+    };
+    // //Cleanup the set_name_modal when we're done with it!
+    // $scope.$on('$destroy', function() {
+    //     $scope.social_add_modal.remove();
+    // });
+    // // Execute action on hide set_name_modal
+    // $scope.$on('social_add_modal.hidden', function() {
+    //     // Execute action
+    // });
+    // // Execute action on remove set_name_modal
+    // $scope.$on('social_add_modal.removed', function() {
+    //     // Execute action
+    // });
 
 }]);
