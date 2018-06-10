@@ -95,6 +95,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
+        .state('tabs.musicPlayer', {
+        url: "/musicPlayer",
+        views: {
+            'radio-tab': {
+                templateUrl: "html/tab_music_player.html",
+                controller: 'tabMusicPlayerCtrl'
+            }
+        }
+    })
         .state('tabs.reading', {
             url: "/reading",
             views: {

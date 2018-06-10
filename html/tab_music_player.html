@@ -1,0 +1,53 @@
+<ion-view view-title="音乐播放器">
+    <ion-header-bar align-title="center">
+        <a class="button icon-left  ion-ios-arrow-left button-clear button-dark" href="#/tabs/radio"
+        nav-direction="back">返回</a>
+        <h1 class="title">音乐播放</h1>
+    </ion-header-bar>
+    <ion-content style="bottom: 49px;" overflow-scroll="true">
+
+        <div class="wrapper">
+            <!-- 背景图片 -->
+            <div class="background">
+                <div class="music-lyric" style="display:block">
+                    <div class="lyric-view">
+                        <ul class="lyric"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <audio src=""></audio>
+                <div class="music-massage">
+                    <p class="musicname" title=""></p>
+                    <p class="musicer" title=""></p>
+                    <p class="record" title="" data-id=""></p>
+                </div>
+                <!-- 分享，收藏，喜欢按钮 -->
+                <div class="music-icon">
+                    <a class="m-icon m-fenxiang colored" href="http://service.weibo.com/share/share.php?title=#_loginLayer_1466697157538" target="new"></a>
+                    <span class="m-icon m-star colored"></span>
+                    <span class="m-icon m-heart colored"></span>
+                </div>
+            </div>
+            <!-- 进度条 -->
+            <span class="basebar">
+			<span class="progressbar"></span>
+		</span>
+            <div class="controls">
+                <!-- 音乐播放。换频道，下一曲按钮 -->
+                <div class="play-control">
+                    <span class="m-icon m-play btn1" title="播放/暂停"></span>
+                    <span class="m-icon m-change btn2" title="换频道"></span>
+                    <span class="m-icon m-next btn3" title="换曲"></span>
+                </div>
+                <!-- 循环播放，随机播放按钮 -->
+                <div class="music-control">
+                    <span class="m-icon m-xunhuan colored"></span>
+                    <span class="m-icon m-lyric colored lyriced"></span>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>
