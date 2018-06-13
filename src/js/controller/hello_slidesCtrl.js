@@ -1,5 +1,4 @@
 app.controller('helloSlidersCtrl',['$scope',' $ionicSlideBoxDelegate',function ($scope, $ionicSlideBoxDelegate) {
-    $scope.show_question_windows = false;
     $scope.slides = [
         {
             title: "Welcome to the Docs!",

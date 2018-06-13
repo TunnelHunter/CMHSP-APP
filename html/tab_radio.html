@@ -2,41 +2,112 @@
     <ion-header-bar align-title="center">
         <!--<a class="button icon-left  ion-ios-arrow-left button-clear button-dark" href="#/tabs/user"-->
         <!--nav-direction="back">返回</a>-->
-        <h1 class="title">场景音乐</h1>
+        <h1 class="title">情感音乐</h1>
     </ion-header-bar>
-    <ion-content style="bottom: 49px;">
+    <ion-content style="bottom: 49px;background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
 
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; ">
+            <a class="item item-thumbnail-left item-icon-right" ui-sref="tabs.musicPlayer" nav-direction="forward">
+                <img src="http://img05.tooopen.com/products/20150128/38387985.jpg"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>治愈</h2>
+                    <p>NEW AGE 电子合成器音乐</p>
+                    <p>烘托氛围 治愈心灵</p>
+                    <i class="icon ion-headphone" style="color: #22aca5;"></i>
+                    <!--<i class="icon ion-ios-arrow-right"></i>-->
+                </div>
 
-        <div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;"  ui-sref="tabs.musicPlayer" nav-direction="forward">
-            <div class="item "
-                 style="background: linear-gradient(to bottom right, #FF8364 , #FF4D4D);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">
-                <div style="    position: relative;top: 35%;">清 晨</div>
-            </div>
+            </a>
+        </div>
+
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394;">
+            <a class="item item-thumbnail-left item-icon-right" ui-sref="tabs.musicPlayer" nav-direction="forward">
+                <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=558256190,1303768790&fm=27&gp=0.jpg"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>兴奋</h2>
+                    <p>悦耳节奏带感歌曲精选</p>
+                    <p>日常抖腿必备歌单</p>
+                    <i class="icon ion-headphone" style="color: #22aca5;"></i>
+                </div>
+            </a>
+        </div>
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394;">
+            <a class="item item-thumbnail-left item-icon-right" ui-sref="tabs.musicPlayer" nav-direction="forward">
+                <img src="https://img.zcool.cn/community/01fb2c590fdda1a801214550aa8aba.jpg"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>感动</h2>
+                    <p>触发心灵的一刹那</p>
+                    <p>总有一首可以触动你的心房</p>
+                    <i class="icon ion-headphone" style="color: #22aca5;"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394;">
+            <a class="item item-thumbnail-left item-icon-right" ui-sref="tabs.musicPlayer" nav-direction="forward">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528887565318&di=569214481b9c408ed65d4eeab7d675df&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F018e5959005e82a801214550eb425a.jpg%401280w_1l_2o_100sh.png"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>安静</h2>
+                    <p>享受美妙的音乐</p>
+                    <p>伴随你入睡 调整你的心情</p>
+                    <i class="icon ion-headphone" style="color: #22aca5;"></i>
+                </div>
+
+            </a>
 
         </div>
-        <div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box1()">
 
-            <div class="item "
-                 style="background: linear-gradient(to bottom right, #00FFF0 , #00D1FF);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">
-                <div style="    position: relative;top: 35%;">午 休</div>
-            </div>
-
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394;">
+            <a class="item item-thumbnail-left item-icon-right" ui-sref="tabs.musicPlayer" nav-direction="forward">
+                <img src="https://img.zcool.cn/community/01c7c45aa9e74fa80120be140996a0.jpeg@260w_195h_1c_1e_1o_100sh.jpg"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>快乐</h2>
+                    <p>有时候快乐很简单</p>
+                    <p>一丝微笑 永远不失孩子气</p>
+                    <i class="icon ion-headphone" style="color: #22aca5;"></i>
+                </div>
+            </a>
         </div>
-        <div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box2()">
+        <!--<div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;"  ui-sref="tabs.musicPlayer" nav-direction="forward">-->
+        <!--<div class="item "-->
+        <!--style="background: linear-gradient(to bottom right, #FF8364 , #FF4D4D);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">-->
+        <!--<div style="    position: relative;top: 35%;">清 晨</div>-->
+        <!--</div>-->
 
-            <div class="item "
-                 style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">
-                <div style="    position: relative;top: 35%;">散 步</div>
-            </div>
+        <!--</div>-->
+        <!--<div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box1()">-->
 
-        </div>
-        <div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box3()">
+        <!--<div class="item "-->
+        <!--style="background: linear-gradient(to bottom right, #00FFF0 , #00D1FF);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">-->
+        <!--<div style="    position: relative;top: 35%;">午 休</div>-->
+        <!--</div>-->
 
-            <div class="item "
-                 style="background: linear-gradient(to bottom right, #696969 , #7C73E6);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">
-                <div style="    position: relative;top: 35%;">夜 晚</div>
-            </div>
-        </div>
+        <!--</div>-->
+        <!--<div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box2()">-->
+
+        <!--<div class="item "-->
+        <!--style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">-->
+        <!--<div style="    position: relative;top: 35%;">散 步</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="list card" style="border-radius: 15px;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_change_show_play_box3()">-->
+
+        <!--<div class="item "-->
+        <!--style="background: linear-gradient(to bottom right, #696969 , #7C73E6);font-size: 30px;font-weight: 100;text-align: center;    height: 136px;">-->
+        <!--<div style="    position: relative;top: 35%;">夜 晚</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
 
     </ion-content>
@@ -58,10 +129,12 @@
     height: 100%;
     box-shadow: 0px 0px 10px 0px #85514c;" ng-click="show_start_button = !show_start_button">
 
-            <div ng-if="show_start_button" class="title" style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; left: 7%;">
-                <i class="icon  ion-play" ></i>
+            <div ng-if="show_start_button" class="title"
+                 style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; left: 7%;">
+                <i class="icon  ion-play"></i>
             </div>
-            <div ng-if="!show_start_button" class="title" style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; ">
+            <div ng-if="!show_start_button" class="title"
+                 style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; ">
                 <i class="icon  ion-pause"></i>
             </div>
 
@@ -129,7 +202,7 @@
     box-shadow: 0px 0px 10px 0px #428186;" ng-click="show_start_button = !show_start_button">
 
             <div ng-if="show_start_button" class="title" style="color: #1111119e;font-size: 35px;top: 11%; left: 7%;">
-                <i class="icon  ion-play" ></i>
+                <i class="icon  ion-play"></i>
             </div>
             <div ng-if="!show_start_button" class="title" style="color: #1111119e;font-size: 35px;top: 11%; ">
                 <i class="icon  ion-pause"></i>
@@ -198,10 +271,12 @@
     height: 100%;
        box-shadow: 0px 0px 10px 0px #467a6b;" ng-click="show_start_button = !show_start_button">
 
-            <div ng-if="show_start_button" class="title" style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; left: 7%;">
-                <i class="icon  ion-play" ></i>
+            <div ng-if="show_start_button" class="title"
+                 style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; left: 7%;">
+                <i class="icon  ion-play"></i>
             </div>
-            <div ng-if="!show_start_button" class="title" style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; ">
+            <div ng-if="!show_start_button" class="title"
+                 style="color: rgba(243, 243, 243, 0.85);font-size: 35px;top: 11%; ">
                 <i class="icon  ion-pause"></i>
             </div>
 
@@ -268,8 +343,9 @@
     height: 100%;
     box-shadow: 0px 0px 10px 0px #7C73E6;" ng-click="show_start_button = !show_start_button">
 
-            <div ng-if="show_start_button" class="title" style="color: rgb(121, 112, 215);font-size: 35px;top: 11%; left: 7%;">
-                <i class="icon  ion-play" ></i>
+            <div ng-if="show_start_button" class="title"
+                 style="color: rgb(121, 112, 215);font-size: 35px;top: 11%; left: 7%;">
+                <i class="icon  ion-play"></i>
             </div>
             <div ng-if="!show_start_button" class="title" style="color: rgb(121, 112, 215);font-size: 35px;top: 11%; ">
                 <i class="icon  ion-pause"></i>

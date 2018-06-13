@@ -1,4 +1,4 @@
-app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicLoading', '$ionicModal', function ($scope, $state, $http, ajax_service, $stateParams, $ionicLoading, $ionicModal) {
+app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicLoading', '$ionicModal','$timeout', function ($scope, $state, $http, ajax_service, $stateParams, $ionicLoading, $ionicModal,$timeout) {
     $scope.items = [
         {
             "socialId": "1",
@@ -432,6 +432,7 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
         $scope.social_add_modal = modal;
     });
     $scope.fn_social_add = function () {
+        $scope.show_loading();
         // $scope.new_social.textData = '';
         var new_social = {
             "userId": 0,
@@ -476,13 +477,40 @@ app.controller('tabSocialCtrl', ['$scope', '$state', '$http', 'ajax_service', '$
                 aa.imgData = "https://img.zcool.cn/community/018cdc5b192e73a8012034f72fd3de.jpeg";
                 aa.textData = $scope.new_social.textData;
                 aa.socialAddtime = get_time();
-                $scope.items.unshift(aa)
+                setTimeout(function () {
+                    $scope.items.unshift(aa);
+                },500);
             });
         $scope.social_add_modal.hide();
 
         setTimeout(function () {
             $scope.close_social_add_modal();
         },1000);
+    };
+
+    $scope.show_loading = function () {
+        //创建加载动作
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
+
+
+        // $scope.show();
+        // setTimeout(function () {
+        //     $scope.hide();
+        // },1000);
+
+
+        // 定时关闭加载动作
+        $timeout(function () {
+            $ionicLoading.hide();
+            // $scope.fn_get_questions_data();
+        }, 600);
+
     };
 
     $scope.open_social_add_modal = function () {
