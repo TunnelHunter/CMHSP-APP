@@ -8,98 +8,111 @@
 
         <div class="list card"
              style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; ">
-            <div class="item "  style="padding-top: 0px;
+            <div class="item " style="padding-top: 0px;
     padding-bottom: 0px;
     margin-bottom: -5px;
     padding-left: 0px;
     padding-right: 0px;background: #00aa8d ">
-                <ion-slide-box>
-                    <ion-slide style="">
+                <ion-slide-box auto-play="true" does-continue="true" slide-interval='3000' show-pager="true"
+                               active-slide="slide_index"
+                               on-slide-changed="click_slide_page(slide_index)">
+                    <ion-slide ng-repeat="slide in arr_read_firstPage.slide">
                         <div>
-                            <img  class="full-image" src="https://img.zcool.cn/community/01a2645b17cbaca801212d578832ed.jpg">
-                        </div>
-                    </ion-slide >
-                    <ion-slide style="">
-                        <div>
-                            <img class="full-image" src="https://img.zcool.cn/community/010c3d5b17cba9a801202e60fa15a6.jpg">
-                        </div>
-                    </ion-slide >
-                    <ion-slide style="">
-                        <div>
-                            <img class="full-image" src="https://img.zcool.cn/community/0140465b17cbaba801212d5774dcb3.jpg">
+                            <img class="full-image" style="height:150px;" src="{{slide.readImage}}">
 
                         </div>
-                    </ion-slide >
-                    <ion-slide style="">
-                        <div>
-                            <img class="full-image" src="https://img.zcool.cn/community/01cfc15b17cbaba801212d57deb7ca.jpg" >
-                        </div>
-                    </ion-slide >
-                    <ion-slide on-slide-changed="slideHasChanged(index)" style="">
-
-                        <div>
-                            <img class="full-image" src="https://img.zcool.cn/community/011bb95b17cba8a801202e60e2d131.jpg">
-                        </div>
+                        <div style="background: linear-gradient(to top right, #2fc4a5  , #22aca500);
+    position: absolute;
+    top: 68%;
+    height: 30%;
+    width: 100%;">
+                            <span style="position: relative;
+    top: 10%;
+    left: 5%;
+    font-weight: bolder;
+    font-size: 18px;
+    color: #fff;">{{slide.readTitle}} - {{slide.readAuthor}}</span></div>
                     </ion-slide>
                 </ion-slide-box>
             </div>
         </div>
 
 
-        <div class="list card">
-            <label class="item item-input">
+        <div class="list card"
+             style="border-radius: 17px !important;box-shadow: 0px 0px 10px 0px #33333394;">
 
-                <input type="text" placeholder="请输入 书名 / 文章名 / 作者 进行搜索" style="font-size: 17px;height: 40px;">
-                <i class="icon ion-ios-search-strong " style="font-size: 30px;right: 24px;position: relative;"></i>
+                <div class="item ">
+                    <!--<img src="../imgs/wuhezhizhong.jpg" /> 这种方式图片出不来 要采用下面这种方式-->
 
-            </label>
+                    <div class=" card"
+                         style="width: 110px;display:inline-block;position: relative; border-radius: 10px;margin-top: 2%;">
+
+                        <img class="full-image" style="height:95px; width:100% ;border-radius: 10px;"
+                             src="//img11.360buyimg.com/n1/s200x200_jfs/t7957/227/2622689294/461159/86a7443e/59b22e50N6e1d836e.jpg">
+
+                        <div class="item" style="height: 30px;text-align: center;">
+                            <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">行为心理学</span><br>
+
+                        </div>
+
+
+                    </div>
+                    <div class=" card"
+                         style="width: 110px;display:inline-block;position: relative; border-radius: 10px;margin-top: 2%;">
+
+                        <img class="full-image" style="height:95px; width:100% ;border-radius: 10px;"
+                             src="//img11.360buyimg.com/n1/s200x200_jfs/t7957/227/2622689294/461159/86a7443e/59b22e50N6e1d836e.jpg">
+
+                        <div class="item" style="height: 30px;text-align: center;">
+                            <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">行为心理学</span><br>
+
+                        </div>
+
+                    </div>
+
+                    <div class=" card"
+                         style="width: 110px;display:inline-block;position: relative; border-radius: 10px;margin-top: 2%;">
+
+                        <img class="full-image" style="height:95px; width:100% ;border-radius: 10px;"
+                             src="//img11.360buyimg.com/n1/s200x200_jfs/t7957/227/2622689294/461159/86a7443e/59b22e50N6e1d836e.jpg">
+
+                        <div class="item" style="height: 30px;text-align: center;">
+                            <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">行为心理学</span><br>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+            <div class="item" style="height: 30px;text-align: center;">
+                <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">查看更多书籍 ></span><br>
+
+            </div>
         </div>
 
-        <div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">
-            <div class="item item-image" style="height: 150px;width: 192px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528023846100&di=af82c642efb1cc0f52f4adeb6154a898&imgtype=0&src=http%3A%2F%2Fbookbk.img.ireader.com%2Fgroup6%2FM00%2FAE%2F48%2FCmQUN1gb8JWEA1xBAAAAAJNndZA028235132.jpg%3Fv%3DXl3d-fJP"
-                     style="height: 150px;width: 192px;">
-            </div>
-            <div class="item" style="height: 52px;">
-                <h2 style="top: -10px;position: relative;">行为心理学</h2>
-                <p style="top: -10px;position: relative;">约翰·华生 </p>
-            </div>
+        <!--<div class="list card">-->
+        <!--<label class="item item-input">-->
 
-        </div>
-        <div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">
-            <div class="item item-image" style="height: 150px;width: 192px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528023846100&di=af82c642efb1cc0f52f4adeb6154a898&imgtype=0&src=http%3A%2F%2Fbookbk.img.ireader.com%2Fgroup6%2FM00%2FAE%2F48%2FCmQUN1gb8JWEA1xBAAAAAJNndZA028235132.jpg%3Fv%3DXl3d-fJP"
-                     style="height: 150px;width: 192px;">
-            </div>
-            <div class="item" style="height: 52px;">
-                <h2 style="top: -10px;position: relative;">行为心理学</h2>
-                <p style="top: -10px;position: relative;">约翰·华生 </p>
-            </div>
+        <!--<input type="text" placeholder="请输入 书名 / 文章名 / 作者 进行搜索" style="font-size: 17px;height: 40px;">-->
+        <!--<i class="icon ion-ios-search-strong " style="font-size: 30px;right: 24px;position: relative;"></i>-->
 
-        </div>
-        <div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">
-            <div class="item item-image" style="height: 150px;width: 192px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528023846100&di=af82c642efb1cc0f52f4adeb6154a898&imgtype=0&src=http%3A%2F%2Fbookbk.img.ireader.com%2Fgroup6%2FM00%2FAE%2F48%2FCmQUN1gb8JWEA1xBAAAAAJNndZA028235132.jpg%3Fv%3DXl3d-fJP"
-                     style="height: 150px;width: 192px;">
-            </div>
-            <div class="item" style="height: 52px;">
-                <h2 style="top: -10px;position: relative;">行为心理学</h2>
-                <p style="top: -10px;position: relative;">约翰·华生 </p>
-            </div>
+        <!--</label>-->
+        <!--</div>-->
 
-        </div>
-        <div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">
-            <div class="item item-image" style="height: 150px;width: 192px;">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528023846100&di=af82c642efb1cc0f52f4adeb6154a898&imgtype=0&src=http%3A%2F%2Fbookbk.img.ireader.com%2Fgroup6%2FM00%2FAE%2F48%2FCmQUN1gb8JWEA1xBAAAAAJNndZA028235132.jpg%3Fv%3DXl3d-fJP"
-                     style="height: 150px;width: 192px;">
-            </div>
-            <div class="item" style="height: 52px;">
-                <h2 style="top: -10px;position: relative;">行为心理学</h2>
-                <p style="top: -10px;position: relative;">约翰·华生 </p>
-            </div>
+        <!--<div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">-->
+        <!--<div class="item item-image" style="height: 150px;width: 192px;">-->
+        <!--<img src="//img11.360buyimg.com/n1/s200x200_jfs/t7957/227/2622689294/461159/86a7443e/59b22e50N6e1d836e.jpg"-->
+        <!--style="height: 150px;width: 192px;">-->
+        <!--</div>-->
+        <!--<div class="item" style="height: 52px;">-->
+        <!--<h2 style="top: -10px;position: relative;">行为心理学</h2>-->
+        <!--<p style="top: -10px;position: relative;">约翰·华生 </p>-->
+        <!--</div>-->
 
-        </div>
-
+        <!--</div>-->
 
 
     </ion-content>

@@ -108,7 +108,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: "/reading",
             views: {
                 'reading-tab': {
-                    templateUrl: "html/tab_reading.html"
+                    templateUrl: "html/tab_reading.html",
+                    controller: 'tabReadingCtrl'
                 }
             }
         })
