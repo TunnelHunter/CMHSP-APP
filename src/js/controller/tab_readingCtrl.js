@@ -63,43 +63,73 @@ app.controller('tabReadingCtrl', ['$scope', '$ionicSlideBoxDelegate', '$ionicLoa
             ],
             "book": [
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
-                    "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readId": "6",
+                    "readTitle": "乌合之众",
+                    "readAuthor": "古斯塔夫·勒庞",
+                    "readImage": "imgs/乌合之众.jpg"
                 },
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
-                    "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readId": "8",
+                    "readTitle": "性格心理学",
+                    "readAuthor": "邹宏明",
+                    "readImage": "imgs/性格心理学.jpg"
                 },
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
-                    "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readId": "9",
+                    "readTitle": "社会性动物",
+                    "readAuthor": "艾略特·阿伦森",
+                    "readImage": "imgs/社会性动物.jpg"
+                },
+                {
+                    "readId": "10",
+                    "readTitle": "自控力",
+                    "readAuthor": "凯利·麦格尼格尔",
+                    "readImage": "imgs/自控力.jpg"
+                },
+                {
+                    "readId": "11",
+                    "readTitle": "行为心理学",
+                    "readAuthor": " 约翰·华生 ",
+                    "readImage": "imgs/行为心理学.jpg"
+                },
+                {
+                    "readId": "7",
+                    "readTitle": "心理学与生活",
+                    "readAuthor": "理查德·格里格 和 菲利普·津巴多",
+                    "readImage": "imgs/心理学与生活.jpg"
                 }
 
             ],
             "essay": [
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
+                    "readId": "5",
+                    "readTitle": "《你不知道的抑郁症》",
                     "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readImage": "imgs/文章3.jpg"
                 },
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
+                    "readId": "6",
+                    "readTitle": "《心理健康的保健方法》",
                     "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readImage": "imgs/文章4.jpg"
                 },
                 {
-                    "readId": "1",
-                    "readTitle": "软件实训",
+                    "readId": "7",
+                    "readTitle": "《不用怕！这些方法教你避免抑郁症》",
                     "readAuthor": "杨波",
-                    "readImage": "url"
+                    "readImage": "imgs/文章5.jpg"
+                },
+                {
+                    "readId": "3",
+                    "readTitle": "《心理疾病真的不用怕，我们来帮你!》",
+                    "readAuthor": "杨波",
+                    "readImage": "imgs/文章1.jpg"
+                },
+                {
+                    "readId": "4",
+                    "readTitle": "《心理咨询的正确方式》",
+                    "readAuthor": "杨波",
+                    "readImage": "imgs/文章2.jpg"
                 }
 
             ]
