@@ -185,4 +185,6 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate', '
             console.log(angular.toJson(read));
             $state.go('tabs.readingDetail', {'read': angular.toJson(read),'fromPage':'reading'})
         };
+
+
     }]);

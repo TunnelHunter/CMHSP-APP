@@ -1,24 +1,32 @@
-app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope', '$stateParams',
-    function ($scope, $ionicLoading, ajax_service, $http, $timeout, $rootScope, $stateParams) {
+app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope', '$state','$stateParams',
+    function ($scope, $ionicLoading, ajax_service, $http, $timeout, $rootScope, $state,$stateParams) {
 
         $scope.read = {};
 
         $scope.read = angular.fromJson($stateParams.read);
 
-        console.log($scope.read);
+        // console.log($scope.read);
 
-        var fromPage = $stateParams.fromPage;
 
-        if(fromPage == ''){
+        console.log($stateParams);
+        $scope.arr_fromPage = $stateParams.fromPage;
 
-        }else {
-            
-        }
+        $scope.arr_readType = $stateParams.readType;
 
-        $scope.arr_fromPage = fromPage;
+        //
+        $scope.fn_go_back = function () {
+
+            if ($scope.arr_fromPage == 'reading') {
+                $state.go('tabs.reading');
+            } else if ($scope.arr_fromPage == 'readingList') {
+                $state.go('tabs.readingList', {'readType': $scope.arr_readType});
+            }
+
+
+        };
 
         $scope.$on('$ionicView.beforeEnter', function () {
-            $scope.readId= angular.fromJson($stateParams.read).readId;
+            $scope.readId = angular.fromJson($stateParams.read).readId;
             $scope.fn_get_readList($scope.readId);
 
         });
@@ -50,11 +58,10 @@ app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service
                 .error(function (response) {
                     //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
 
-                        $scope.readContext = $scope.arr_0;
+                    $scope.readContext = $scope.arr_0;
 
                 });
         };
-
 
 
     }]);

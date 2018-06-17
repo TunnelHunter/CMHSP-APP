@@ -137,10 +137,10 @@ app.controller('tabReadingListCtrl', ['$scope', '$state','$ionicLoading', 'ajax_
 
 
         //传递每个阅读信息 给readDetail页面进行展示
-        $scope.fn_readDetail = function (read) {
+        $scope.fn_readDetail = function (read,readTpye) {
             console.log(read);
             console.log(angular.toJson(read));
-            $state.go('tabs.readingDetail', {'read': angular.toJson(read),'fromPage':'readingList'})
+            $state.go('tabs.readingDetail', {'read': angular.toJson(read),'fromPage':'readingList','readType':readTpye})
         };
 
 

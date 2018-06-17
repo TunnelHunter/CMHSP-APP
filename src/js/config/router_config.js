@@ -114,8 +114,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             }
         })
         .state('tabs.readingList', {
-            url: "/readingList",
-            params:{'readType':null},
+            url: "/readingList/",
+            params:{'readType':''},
             views: {
                 'reading-tab': {
                     templateUrl: "html/tab_readingList.html",
@@ -125,7 +125,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         })
         .state('tabs.readingDetail', {
             url: "/readingDetail",
-            params:{'read':null,'fromPage':''},
+            params:{'read':null,'fromPage':'','readType':''},
             views: {
                 'reading-tab': {
                     templateUrl: "html/tab_readingDetail.html",
