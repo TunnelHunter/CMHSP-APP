@@ -78,7 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         })
         .state('tabs.socialDetail', {
             url: "/socialDetail",
-            params: {'item':null},//设置为对象，用于接受对象型数据
+            params: {'item': null},//设置为对象，用于接受对象型数据
             views: {
                 'social-tab': {
                     templateUrl: "html/tab_socialDetail.html",
@@ -96,20 +96,40 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             }
         })
         .state('tabs.musicPlayer', {
-        url: "/musicPlayer",
-        views: {
-            'radio-tab': {
-                templateUrl: "html/tab_music_player.html",
-                controller: 'tabMusicPlayerCtrl'
+            url: "/musicPlayer",
+            views: {
+                'radio-tab': {
+                    templateUrl: "html/tab_music_player.html",
+                    controller: 'tabMusicPlayerCtrl'
+                }
             }
-        }
-    })
+        })
         .state('tabs.reading', {
             url: "/reading",
             views: {
                 'reading-tab': {
                     templateUrl: "html/tab_reading.html",
                     controller: 'tabReadingCtrl'
+                }
+            }
+        })
+        .state('tabs.readingList', {
+            url: "/readingList",
+            params:{'readType':null},
+            views: {
+                'reading-tab': {
+                    templateUrl: "html/tab_readingList.html",
+                    controller: 'tabReadingListCtrl'
+                }
+            }
+        })
+        .state('tabs.readingDetail', {
+            url: "/readingDetail",
+            params:{'read':null,'fromPage':''},
+            views: {
+                'reading-tab': {
+                    templateUrl: "html/tab_readingDetail.html",
+                    controller: 'tabReadingDetailCtrl'
                 }
             }
         })
@@ -171,7 +191,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
 
             views: {
                 'home-tab': {
-                    prefetchTemplate:false, //按需加载
+                    prefetchTemplate: false, //按需加载
                     templateUrl: "html/facts2.html"
                 }
             }

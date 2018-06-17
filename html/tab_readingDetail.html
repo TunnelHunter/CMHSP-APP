@@ -1,0 +1,30 @@
+<ion-view view-title="">
+    <ion-header-bar align-title="center">
+        <a class="button icon-left  ion-ios-arrow-left button-clear button-dark" href="#/tabs/{{arr_fromPage}}"
+           nav-direction="back">返回</a>
+        <h1 class="title">读物详情</h1>
+    </ion-header-bar>
+    <ion-content style=" background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
+
+
+
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; ">
+            <div class="item " style="padding: 0px;" align="center">
+
+
+                <img class="full-image" src="{{read.readImage}}" ng-class="read.readType == 0?'book_class':'essay_class'">
+
+
+                <div class="item" style="height: 30px;bottom: 5px;text-align: center;border-style:hidden">
+                    <span style="position: relative;top: -8px;font-size: 18px;font-weight: bold;">{{read.readTitle}} - {{read.readAuthor}}</span>
+                </div>
+                <div class="item item-body">
+                    <pre style="font-size: 16px;font-family:p;">{{readContext}}</pre>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

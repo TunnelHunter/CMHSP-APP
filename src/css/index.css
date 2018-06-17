@@ -288,3 +288,11 @@ span.loved{color: #fe8698}
 .not_favorite {
   color: #acabb3
 }
+
+.book_class {
+  width: 45% !important;
+}
+
+.essay_class {
+  height: 180px !important;
+}

@@ -16,7 +16,7 @@
                 <ion-slide-box auto-play="true" does-continue="true" slide-interval='3000' show-pager="true"
                                active-slide="slide_index"
                                on-slide-changed="click_slide_page(slide_index)">
-                    <ion-slide ng-repeat="slide in arr_read_firstPage.slide">
+                    <ion-slide ng-repeat="slide in arr_read_firstPage.slide" ng-click="fn_readDetail(slide)">
                         <div>
                             <img class="full-image" style="height:150px;" src="{{slide.readImage}}">
 
@@ -43,7 +43,7 @@
             <ion-scroll direction="x" scrollbar-x="false"
                         style="margin-bottom: -5%;margin-right: -4%;margin-left: -4%;height: 175px;">
                 <div ng-repeat="book in arr_read_firstPage.book" class=" card"
-                     style="width: 120px;display:inline-block;position: relative;border-radius: 10px;margin-right: 6px;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;">
+                     style="width: 120px;display:inline-block;position: relative;border-radius: 10px;margin-right: 6px;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_readDetail(book)">
 
                     <img class="full-image" style="height:120px; width:100% ;border-radius: 10px;"
                          src="{{book.readImage}}">
@@ -62,11 +62,11 @@
             </ion-scroll>
 
         </div>
-        <div align="center">
+        <div align="center" ui-sref="tabs.readingList({readType:0})" nav-direction="forward">
             <button class="button button-block" style="border-style: hidden;
-    width: 94%;
+    width: 90%;
     min-height: 30px;
-    background: linear-gradient(to right, #9951ff, #6900ff69);
+    background: linear-gradient(to right, #457de4, #6900ff69);
    border-radius: 10px;
     box-shadow: 0px 0px 20px 0px #33333394;
     color: #fff;
@@ -90,7 +90,7 @@
         <!--</div>-->
         <div class="list card"
              style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; "
-             ng-repeat="essay in arr_read_firstPage.essay">
+             ng-repeat="essay in arr_read_firstPage.essay" ng-click="fn_readDetail(essay)">
             <div class="item " style="padding: 0px;">
 
 
@@ -103,11 +103,11 @@
             </div>
         </div>
 
-        <div align="center">
+        <div align="center" ui-sref="tabs.readingList({readType:1})" nav-direction="forward">
             <button class="button button-block" style="border-style: hidden;
-    width: 94%;
+    width: 90%;
     min-height: 30px;
-    background: linear-gradient(to right, #9951ff, #6900ff69);
+    background: linear-gradient(to right, #457de4, #6900ff69);
    border-radius: 10px;
     box-shadow: 0px 0px 20px 0px #33333394;
     color: #fff;
@@ -116,14 +116,7 @@
         </div>
 
 
-        <!--<div class="list card">-->
-        <!--<label class="item item-input">-->
 
-        <!--<input type="text" placeholder="请输入 书名 / 文章名 / 作者 进行搜索" style="font-size: 17px;height: 40px;">-->
-        <!--<i class="icon ion-ios-search-strong " style="font-size: 30px;right: 24px;position: relative;"></i>-->
-
-        <!--</label>-->
-        <!--</div>-->
 
         <!--<div class="list card" style="width: 44.5%;display: inline-block;position: relative;margin-top: 20px">-->
         <!--<div class="item item-image" style="height: 150px;width: 192px;">-->
