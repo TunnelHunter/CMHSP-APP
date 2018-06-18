@@ -8,12 +8,12 @@
 
 
         <div class="list card" style="border-radius: 15px;">
-            <label class="item item-input">
+            <div class="item item-input">
 
-                <input type="text" placeholder="搜索读物" style="font-size: 17px;height: 40px;">
-                <i class="icon ion-ios-search-strong " style="font-size: 30px;right: 24px;position: relative;"></i>
+                <input type="text" placeholder="搜索读物" style="font-size: 17px;height: 40px;" ng-model="var_search_keyWords">
+                <div class="icon ion-ios-search-strong " style="font-size: 30px;right: 24px;position: relative;" ng-click="fn_readSearch(var_search_keyWords)"></div>
 
-            </label>
+            </div>
         </div>
 
         <!--<img src="../imgs/wuhezhizhong.jpg" /> 这种方式图片出不来 要采用下面这种方式-->

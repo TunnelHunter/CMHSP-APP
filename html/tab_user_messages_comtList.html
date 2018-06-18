@@ -1,9 +1,9 @@
-<ion-view view-title="我的消息">
+<ion-view view-title="系统消息">
 
     <ion-header-bar align-title="center">
-        <a class="button icon-left ion-ios-arrow-left button-clear button-dark" href="#/tabs/user"
-           nav-direction="back">返回</a>
-        <h1 class="title">我的消息</h1>
+        <a class="button icon-left ion-ios-arrow-left button-clear button-dark" href="#/tabs/userMessages"
+           nav-direction="back" ng-click="fn_clear_MessagesNum()">返回</a>
+        <h1 class="title">系统消息</h1>
     </ion-header-bar>
 
     <ion-content>
@@ -48,41 +48,17 @@
         <!--</svg>-->
         <!--</div>-->
 
-        <!--<div class="list">-->
-
-            <!--<a class="item item-avatar" href="#" ng-repeat="list in user_messages" style="border-style: hidden;">-->
-                <!--<img src={{list.img}}>-->
-                <!--<h2>{{list.name}}</h2>-->
-                <!--<p>{{list.content}}</p>-->
-            <!--</a>-->
-
-
-        <!--</div>-->
-
         <div class="list">
 
-
-            <a class="item item-icon-left item-icon-right" href="#/tabs/systemMessages" nav-direction="forward" style="border-style: hidden">
-                <i class="icon ion-ios-email" style="color: #22aca5;"></i>
-                系统消息
-                <span class="badge badge-assertive" style="margin-right: 10px;" ng-show="show_sysMessagesNum">{{sysMessagesNum}}</span>
-                <i class="icon ion-ios-arrow-right"></i>
-
+            <a class="item item-avatar" href="#" ng-repeat="list in user_messages" style="border-style: hidden;">
+                <img src={{list.img}}>
+                <h2>{{list.name}}</h2>
+                <p>{{list.content}}</p>
             </a>
 
-
-            <div class="item item-divider" style="border-style: hidden;">
-            </div>
-
-
-            <a class="item item-icon-left item-icon-right" href="#/tabs/commentMessages" nav-direction="forward" style="border-top-style: hidden;">
-                <i class="icon ion-chatbubble-working" style="color: #22aca5;"></i>
-                我的评论
-                <span class="badge badge-assertive" style="margin-right: 10px;" ng-show="show_comtMessagesNum">{{comtMessagesNum}}</span>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
 
         </div>
+
 
 
 

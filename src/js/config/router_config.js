@@ -142,21 +142,39 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
-        .state('tabs.userDataAnalysis', {
-            url: "/userDataAnalysis",
-            views: {
-                'user-tab': {
-                    templateUrl: "html/tab_user_dataAnalysis.html",
-                    controller: 'tabUserDataAnalysisCtrl'
-                }
-            }
-        })
         .state('tabs.userMessages', {
             url: "/userMessages",
             views: {
                 'user-tab': {
                     templateUrl: "html/tab_user_messages.html",
                     controller: 'tabUserMessagesCtrl'
+                }
+            }
+        })
+        .state('tabs.systemMessages', {
+            url: "/systemMessages",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_messages_sysList.html",
+                    controller: 'tabUserMessagesSysListCtrl'
+                }
+            }
+        })
+        .state('tabs.commentMessages', {
+            url: "/commentMessages",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_messages_comtList.html",
+                    controller: 'tabUserMessagesComtListCtrl'
+                }
+            }
+        })
+        .state('tabs.userDataAnalysis', {
+            url: "/userDataAnalysis",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_dataAnalysis.html",
+                    controller: 'tabUserDataAnalysisCtrl'
                 }
             }
         })

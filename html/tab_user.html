@@ -28,10 +28,11 @@
 
                 <div class="list">
 
-                    <a class="item item-icon-left" href="#/tabs/userMessages" nav-direction="forward">
+                    <a class="item item-icon-left item-icon-right" href="#/tabs/userMessages" nav-direction="forward">
                         <i class="icon ion-ios-email" style="color: #22aca5;"></i>
                         我的消息
-                        <span class="badge badge-assertive">99+</span>
+                        <span class="badge badge-assertive" style="margin-right: 10px;" ng-show="show_news">New</span>
+                        <i class="icon ion-ios-arrow-right"></i>
 
                     </a>
                     <div class="item item-divider" style="border-style: hidden;">
@@ -59,32 +60,32 @@
                         收藏
                         <i class="icon ion-ios-arrow-right"></i>
                     </a>
-                    <a class="item item-icon-left item-icon-right" href="#">
-                        <i class="icon  ion-ios-barcode" style="color: #22aca5;"></i>
-                        扫一扫
-                        <i class="icon ion-ios-arrow-right"></i>
-                    </a>
-                    <ion-toggle ng-model="pushNotification.checked" toggle-class="toggle-positive"
-                                ng-change="pushNotificationChange()" class="item-icon-left " >
-                        <i class="icon  ion-ios-lightbulb" style="color: #22aca5;"></i>
-                        夜间模式
-                    </ion-toggle>
+                    <!--<a class="item item-icon-left item-icon-right" href="#">-->
+                        <!--<i class="icon  ion-ios-barcode" style="color: #22aca5;"></i>-->
+                        <!--扫一扫-->
+                        <!--<i class="icon ion-ios-arrow-right"></i>-->
+                    <!--</a>-->
+                    <!--<ion-toggle ng-model="pushNotification.checked" toggle-class="toggle-positive"-->
+                                <!--ng-change="pushNotificationChange()" class="item-icon-left " >-->
+                        <!--<i class="icon  ion-ios-lightbulb" style="color: #22aca5;"></i>-->
+                        <!--夜间模式-->
+                    <!--</ion-toggle>-->
 
                     <div class="item item-divider" style="border-style: hidden;">
                     </div>
 
+                    <!--<a class="item item-icon-left item-icon-right" href="#" style="border-top-style: hidden;">-->
+                        <!--<i class="icon  ion-ios-upload" style="color: #22aca5;"></i>-->
+                        <!--分享-从心开始APP- -->
+                        <!--<i class="icon ion-ios-arrow-right"></i>-->
+                    <!--</a>-->
                     <a class="item item-icon-left item-icon-right" href="#" style="border-top-style: hidden;">
-                        <i class="icon  ion-ios-upload" style="color: #22aca5;"></i>
-                        分享-从心开始APP-
-                        <i class="icon ion-ios-arrow-right"></i>
-                    </a>
-                    <a class="item item-icon-left item-icon-right" href="#" style="border-bottom-style: hidden;">
                         <i class="icon ion-ios-information" style="color: #22aca5;"></i>
                         关于
                         <i class="icon ion-ios-arrow-right"></i>
                     </a>
-                    <div class="item item-divider" style="border-style: hidden;">
-                    </div>
+                    <!--<div class="item item-divider" style="border-style: hidden;">-->
+                    <!--</div>-->
 
                     <!--<div class="item item-body" style="border-style: hidden;">-->
                     <!--</div>-->

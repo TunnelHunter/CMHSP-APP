@@ -1,70 +1,49 @@
-app.controller('tabUserMessagesCtrl',['$scope','$timeout',function ($scope,$timeout) {
-    $scope.show_question_windows = false;
+app.controller('tabUserMessagesCtrl', ['$scope', '$timeout', '$http', 'ajax_service',function ($scope, $timeout, $http,ajax_service) {
+    //进入页面之前就要 调用fn_get_notices方法 来查看是否有最新 我的消息
 
-$timeout(function () {
-    $scope.user_messages = [
-        {
-            'img':'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png',
-            'name':'小张',
-            'content':'你好啊！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
-            'name':'小李',
-            'content':'你在哪里？'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png',
-            'name':'小黄',
-            'content':'评论666'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png',
-            'name':'小乐',
-            'content':'我起飞了！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        },
-        {
-            'img':'http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png',
-            'name':'小机',
-            'content':'键盘侠！'
-        }
-    ]
+    $scope.sysMessagesNum = 0;
+    $scope.comtMessagesNum = 0;
 
-},1000);
+    $scope.show_sysMessagesNum = false;
+    $scope.show_comtMessagesNum = false;
+
+    $scope.$on('$ionicView.beforeEnter', function () {
+        $scope.fn_get_notices();
+
+    });
+
+    //获取有无最新消息 每次进入用户tab页面都要调用该方法
+    $scope.fn_get_notices = function () {
+
+        var userId = window.localStorage.getItem("userId");
+
+        $http({
+            method: "post",
+            url: ajax_service.get_userNotice(),
+            //url:"http://localhost:8080/ti/1",
+            data: JSON.stringify({userId: userId}),
+            headers: {
+                'Content-Type': 'json'
+            }
+        })
+            .success(function (response) {
+                if (response.error_code == 0) {
+                    if (response.data.haveNews == 0) {
+                        $scope.show_sysMessagesNum = false;
+                        $scope.show_comtMessagesNum = false;
+                    } else {
+                        $scope.show_sysMessagesNum = true;
+                        $scope.show_comtMessagesNum = true;
+
+                        $scope.sysMessagesNum = response.data.sysNews;
+                        $scope.comtMessagesNum = response.data.comNews;
+                    }
+                }
+            })
+            .error(function () {
+
+            })
+    };
+
 
 }]);

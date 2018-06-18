@@ -1,5 +1,5 @@
-app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope', '$state','$stateParams',
-    function ($scope, $ionicLoading, ajax_service, $http, $timeout, $rootScope, $state,$stateParams) {
+app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope', '$state','$stateParams','loading_service',
+    function ($scope, $ionicLoading, ajax_service, $http, $timeout, $rootScope, $state,$stateParams,loading_service) {
 
         $scope.read = {};
 
@@ -62,6 +62,42 @@ app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service
 
                 });
         };
+
+
+        //收藏阅读
+        $scope.fn_readingFavoriteAdd = function () {
+            loading_service.show_loading();
+            var var_favorite_add = {
+                "userId": 0,
+                "userName": "",
+                "readId": 0,
+            };
+
+            // var_favorite_add.userId = window.localStorage.getItem("userId");
+            // var_favorite_add.readId = $scope.read.readId;
+
+            var_favorite_add.userId = 1;
+            var_favorite_add.userName = "小薛";
+            var_favorite_add.readId = 1;
+
+            $http({
+                method: "post",
+                url: ajax_service.add_readFavorite(),
+                //url:"http://localhost:8080/ti/1",
+                data: JSON.stringify(var_favorite_add),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .success(function (response) {
+                    console.log(response.data);
+
+                })
+                .error(function (response) {
+                    console.log("收藏成功");
+
+                });
+        }
 
 
     }]);
