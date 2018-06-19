@@ -5,9 +5,9 @@
     <ion-content>
         <div class="item" align="center" style="border-top-style: hidden;border-bottom-style: hidden;">
             <div class="list list-inset" style="margin-top: 5%" align="center">
-                <label class="item item-input" style="height: 55px;">
-                    <input type="text" placeholder="名 字">
-                </label>
+                <div class="item item-input" style="height: 55px;">
+                    <input type="text" placeholder="输入名字" ng-model="arr_userInformation.arr_userName">
+                </div>
 
             </div>
 
@@ -21,7 +21,7 @@
 
             <button class="button  button-positive"
                     style="border-radius: 25px;width:40%;margin-left: 4%;"
-                    ng-click="">
+                    ng-click="fn_set_name()">
                 确 定
             </button>
         </div>

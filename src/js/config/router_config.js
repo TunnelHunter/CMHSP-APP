@@ -169,15 +169,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
-        .state('tabs.userDataAnalysis', {
-            url: "/userDataAnalysis",
-            views: {
-                'user-tab': {
-                    templateUrl: "html/tab_user_dataAnalysis.html",
-                    controller: 'tabUserDataAnalysisCtrl'
-                }
-            }
-        })
         .state('tabs.userInformationSettings', {
             url: "/userInformationSettings",
             views: {
@@ -193,6 +184,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 'user-tab': {
                     templateUrl: "html/tab_user_information_settings_set_head_picture.html",
                     controller: 'setHeadPictureCtrl'
+                }
+            }
+        })
+        .state('tabs.userDataAnalysis', {
+            url: "/userDataAnalysis",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_dataAnalysis.html",
+                    controller: 'tabUserDataAnalysisCtrl'
                 }
             }
         })
