@@ -10,17 +10,14 @@
                     <div class="input-label">
                         省 份 :
                     </div>
-                    <select>
-                        <option>Blue</option>
-                        <option selected>Green</option>
-                        <option>Red</option>
+                    <select ng-model="arr_region.province" ng-options="item.province for item in arr_china" style="width: 40%;">
                     </select>
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         城 市 :
                     </div>
-                    <select>
+                    <select style="width: 40%;">
                         <option>Blue</option>
                         <option selected>Green</option>
                         <option>Red</option>
@@ -38,7 +35,7 @@
 
             <button class="button  button-positive"
                     style="border-radius: 25px;width:40%;margin-left: 4%;"
-                    ng-click="">
+                    ng-click="fn_set_region()">
                 确 定
             </button>
         </div>
