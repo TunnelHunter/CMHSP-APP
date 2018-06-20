@@ -5,7 +5,7 @@
            nav-direction="back">返回</a>
         <h1 class="title">设置</h1>
     </ion-header-bar>
-    <ion-content>
+    <ion-content >
 
                 <div class="list">
 
@@ -50,7 +50,8 @@
                     <a class="item  item-icon-right" ng-click="open_set_signature_modal()" style="border-bottom-style: hidden;">
                         个性签名
                         <span class="item-note">
-                         {{user_information.userSign}}
+                            <!--ng 自带文本个数过滤器 limitTo-->
+                         {{user_information.userSign|limitTo:8}}
                         </span>
                         <i class="icon ion-ios-arrow-right"></i>
                     </a>

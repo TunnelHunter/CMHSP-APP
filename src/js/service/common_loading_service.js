@@ -10,19 +10,10 @@ app.service('loading_service', [  '$ionicLoading', '$ionicPopup', '$timeout', fu
             maxWidth: 200,
             showDelay: 0
         });
-
-
-        // $scope.show();
-        // setTimeout(function () {
-        //     $scope.hide();
-        // },1000);
-
-
         // 定时关闭加载动作
         $timeout(function () {
             $ionicLoading.hide();
-            // $scope.fn_get_questions_data();
-        }, 500);
+        }, 800);
 
     };
 

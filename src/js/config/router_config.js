@@ -58,15 +58,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
-        .state('tabs.historyRecords', {
-            url: "/historyRecords",
-            views: {
-                'user-tab': {
-                    templateUrl: "html/tab_user_testHistoryRecords.html",
-                    controller: 'tabUserTestHistoryRecordsCtrl'
-                }
-            }
-        })
         .state('tabs.social', {
             url: "/social",
             views: {
@@ -184,6 +175,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 'user-tab': {
                     templateUrl: "html/tab_user_information_settings_set_head_picture.html",
                     controller: 'setHeadPictureCtrl'
+                }
+            }
+        })
+        .state('tabs.userTestHistoryRecords', {
+            url: "/userTestHistoryRecords",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_testHistoryRecords.html",
+                    controller: 'tabUserTestHistoryRecordsCtrl'
                 }
             }
         })
