@@ -196,6 +196,23 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 }
             }
         })
+        .state('tabs.userFavorite', {
+            url: "/userFavorite",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_favorite.html",
+                    controller: 'tabUserFavoriteCtrl'
+                }
+            }
+        })
+        .state('tabs.appAbout', {
+            url: "/appAbout",
+            views: {
+                'user-tab': {
+                    templateUrl: "html/tab_user_appAbout.html",
+                }
+            }
+        })
         .state('tabs.facts', {
             url: "/facts",
             views: {
