@@ -7,19 +7,26 @@
     </ion-header-bar>
 
     <ion-content style=" background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
+        <div class="list card"
+             style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; " ng-repeat="favorite in arr_userFavorites track by $index">
+            <div class="item item-thumbnail-left item-icon-right"  >
+                <img ng-src="{{favorite.image}}"
+                     style="border-radius: 6px !important;">
+                <div style="margin-top: 10px;">
+                    <h2>{{favorite.title}}</h2>
+                    <p>{{favorite.context}}</p>
+                    <i ng-show="favorite.type == 0" class="icon ion-planet" style="color: #22aca5;font-size: 25px;"></i>
+                    <i ng-show="favorite.type == 1" class="icon ion-ios-musical-notes" style="color: #22aca5;font-size: 25px;"></i>
+                    <i ng-show="favorite.type == 2" class="icon ion-ios-bookmarks" style="color: #22aca5;font-size: 25px;"></i>
+                </div>
 
-        <div class="card" ng-repeat="record in arr_test_historyRecords track by $index" style="border-radius: 15px;">
-            <a  class="item item-avatar" ng-click="showAlert(record)">
-                <div class="icon ion-ios-paper" style="color: #22aca5;position: absolute;top: 27px;left: 19px;font-size: 45px;"></div>
-                <h2>{{record.testName}}</h2>
-                <p>{{record.testScore}}分</p>
-                <p>{{record.time}}</p>
-            </a>
+            </div>
         </div>
-        <div class="card" style="border-radius: 15px;" ng-show="arr_test_historyRecords.length == 0">
+
+        <div class="card" style="border-radius: 15px;" ng-show="arr_userFavorites.length == 0">
             <div class="item"
                  style="text-align: center;font-size: 16px">
-                <span style="font-size: 16px;font-weight: bold;">暂无测试记录...</span>
+                <span style="font-size: 16px;font-weight: bold;">暂无收藏...</span>
             </div>
         </div>
 

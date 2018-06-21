@@ -16,7 +16,7 @@
                                on-slide-changed="click_slide_page(slide_index)">
                     <ion-slide ng-repeat="slide in arr_read_firstPage.slide" ng-click="fn_readDetail(slide)">
                         <div>
-                            <img class="full-image" style="height:150px;" src="{{slide.readImage}}">
+                            <img class="full-image" style="height:150px;" ng-src="{{slide.readImage}}">
 
                         </div>
                         <div style="background: linear-gradient(to top right, #2fc4a5  , #22aca500);
@@ -36,7 +36,7 @@
         </div>
 
         <div class="item " style="background: #0000;border-style: hidden;margin-top: -5%;">
-            <!--<img src="../imgs/wuhezhizhong.jpg" /> 这种方式图片出不来 要采用下面这种方式-->
+            <!--<img ng-src="../imgs/wuhezhizhong.jpg" /> 这种方式图片出不来 要采用下面这种方式-->
 
             <ion-scroll direction="x" scrollbar-x="false"
                         style="margin-bottom: -5%;margin-right: -4%;margin-left: -4%;height: 175px;">
@@ -44,7 +44,7 @@
                      style="width: 120px;display:inline-block;position: relative;border-radius: 10px;margin-right: 6px;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_readDetail(book)">
 
                     <img class="full-image" style="height:120px; width:100% ;border-radius: 10px;"
-                         src="{{book.readImage}}">
+                         ng-src="{{book.readImage}}">
 
                     <div class="item" style="height: 30px;text-align: center;">
                         <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">{{book.readTitle}}</span><br>
@@ -78,7 +78,7 @@
             <div class="item " style="padding: 0px;">
 
 
-                <img class="full-image" src="{{essay.readImage}}" style="height: 175px">
+                <img class="full-image" ng-src="{{essay.readImage}}" style="height: 175px">
 
 
                 <div class="item" style="height: 30px;bottom: 5px;">

@@ -1,7 +1,7 @@
 <ion-view title="用户信息" hide-nav-bar="true">
     <ion-header-bar align-title="center">
         <h1 class="title">用户信息</h1>
-        <a class="button button-clear icon-right  ion-ios-more button-dark" ng-click="modal.show()"></a>
+        <a class="button button-clear icon-right  ion-ios-more button-dark" ng-click="openLoginModal()"></a>
     </ion-header-bar>
     <ion-content>
         <div padding="true">
@@ -10,15 +10,15 @@
 
                 <div style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);border-radius: 30px;">
                     <!--男-->
-                    <img src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png"
+                    <img ng-src="http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png"
                          style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">
                     <!--女-->
-                    <!--<img src="http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png"-->
+                    <!--<img ng-src="http://img.zcool.cn/community/01650e57e4a6fa0000012e7e6eab80.png"-->
                     <!--style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">-->
                     <!--默认-->
-                    <!--<img src="http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp"-->
+                    <!--<img ng-src="http://img.zcool.cn/community/01460b57e4a6fa0000012e7ed75e83.png@1280w_1l_2o_100sh.webp"-->
                     <!--style="top: 5px;max-width: 100px;max-height: 100px;width: 100%;height: 100%;border-radius: 50%;position:  relative;">-->
-                    <!--<img src="../assets/imgs/rebotphoto.png" />-->
+                    <!--<img ng-src="../assets/imgs/rebotphoto.png" />-->
                     <p>
                     <h2 style="color: #fff;font-size: 10px;">我 的 信 息</h2></p>
                 </div>

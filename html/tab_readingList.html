@@ -16,13 +16,13 @@
             </div>
         </div>
 
-        <!--<img src="imgs/wuhezhizhong.jpg" /> 正确引用图片方式-->
+        <!--<img ng-src="imgs/wuhezhizhong.jpg" /> 正确引用图片方式-->
 
         <div ng-show="arr_readType == 0" ng-repeat="book in arr_readList" class=" card" ng-click="fn_readDetail(book,0)"
              style="    width: 29%;display:inline-block;border-radius: 10px;margin-left: 3.25%;margin-right: 0%;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;">
 
             <img class="full-image" style="height:120px; width:100% ;border-radius: 10px;"
-                 src="{{book.readImage}}">
+                 ng-src="{{book.readImage}}">
 
             <div class="item" style="height: 30px;text-align: center;">
                 <span style="top: -10px;position: relative;font-size: 10px;font-weight: bold;">{{book.readTitle}}</span><br>
@@ -39,7 +39,7 @@
             <div class="item " style="padding: 0px;">
 
 
-                <img class="full-image" src="{{essay.readImage}}" style="height: 175px">
+                <img class="full-image" ng-src="{{essay.readImage}}" style="height: 175px">
 
 
                 <div class="item" style="height: 30px;bottom: 5px;">
