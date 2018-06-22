@@ -1,138 +1,16 @@
-app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope',
-    function ($scope, $ionicSlideBoxDelegate, $ionicLoading, ajax_service, $http, $timeout, $rootScope) {
-        // $scope.questions = {
-        //     "questionsMessage":
-        //         [
-        //             {
-        //                 questionName: "首先，可不可以告诉小乐你的性别呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、美女"
-        //                     },
-        //                     {
-        //                         optionName: "B、帅哥"
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 questionName: "人生难免起起落落，快乐悲伤都是我们生活的调味剂，亲爱的最近是否有点闷闷不乐，情绪低沉呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、没有呀"
-        //                     },
-        //                     {
-        //                         optionName: "B、有时候是会有些不开心"
-        //                     },
-        //                     {
-        //                         optionName: "C、我总会感觉伤心呢，但是又无法摆脱"
-        //                     },
-        //                     {
-        //                         optionName: "D、我感到悲伤极了，甚至不能控制我自己了"
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 questionName: "思考自己的未来是每个人都会做的事呢，亲爱的对自己的未来是怎样看的呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、我对未来很有信心"
-        //                     },
-        //                     {
-        //                         optionName: "B、我对未来的信心不是很足"
-        //                     },
-        //                     {
-        //                         optionName: "C、唉,我觉得我的未来没什么可期待的"
-        //                     },
-        //                     {
-        //                         optionName: "D、我觉得我的未来已经完全没希望了,不会比现在好到哪里去的"
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 questionName: "每个人都不是全能的，所谓“胜败乃兵家常事”，亲爱的是怎样看待失败的呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、我不会有失败的感觉呀，没关系的"
-        //                     },
-        //                     {
-        //                         optionName: "B、我觉得我的失败比别人的失败要多呢"
-        //                     },
-        //                     {
-        //                         optionName: "C、回首过去，我看到的都是失败啊"
-        //                     },
-        //                     {
-        //                         optionName: "D、我觉得自己总是失败，一点出息都没有"
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 questionName: "生活就是一件接着一件大大小小的事，亲爱的对过去的事有没有不满意的呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、没有什么不满意"
-        //                     },
-        //                     {
-        //                         optionName: "B、不是很满意，有些事会有点耿耿于怀"
-        //                     },
-        //                     {
-        //                         optionName: "C、都觉得不满意"
-        //                     },
-        //                     {
-        //                         optionName: "D、一切事物我都已经厌倦了"
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 questionName: "“人之初，性本善”，每个人的内心都住着一个天使哦~亲爱的你觉得呢？",
-        //                 questionOptions: [
-        //                     {
-        //                         optionName: "A、我觉得很对呢，我就是一个小天使~"
-        //                     },
-        //                     {
-        //                         optionName: "B、我不是个坏人，但我有时候会觉得自己有罪"
-        //                     },
-        //                     {
-        //                         optionName: "C、我经常会觉得自己很坏，我觉得自己有罪"
-        //                     },
-        //                     {
-        //                         optionName: "D、我总是觉得自己有罪，我是个坏人"
-        //                     }
-        //                 ]
-        //             }
-        //         ],
-        //     "questionsConclusion":
-        //         [
-        //
-        //         ]
-        // };
+app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'loading_service', 'ajax_service', '$http', '$timeout', '$rootScope',
+    function ($scope, $ionicSlideBoxDelegate, loading_service, ajax_service, $http, $timeout, $rootScope) {
 
-        //创建加载动作
-        $ionicLoading.show({
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
+
+        loading_service.show_loading();
+
+        //只要进入页面就禁止slide手动滑动
+        $scope.$on('$ionicView.beforeEnter', function () {
+            $ionicSlideBoxDelegate.enableSlide(false);
         });
-
-
-        // $scope.show();
-        // setTimeout(function () {
-        //     $scope.hide();
-        // },1000);
-
-
-        // 定时关闭加载动作
-        $timeout(function () {
-            $ionicLoading.hide();
-            // $scope.fn_get_questions_data();
-        }, 500);
-
-
-        // $ionicSlideBoxDelegate.enableSlide(false);
         $scope.nextSlide = function () {
             $ionicSlideBoxDelegate.next();
-            $ionicSlideBoxDelegate.enableSlide(false);
+            // $ionicSlideBoxDelegate.enableSlide(false);
         };
 
 
@@ -156,11 +34,12 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
         $scope.last_results = {};
         $scope.last_conclusionId = 0;
         $scope.last_summary = '';
+
         //根据计算分数 查看测评结果
         $scope.fn_view_results = function (sum_score) {
             // $scope.show_view_results = true;
-            for(var i = 0 ,len = questionsConclusion.length;i < len;i++){
-                if(sum_score <= questionsConclusion[i].scoreRange){
+            for (var i = 0, len = questionsConclusion.length; i < len; i++) {
+                if (sum_score <= questionsConclusion[i].scoreRange) {
                     $scope.last_results = questionsConclusion[i];
                     $scope.last_conclusionId = questionsConclusion[i].conclusionId;
                     $scope.last_summary = questionsConclusion[i].summary;
@@ -171,43 +50,6 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
             }
         };
 
-
-        //获取题信息
-        var get_questions_data = {
-            "pagenum": "2000",
-            "page": '1',
-            "sort_column": "factory_name",
-            "sort_type": 0,
-            "keywords": ''
-        };
-        // $scope.questions = {};
-        // $scope.fn_get_questions_data = function () {
-        //     $http({
-        //         method: "get",
-        //         //url: ajax_service.get_questions(),
-        //         url:"http://localhost:8080/ti/1",
-        //         //data: JSON.stringify(get_questions_data),
-        //         headers: {
-        //             'Content-Type': 'application/x-www-form-urlencoded'
-        //         }
-        //     })
-        //         .success(function (response) {
-        //
-        //             $scope.questions = response;
-        //             console.log($scope.questions);
-        //
-        //         })
-        //         .error(function (response) {
-        //             //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
-        //
-        //         });
-        // };
-        // // setTimeout(function () {
-        // //     $scope.fn_get_questions_data();
-        // // },1000);
-        // $scope.fn_get_questions_data();
-
-
         //返回用户测试结果信息
         $scope.user_test_results = {
             "userId": 0,
@@ -215,7 +57,7 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
             "examinationId": 0,
             "examinationName": '',
             "examinationScore": 0,
-            "summary":'',
+            "summary": '',
             "examinationConclusionId": 0
         };
 
@@ -231,8 +73,8 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', '$
 
             $http({
                 method: "post",
-                // url: ajax_service.return_examinationsResults(),
-                url:"http://192.168.43.214:8080/CMHSP/examinationsResults",
+                url: ajax_service.return_examinationsResults(),
+                // url: "http://192.168.43.214:8080/CMHSP/examinationsResults",
                 data: JSON.stringify($scope.user_test_results),
                 cache: true,
                 headers: {

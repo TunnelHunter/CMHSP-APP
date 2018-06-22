@@ -1,6 +1,14 @@
 app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'loading_service',
     function ($rootScope, $timeout, $ionicModal, $http, ajax_service, loading_service) {
 
+        /*
+        在$rootScope下创建
+        examinations_list 用以存放题库信息
+        examination_default 用以存放默认试题信息
+         */
+        $rootScope.examinations_list = [];
+        $rootScope.examination_default = {};
+
         //登录模态窗口中绑定
         $rootScope.login_account = {
             "userName": "",
@@ -64,7 +72,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                         setTimeout(function () {
                             $rootScope.login_account.userName = name;
                             $rootScope.login_account.userPassword = password;
-                        },300);
+                        }, 300);
                         setTimeout(function () {
                             $rootScope.login();
                         }, 1000)
@@ -74,7 +82,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                     setTimeout(function () {
                         $rootScope.login_account.userName = name;
                         $rootScope.login_account.userPassword = password;
-                    },300);
+                    }, 300);
                     setTimeout(function () {
                         $rootScope.login();
                     }, 1000)
@@ -131,7 +139,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                 || $rootScope.register_account.userPassword_again == "") {
                 return;
             }
-            if($rootScope.register_account.userPassword != $rootScope.register_account.userPassword_again){
+            if ($rootScope.register_account.userPassword != $rootScope.register_account.userPassword_again) {
                 return;
             }
             if ($rootScope.register_account.userName.match(/^[a-zA-Z0-9]+$/) == null

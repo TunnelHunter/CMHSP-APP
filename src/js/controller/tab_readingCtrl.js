@@ -1,16 +1,6 @@
 app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope',
     function ($scope,$state, $ionicSlideBoxDelegate, $ionicLoading, ajax_service, $http, $timeout, $rootScope) {
 
-        /*
-        $ionicView.loaded   视图已经被加载了，这个事件只发生一次，视图被创建并且被添加到DOM中，当视图跳出后并被缓存的话，再次访问这个视图这个事件将不会被激活
-        $ionicView.enter 　　进入视图并被激活。这事件被激活来判断这个视图是第一个加载还是被缓存了的
-        $ionicView.leave　　离开这个视图并且不是活动页面。调用这个事件判断应该被缓存还是摧毁
-        $ionicView.beforeEnter 　　视图是即将进入并成为活动视图
-        $ionicView.beforeLeave　　视图将被关闭并且不是活动页面
-        $ionicView.afterEnter　　进入视图并是当前的活动页面
-        $ionicView.afterLeave　　已经离开视图，并成为非激活页面
-        $ionicView.unloaded　　视图的Controller已经被摧毁并且他的页面元素也从Dom中移除
-         */
         $scope.$on('$ionicView.enter', function () {
 
             // console.log(1111);
