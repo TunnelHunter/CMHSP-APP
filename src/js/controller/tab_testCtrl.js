@@ -22,16 +22,16 @@ app.controller('tabTestCtrl', ['$scope', '$rootScope', '$http', 'ajax_service', 
         $scope.fn_show_particle = function () {
             //配置
             var config = {
-                vx: 4,	//小球x轴速度,正为右，负为左
-                vy: 4,	//小球y轴速度
+                vx: 5,	//小球x轴速度,正为右，负为左
+                vy: 5,	//小球y轴速度
                 height: 1,	//小球高宽，其实为正方形，所以不宜太大
                 width: 1,
-                count: 160,		//点个数
+                count: 80,		//点个数
                 color: "255, 255, 255", 	//点颜色
                 stroke: "130,255,255", 		//线条颜色
-                dist: 7000, 	//点吸附距离
+                dist: 5500, 	//点吸附距离
                 e_dist: 0, 	//鼠标吸附加速距离
-                max_conn: 15 	//点到点最大连接数
+                max_conn: 5 	//点到点最大连接数
             };
 
             //调用
