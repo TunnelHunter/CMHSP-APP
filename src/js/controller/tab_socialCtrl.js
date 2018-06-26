@@ -349,7 +349,8 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
             $http({
                 method: "post",
                 url: ajax_service.get_socialFreshUp(),
-                data: JSON.stringify({socialId: get_last_item()}),
+                // data: JSON.stringify({socialId:$scope.items[$scope.items.length - 1].socialId}),
+                data: JSON.stringify({socialId:get_last_item()}),
                 headers: {
                     'Content-Type': 'application/json'
                 }

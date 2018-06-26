@@ -64,13 +64,13 @@
             </div>
             <div class="item list" style="background: linear-gradient(to bottom right, #fff , #fff);width: 105%;">
 
-                <div ng-repeat="comment in item.comments track by $index" class="item item-avatar">
+                <div ng-repeat="comment in arr_socialComments track by $index" class="item item-avatar">
                     <img ng-src="{{comment.cuserImg}}">
                     <h2>{{comment.cuserName}}</h2>
                     <p>{{comment.commentData}}</p>
                 </div>
 
-                <div ng-show="item.comments.length == 0" class="item"
+                <div ng-show="arr_socialComments.length == 0" class="item"
                      style="text-align: center;font-size: 16px">
                     <span>暂无评论...</span>
                 </div>

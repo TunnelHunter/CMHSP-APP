@@ -1,7 +1,7 @@
 //统一接口注册
 app.service('ajax_service', function () {
 
-    var ROOT = 'http://localhost:8080';
+    var ROOT = 'http://192.168.2.86:8080';
     var ROOT_HTTP = ROOT + '/CMHSP'; //服务器地址
 
     // var ROOT_HTTP = '../../../../CMHSP'; //项目合并时用到
@@ -38,6 +38,11 @@ app.service('ajax_service', function () {
     var get_socialFreshUp = ROOT_HTTP + '/socialFreshUp';
     this.get_socialFreshUp = function () {
         return get_socialFreshUp;
+    };
+    //获取特定动态的评论
+    var get_socialComments = ROOT_HTTP + '/showComments';
+    this.get_socialComments = function () {
+        return get_socialComments;
     };
     //发布社区动态
     var add_social = ROOT_HTTP + '/socialAdd';

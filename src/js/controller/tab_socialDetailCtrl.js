@@ -10,6 +10,44 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
 
         $scope.favorite_ok = false;
 
+        $scope.arr_socialComments = [];
+
+        /*
+        根据socialId获取该动态的评论 （在进入socialDetail页面时调用）
+        */
+        $scope.fn_get_socialComments = function () {
+
+            var var_socialId = $scope.item.socialId;
+
+            $http({
+                method: "post",
+                url: ajax_service.get_socialComments(),
+                data: JSON.stringify({socialId: var_socialId}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .success(function (response) {
+                    if (response.error_code == 0) {
+                        $scope.arr_socialComments = response.data.reverse();
+                    } else {
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(3, "获取动态评论失败");
+                        }, 500);
+                    }
+
+                })
+                .error(function (response) {
+                    setTimeout(function () {
+                        $rootScope.fn_show_toast(3, "获取动态评论失败");
+                    }, 500);
+                });
+
+        };
+
+        $scope.fn_get_socialComments();
+
+
         /*
           社区动态收藏
          */
@@ -19,7 +57,7 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                 var var_favorite_add = {
                     "userId": 0,
                     "userName": "",
-                    "socialId": 0,
+                    "socialId": 0
                 };
 
                 var_favorite_add.userId = window.localStorage.getItem("userId");
@@ -59,13 +97,11 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         };
 
 
-        $scope.comment_data = '';
-
-
         /*
           发布社区动态评论
           方法里用$scope要小心，可能会影响方法外的此变量
          */
+        $scope.comment_data = '';
         $scope.fn_socialCommentAdd = function () {
             if ($rootScope.judge_login()) {
                 loading_service.show_loading();
@@ -93,8 +129,6 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                 arr_comment.cuserName = var_command_add.userName;
                 arr_comment.cuserImg = var_command_add.userImage;
                 arr_comment.commentData = var_command_add.commentData;
-
-                $scope.item.comments.unshift(arr_comment);
                 $scope.comment_data = '';
 
                 $http({
@@ -107,15 +141,16 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                     }
                 })
                     .success(function (response) {
-                       if(error_code == 0){
-                           setTimeout(function () {
-                               $rootScope.fn_show_toast(1, "评论成功");
-                           }, 500);
-                       }else {
-                           setTimeout(function () {
-                               $rootScope.fn_show_toast(3, "网络错误，评论失败");
-                           }, 500);
-                       }
+                        if (response.error_code == 0) {
+                            $scope.arr_socialComments.unshift(arr_comment);
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(1, "评论成功");
+                            }, 500);
+                        } else {
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(3, "网络错误，评论失败");
+                            }, 500);
+                        }
 
                     })
                     .error(function (response) {
@@ -124,16 +159,10 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                         }, 500);
 
                     });
-            }else {
+            } else {
                 $rootScope.openLoginModal();
             }
         };
-
-
-        /*
-        缺少根据socialId获取该动态评论的接口
-        不然会出现评论完成后 返回social 不刷新 在次进入socialDetail 新评论无法获取
-         */
 
 
         /*
