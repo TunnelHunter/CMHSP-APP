@@ -19,7 +19,8 @@ app.controller('tabUserCtrl', ['$scope', '$ionicModal', '$http', 'ajax_service',
             //url:"http://localhost:8080/ti/1",
             data: JSON.stringify({userId: userId}),
             headers: {
-                'Content-Type': 'json'
+                'Content-Type': 'application/json',
+                'addToken':true
             }
         })
             .success(function (response) {

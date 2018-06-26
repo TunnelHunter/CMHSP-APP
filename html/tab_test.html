@@ -3,7 +3,7 @@
         <h1 class="title" >基础测试</h1>
         <a class="button button-clear icon-right ion-navicon button-dark" href="#/tabs/examinationsBank" nav-direction="forward"></a>
     </ion-header-bar>
-    <ion-content style=" background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);" overflow-scroll="true">
+    <ion-content style=" background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
         <div id="mydiv" style="height: 630px;position: absolute;"></div>
             <div align="center" style="position: relative;
     height: 645px;
@@ -16,7 +16,7 @@
                     <h3 style="color: #ffffffed;font-size: 20px">希望我们聊天愉快</h3>
                     <h3 style="color: #ffffffed;font-size: 20px">— {{examination_default.examinationName}} —</h3>
                 </div>
-                <div icon="ripple" class="spinner-balanced spinner spinner-ripple"  align="center" style="margin-top: 165px;width: 190px; height: 65px;" ui-sref="tabs.startAnswer" nav-direction="forward">
+                <div icon="ripple" class="spinner-balanced spinner spinner-ripple"  align="center" style="margin-top: 165px;width: 190px; height: 65px;"  ng-click="fn_start_answer()">
                     <svg  style="width: 60px ;height: 60px ;" >
                         <g fill="none" fill-rule="evenodd" stroke-width="3">
                             <circle cx="32" cy="32" r="20.3471">

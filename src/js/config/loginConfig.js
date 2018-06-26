@@ -1,5 +1,5 @@
-app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'loading_service',
-    function ($rootScope, $timeout, $ionicModal, $http, ajax_service, loading_service) {
+app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'loading_service', 'ionicToast',
+    function ($rootScope, $timeout, $ionicModal, $http, ajax_service, loading_service, ionicToast) {
 
         /*
         在$rootScope下创建
@@ -23,6 +23,29 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
         };
 
         /*
+        判断用户是否登陆，通过判断localStorage内是否有token字段来判断
+         */
+        $rootScope.judge_login = function () {
+            return localStorage.hasOwnProperty('token');
+        };
+
+        /*
+        toast提示窗口
+         */
+        $rootScope.fn_show_toast = function (type, message) {
+            <!-- ionicToast.show(type, message, position, stick(是否显示关闭按钮), time); -->
+            if (type == 0) {
+                ionicToast.show(false, message, 'bottom', false, 2000);//下假
+            } else if(type == 1){
+                ionicToast.show(true, message, 'top', false, 2000);//上真
+            }else if(type == 2){
+                ionicToast.show(true, message, 'bottom', false, 2000);//下真
+            }else {
+                ionicToast.show(false, message, 'top', false, 2000);//上假
+            }
+        };
+
+        /*
         登录方法
          */
         $rootScope.fn_login = function (name, password, time) {
@@ -30,25 +53,26 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
             $http({
                 method: "post",
                 url: ajax_service.login(),
-                //url:"http://localhost:8080/ti/1",
                 data: JSON.stringify({username: name, password: password, logintime: time}),
                 headers: {
-                    'Content-Type': 'json'
-                    // 'Token': localStorage.getItem("token")
+                    'Content-Type': 'application/json'
                 }
             })
                 .success(function (response) {
                     if (response.error_code == 0) {
-                        localStorage.setItem("Token", response.data.token);
+                        localStorage.setItem("token", response.data.token);
                         localStorage.setItem("userId", response.data.userId);
                         localStorage.setItem("userName", response.data.userName);
-                        localStorage.setItem("userImage", response.data.Image);
-                        localStorage.setItem("userRegion", response.data.Region);
-                        localStorage.setItem("userSign", response.data.Sign);
+                        localStorage.setItem("userImage", response.data.userImage);
+                        localStorage.setItem("userRegion", response.data.userRegion);
+                        localStorage.setItem("userSign", response.data.userSign);
+                        $rootScope.closeLoginModal();
                     }
                 })
                 .error(function () {
-
+                    setTimeout(function () {
+                        $rootScope.fn_show_toast(0, "用户名或密码错误");
+                    }, 500);
                 })
         };
 
@@ -64,7 +88,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                 data: JSON.stringify({username: name, password: password}),
                 headers: {
                     'Content-Type': 'json'
-                    // 'Token': localStorage.getItem("token")
+                    // 'token': localStorage.getItem("token")
                 }
             })
                 .success(function (response) {
@@ -75,17 +99,14 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                         }, 300);
                         setTimeout(function () {
                             $rootScope.login();
-                        }, 1000)
+                        }, 1000);
+                        $rootScope.closeRegisterModal();
                     }
                 })
                 .error(function () {
                     setTimeout(function () {
-                        $rootScope.login_account.userName = name;
-                        $rootScope.login_account.userPassword = password;
-                    }, 300);
-                    setTimeout(function () {
-                        $rootScope.login();
-                    }, 1000)
+                        $rootScope.fn_show_toast(0, "注册失败");
+                    }, 500);
                 })
         };
 
@@ -101,14 +122,19 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
         });
 
         $rootScope.login = function () {
-            if ($rootScope.login_account.userName == "" || $rootScope.login_account.userPassword == "") {
+            if ($rootScope.login_account.userName == "") {
+                $rootScope.fn_show_toast(0, "用户名不能为空");
+                return;
+            }
+            if ($rootScope.login_account.userPassword == "") {
+                $rootScope.fn_show_toast(0, "密码不能为空");
                 return;
             }
             if ($rootScope.login_account.userName.match(/^[a-zA-Z0-9]+$/) == null || $rootScope.login_account.userPassword.match(/^[a-zA-Z0-9]+$/) == null) {
+                $rootScope.fn_show_toast(0, "用户名或密码格式错误");
                 return;
             }
             $rootScope.fn_login($rootScope.login_account.userName, $rootScope.login_account.userPassword, loading_service.get_time());
-            $rootScope.closeLoginModal();
         };
 
         $rootScope.openLoginModal = function () {
@@ -134,21 +160,29 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
         });
 
         $rootScope.register = function () {
-            if ($rootScope.register_account.userName == ""
-                || $rootScope.register_account.userPassword == ""
-                || $rootScope.register_account.userPassword_again == "") {
+            if ($rootScope.register_account.userName == "") {
+                $rootScope.fn_show_toast(0, "用户名不能为空");
+                return;
+            }
+            if ($rootScope.register_account.userPassword == "") {
+                $rootScope.fn_show_toast(0, "密码不能为空");
+                return;
+            }
+            if ($rootScope.register_account.userPassword_again == "") {
+                $rootScope.fn_show_toast(0, "确认密码不能为空");
                 return;
             }
             if ($rootScope.register_account.userPassword != $rootScope.register_account.userPassword_again) {
+                $rootScope.fn_show_toast(0, "两次输入密码不一致");
                 return;
             }
             if ($rootScope.register_account.userName.match(/^[a-zA-Z0-9]+$/) == null
                 || $rootScope.register_account.userPassword.match(/^[a-zA-Z0-9]+$/) == null
                 || $rootScope.register_account.userPassword_again.match(/^[a-zA-Z0-9]+$/) == null) {
+                $rootScope.fn_show_toast(0, "用户名或密码格式错误");
                 return;
             }
             $rootScope.fn_register($rootScope.register_account.userName, $rootScope.register_account.userPassword);
-            $rootScope.closeRegisterModal();
         };
 
         $rootScope.openRegisterModal = function () {

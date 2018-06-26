@@ -1,5 +1,5 @@
-app.controller('tabTestExaminationsBankCtrl', ['$scope', '$rootScope', 'ajax_service', '$http', '$timeout', 'loading_service',
-    function ($scope, $rootScope, ajax_service, $http, $timeout, loading_service) {
+app.controller('tabTestExaminationsBankCtrl', ['$scope', '$rootScope', '$state','ajax_service', '$http', '$timeout', 'loading_service',
+    function ($scope, $rootScope, $state,ajax_service, $http, $timeout, loading_service) {
 
         loading_service.show_loading();
 
@@ -9,6 +9,9 @@ app.controller('tabTestExaminationsBankCtrl', ['$scope', '$rootScope', 'ajax_ser
         $scope.examinationChange = function (examination) {
             loading_service.show_loading();
             $rootScope.examination_default = examination;
+            setTimeout(function () {
+                $state.go('tabs.test');
+            },200);
             console.log($rootScope.examination_default);
         };
     }]);

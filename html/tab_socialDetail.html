@@ -9,10 +9,10 @@
         <div class="list card"
              style="border-radius: 17px !important;box-shadow: 0px 0px 10px 0px #33333394;">
             <div class="item item-avatar" style="height: 20px;">
-                <img ng-src="{{item.userImg}}">
+                <img ng-src="{{item.imageAddre}}">
                 <div style="display: inline-block;">
                     <h2>{{item.userName}}</h2>
-                    <p>{{item.socialAddtime}}</p>
+                    <p>{{item.socialAddTime}}</p>
                 </div>
                 <div ng-click="fn_socialFavoriteAdd()" ng-class="favorite_ok?'favorite':'not_favorite'" style="display: inline-block;font-size: 35px;position: absolute;bottom: 15px;right:20px;">
                 <i class="icon ion-heart"></i>
@@ -20,7 +20,7 @@
             </div>
             <div class="item item-body" style="background: linear-gradient(to bottom right, #fff , #fff);">
                 <img class="full-image" style="height:20%; width:100%;border-radius: 10px;"
-                     ng-src="{{item.imgData}}">
+                     ng-src="{{item.imageData}}">
 
                 <p></p>
                 <pre style="font-size: 16px;font-family:p;">{{item.textData}}</pre>
@@ -65,8 +65,8 @@
             <div class="item list" style="background: linear-gradient(to bottom right, #fff , #fff);width: 105%;">
 
                 <div ng-repeat="comment in item.comments track by $index" class="item item-avatar">
-                    <img ng-src="{{comment.userImg}}">
-                    <h2>{{comment.userName}}</h2>
+                    <img ng-src="{{comment.cuserImg}}">
+                    <h2>{{comment.cuserName}}</h2>
                     <p>{{comment.commentData}}</p>
                 </div>
 

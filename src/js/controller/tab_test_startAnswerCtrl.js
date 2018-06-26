@@ -2,15 +2,24 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
     function ($scope, $ionicSlideBoxDelegate, loading_service, ajax_service, $http, $timeout, $rootScope) {
 
 
-        loading_service.show_loading();
+        // loading_service.show_loading();
 
         //只要进入页面就禁止slide手动滑动
         $scope.$on('$ionicView.beforeEnter', function () {
             $ionicSlideBoxDelegate.enableSlide(false);
         });
-        $scope.nextSlide = function () {
-            $ionicSlideBoxDelegate.next();
-            // $ionicSlideBoxDelegate.enableSlide(false);
+
+        //点击选项自动滑动页面进入下一题
+        $scope.nextSlide = function (num) {
+
+            if (num == 0) {
+                $ionicSlideBoxDelegate.next();
+            } else {
+                loading_service.show_loading();
+                setTimeout(function () {
+                    $ionicSlideBoxDelegate.next();
+                }, 500);
+            }
         };
 
 
@@ -62,9 +71,13 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
         };
 
         $scope.fn_return_user_test_results = function () {
+            $scope.fn_view_results($scope.total_score);
+            if($scope.last_summary == ""){
+                return;
+            }
             //赋值
-            $scope.user_test_results.userId = 1;
-            $scope.user_test_results.userName = "老徐";
+            $scope.user_test_results.userId = parseInt(localStorage.getItem('userId'));
+            $scope.user_test_results.userName = localStorage.getItem('userName');
             $scope.user_test_results.examinationId = examinationId;
             $scope.user_test_results.examinationName = examinationName;
             $scope.user_test_results.examinationScore = $scope.total_score;
@@ -74,24 +87,24 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
             $http({
                 method: "post",
                 url: ajax_service.return_examinationsResults(),
-                // url: "http://192.168.43.214:8080/CMHSP/examinationsResults",
                 data: JSON.stringify($scope.user_test_results),
                 cache: true,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'addToken': true
                 }
             })
                 .success(function (response) {
                     if (response.error_code == 0) {
-                        console.log("返回用户测试数据成功")
+                        $scope.nextSlide(1);
                     } else {
-                        console.log("返回用户测试数据失败")
+                        $rootScope.fn_show_toast("查看测试结果失败")
 
                     }
 
                 })
                 .error(function (response) {
-                    console.log("返回用户测试数据失败")
+                    $rootScope.fn_show_toast("网络错误")
                 });
 
         }
