@@ -1,40 +1,14 @@
-<ion-slide-box>
-    <ion-slide style="background: rgb(0, 150, 136);">
-        <div>
-            <img ng-src="https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png">
-            <h1>BLUE</h1>
-        </div>
-    </ion-slide>
-    <ion-slide style="background: #FFEB3B">
-        <div>
-            <img ng-src="https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png">
-
-            <h1>YELLOW</h1>
-        </div>
-    </ion-slide >
-    <ion-slide style="background: #FFEB3B">
-        <div>
-            <img ng-src="https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png">
-
-            <h1>YELLOW</h1>
-        </div>
-    </ion-slide >
-    <ion-slide style="background: #FFEB3B">
-        <div>
-            <img ng-src="https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png">
-
-            <h1>YELLOW</h1>
-        </div>
-    </ion-slide >
-    <ion-slide on-slide-changed="slideHasChanged(index)" style="background: #9C27B0">
-
-        <div>
-            <img ng-src="https://ionicframework.com/dist/preview-app/www/assets/img/ica-slidebox-img-1.png">
-
-            <h1>PINK</h1>
-            <div style="position:  relative; top: 80px;">
-                <a class="button " ui-sref="tabs.test" style="width: 190px;border-radius: 30px;">立即体验</a>
-            </div>
+<ion-slide-box show-pager="true" style="background: #efefef;">
+    <ion-slide style="background-image: url(imgs/hello_slides/hello_test.png);background-size: 100% 100%;"></ion-slide>
+    <ion-slide
+            style="background-image: url(imgs/hello_slides/hello_social.png);background-size: 100% 100%;"></ion-slide>
+    <ion-slide style="background-image: url(imgs/hello_slides/hello_music.png);background-size: 100% 100%;"></ion-slide>
+    <ion-slide
+            style="background-image: url(imgs/hello_slides/hello_reading.png);background-size: 100% 100%;"></ion-slide>
+    <ion-slide on-slide-changed="slideHasChanged(index)"
+               style="background-image: url(imgs/hello_slides/hello_user.png);background-size: 100% 100%;">
+        <div style="position:  relative; top: 72%;" align="center">
+            <a class="button button-outline button-balanced" ui-sref="tabs.test" style="width: 190px;border-radius: 30px;">立即体验</a>
         </div>
     </ion-slide>
 </ion-slide-box>

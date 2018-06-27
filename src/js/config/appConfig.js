@@ -81,7 +81,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
         $httpProvider.interceptors.push(httpInterceptor);
 
         //路由配置
-        $urlRouterProvider.otherwise("/tabs/test");
+        $urlRouterProvider.otherwise("/slides");
         $stateProvider
             .state('slides', {
                 url: "/slides",
