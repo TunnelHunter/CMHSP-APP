@@ -52,6 +52,7 @@ app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service
                     if (response.error_code == 0) {
                         $scope.readContext = response.data.readContext;
                         console.log($scope.readContext);
+
                     }
 
                 })

@@ -6,7 +6,7 @@
         <!--<a class="button button-clear icon-right  ion-ios-more button-dark" href="#/" nav-direction="forward" style="color: rgba(0, 0, 0, 0.55);"></a>-->
 
     </ion-header-bar>
-    <ion-content style="bottom: 49px;background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
+    <ion-content style="background: linear-gradient(to bottom right, #45EBA5 , #21ABA5);">
         <ion-refresher pulling-text="下拉刷新" on-refresh="doRefreshDown()"></ion-refresher>
 
         <div ng-repeat="item in items track by $index" class="list card"
@@ -35,7 +35,7 @@
         <ion-infinite-scroll
                 ng-if="!noMorePage"
                 on-infinite="doFreshUp()"
-                distance="1%">
+                immediate-check ="false" >
 
         </ion-infinite-scroll>
     </ion-content>

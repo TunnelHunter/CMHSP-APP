@@ -1,4 +1,4 @@
-app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicModal', '$timeout', 'loading_service',
+app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'ajax_service', '$stateParams', '$ionicModal','$timeout', 'loading_service',
     function ($scope, $rootScope, $state, $http, ajax_service, $stateParams, $ionicModal, $timeout, loading_service) {
         // $scope.items = [
         //     {
@@ -272,6 +272,16 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
         //     }
         // ];
 
+
+        /**
+         * @ngdoc method
+         * @name orgInfoCtrl#table.dealData
+         * @methodOf table.dealData
+         * @param {Object} data - Server response.
+         * @return {Undefined}
+         * @description Handle response from server.
+         * */
+
         $scope.items = [];
         $scope.currentPage = 1;//定义下拉加载分页的初始值
 
@@ -279,6 +289,7 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
             $scope.doRefreshDown();
         });
         $scope.noMorePage = false;
+        $scope.arr_last_sociaalId = -1;
         /*
         下拉刷新
          */
@@ -296,9 +307,15 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                     if (response.error_code == 0) {
                         var newItems = response.data;
                         if ($scope.items.length == 0) {
+                            $scope.noMorePage = false;
                             for (var i = 0; i < newItems.length; i++) {//newItems.length，当前json的数量
                                 $scope.items.push(newItems[i]);//一个一个取出来，推送到原来的items里
                             }
+                            $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
+                            console.log('111--'+$scope.arr_last_sociaalId);
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(1, "最新动态加载完成");
+                            }, 500);
                         } else {
                             var a = $scope.items[0].socialId;
                             var b = newItems[0].socialId;
@@ -306,12 +323,17 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                                 setTimeout(function () {
                                     $rootScope.fn_show_toast(1, "暂无最新动态");
                                 }, 500);
+                                $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
+                                console.log('222--'+$scope.arr_last_sociaalId);
                                 return;
                             } else {
+                                $scope.noMorePage = false;
                                 $scope.items = [];
                                 for (var i = 0; i < newItems.length; i++) {//newItems.length，当前json的数量
                                     $scope.items.push(newItems[i]);//一个一个取出来，推送到原来的items里
                                 }
+                                $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
+                                console.log('333--'+$scope.arr_last_sociaalId);
                                 setTimeout(function () {
                                     $rootScope.fn_show_toast(1, "最新动态加载完成");
                                 }, 500);
@@ -332,7 +354,10 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                     }, 500);
                 })
                 .finally(function () {
+                    $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
+                    console.log('444--'+$scope.arr_last_sociaalId);
                     $scope.$broadcast('scroll.refreshComplete');
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
 
         };
@@ -340,17 +365,15 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
         /*
         上拉加载
          */
-        var get_last_item = function () {
-            var last_item = $scope.items[$scope.items.length - 1];
-            return last_item.socialId;
-        };
+
         $scope.doFreshUp = function () {
-            // $scope.currentPage += 1;//每当滚动到底部，页码累计加1
+            if($scope.arr_last_sociaalId < 0 ){
+                return;
+            }
             $http({
                 method: "post",
                 url: ajax_service.get_socialFreshUp(),
-                // data: JSON.stringify({socialId:$scope.items[$scope.items.length - 1].socialId}),
-                data: JSON.stringify({socialId:get_last_item()}),
+                data: JSON.stringify({socialId:$scope.arr_last_sociaalId}),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -365,7 +388,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                         for (var i = 0; i < newItems.length; i++) {//newItems.length，当前json的数量
                             $scope.items.push(newItems[i]);//一个一个取出来，推送到原来的items里
                         }
+                        console.log($scope.arr_last_sociaalId);
                     }else {
+                        $scope.noMorePage = true;//禁止滚动触发时间
                         setTimeout(function () {
                             $rootScope.fn_show_toast(0, "网络错误");
                         }, 500);
@@ -379,6 +404,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                     }, 500);
                 })
                 .finally(function () {
+                    $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
+                    console.log('555--'+$scope.arr_last_sociaalId);
+                    $scope.$broadcast('scroll.refreshComplete');
                     $scope.$broadcast('scroll.infiniteScrollComplete');
                 });
 

@@ -4,26 +4,51 @@
            nav-direction="back">返回</a>
         <h1 class="title">音乐播放</h1>
     </ion-header-bar>
-    <ion-content overflow-scroll="true">
-        <img src="./imgs/Background.png" style="height: 100%;width: 100%;">
-
+    <ion-content overflow-scroll="true" style="background-image: url(./imgs/11.jpg); background-size: 100% 100%;  ">
+        <!--<span style="font-size: 25px;position: relative;top: 20px;font-family: cursive;color: #fff;">快乐</span>-->
         <div align="center" style="position: absolute;
-    top: 10%;
     width: 100%;
-    height: 39%;">
-            <img src="./imgs/out_line_back.png" style="position: relative;height: 100%;box-shadow: 0px 0px 10px 0px #333333ab;
-    border-radius: 20px;">
+    height: 50%;">
+            <img src="./imgs/out_line_back.png" style="position: relative;height: 100%;">
         </div>
         <div align="center" style="position: absolute;
-    top: 13.6%;
+    top: 4.6%;
     margin-left: 5px;
     width: 100%;
-    height: 27%;">
+    height: 35%;">
 
             <img class="Rotation" src="./imgs/music_circle.jpg"
-                 style="position: relative;height: 100%;border-radius: 60%;box-shadow: 0px 0px 20px 8px #333333ab;">
+                 style="position: relative;height: 100%;border-radius: 60%;box-shadow: 0px 0px 20px 8px #333333ab;" ng-click="play_music()">
 
         </div>
+
+        <audio id="musicPlayer" ng-src="http://www.ytmp3.cn/?down/38177.mp3"></audio>
+
+
+        <div class="list card"
+             style="position: relative;
+    border-radius: 17px !important;
+    box-shadow: 0px 0px 10px 0px #33333394;
+    top: 41%;
+    background: #0000004d;">
+            <div class="item item-avatar" style="height: 1px;background: #0000;">
+                <div style="font-size: 35px;position: absolute;left: 23px;bottom: 16px; color: #21ABA5;">
+                    <i class="icon ion-chatbubble-working"></i>
+                </div>
+                <span style="position: absolute;font-size: 16px;bottom: 24px;">播放列表（{{musicList.length}}）</span>
+            </div>
+            <div class="item list" style="background: linear-gradient(to bottom right, #fff , #fff);width: 105%;">
+
+                <div ng-repeat="music in musicList track by $index" class="item item-avatar">
+                    <img ng-src="https://img.zcool.cn/community/031918a56d7e79c000001490d7a7e0c.jpg">
+                    <h2>{{music.songName}}</h2>
+                    <p>{{music.songAuthor}}</p>
+                </div>
+            </div>
+        </div>
+
+
+
 
         <!--<div class="wrapper">-->
         <!--&lt;!&ndash; 背景图片 &ndash;&gt;-->

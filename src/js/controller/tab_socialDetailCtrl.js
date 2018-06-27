@@ -1,12 +1,13 @@
 app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading', '$ionicPopup', '$timeout', 'loading_service',
     function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading, $ionicPopup, $timeout, loading_service) {
+        loading_service.show_loading();
         $scope.item = {};
 
         $scope.item = angular.fromJson($stateParams.item);
 
         console.log($scope.item);
 
-        loading_service.show_loading();
+
 
         $scope.favorite_ok = false;
 
@@ -78,6 +79,10 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                             $scope.favorite_ok = !$scope.favorite_ok;
                             setTimeout(function () {
                                 $rootScope.fn_show_toast(1, "收藏动态成功");
+                            }, 500);
+                        } else if(response.error_code == 1){
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(1, "动态已收藏");
                             }, 500);
                         } else {
                             setTimeout(function () {

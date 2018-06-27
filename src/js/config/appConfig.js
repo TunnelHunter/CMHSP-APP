@@ -161,6 +161,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
             })
             .state('tabs.musicPlayer', {
                 url: "/musicPlayer",
+                params: {'musicType': null},
                 views: {
                     'music-tab': {
                         templateUrl: "html/tab_musicPlayer.html",

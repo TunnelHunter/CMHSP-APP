@@ -1,4 +1,51 @@
-app.controller('tabMusicPlayerCtrl',['$scope',function ($scope) {
+app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading',  '$timeout', 'loading_service',
+    function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading,  $timeout, loading_service) {
+        $scope.musicType = {};
+        $scope.musicType = angular.fromJson($stateParams.musicType);
+
+        loading_service.show_loading();
+        console.log($stateParams);
+        console.log($scope.musicType);
+
+        $scope.play_music = function () {
+            var myAuto = document.getElementById('musicPlayer');
+            myAuto.play();
+        };
+
+        $scope.musicList = [];
+
+        // 获取当前场景音乐列表
+        $scope.fn_get_sceneMusicList = function () {
+            var id = $scope.musicType.musicsceneId;
+            var name = $scope.musicType.musicsceneName;
+            $http({
+                method: "post",
+                url: ajax_service.get_musicSceneList(),
+                data: JSON.stringify({
+                    musicsceneId: id,
+                    musicsceneName: name
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .success(function (response) {
+                    if (response.error_code == 0) {
+                        $scope.musicList = response.data;
+                    } else {
+
+                    }
+
+                })
+                .error(function () {
+                    setTimeout(function () {
+                        $rootScope.fn_show_toast(0, "网络错误");
+                    }, 500);
+                })
+
+
+        };
+        $scope.fn_get_sceneMusicList();
 //     //播放控制
 //     var myAudio = $("audio")[0];
 //     var lyricArr = [];
@@ -183,7 +230,8 @@ app.controller('tabMusicPlayerCtrl',['$scope',function ($scope) {
 //     })
 //     $(document).ready(getChannel())
 
-    // JavaScript Document
+
+        // JavaScript Document
 //     var currentIndex = 0;
 //     var mlist = ["http://qzone.haoduoge.com/music2/Meghan Trainor - All About That Bass.mp3","http://sc1.111ttt.com/2014/1/11/11/4111319506.mp3","http://qzone.haoduoge.com/music2/2014-12-13/1418401256.mp3","http://qzone.haoduoge.com/music2/2014-10-03/1412280314.mp3","http://qzone.haoduoge.com/music2/2014-11-29/1417258107.mp3"];
 //     var audio = document.getElementById('audio');
@@ -266,15 +314,14 @@ app.controller('tabMusicPlayerCtrl',['$scope',function ($scope) {
 //             };
 //         }
 //     };
-
-    /*function num(){
-        var n = document.getElementById("lt").getElementsByTagName("div")
-            for(i=0;i<n.length;i++){
-                n.item(i).onclick=function(){
-                    alert(this.getAttribute("index"));
+        /*function num(){
+            var n = document.getElementById("lt").getElementsByTagName("div")
+                for(i=0;i<n.length;i++){
+                    n.item(i).onclick=function(){
+                        alert(this.getAttribute("index"));
+                        }
                     }
-                }
-        }*/
+            }*/
 
 
-}]);
+    }]);
