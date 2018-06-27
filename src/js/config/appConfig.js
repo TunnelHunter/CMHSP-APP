@@ -150,20 +150,20 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                     }
                 }
             })
-            .state('tabs.radio', {
-                url: "/radio",
+            .state('tabs.music', {
+                url: "/music",
                 views: {
-                    'radio-tab': {
-                        templateUrl: "html/tab_radio.html",
-                        controller: 'tabRadioCtrl'
+                    'music-tab': {
+                        templateUrl: "html/tab_music.html",
+                        controller: 'tabMusicCtrl'
                     }
                 }
             })
             .state('tabs.musicPlayer', {
                 url: "/musicPlayer",
                 views: {
-                    'radio-tab': {
-                        templateUrl: "html/tab_music_player.html",
+                    'music-tab': {
+                        templateUrl: "html/tab_musicPlayer.html",
                         controller: 'tabMusicPlayerCtrl'
                     }
                 }

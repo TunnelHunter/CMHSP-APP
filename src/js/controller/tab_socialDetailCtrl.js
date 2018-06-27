@@ -104,6 +104,10 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         $scope.comment_data = '';
         $scope.fn_socialCommentAdd = function () {
             if ($rootScope.judge_login()) {
+                if ($scope.comment_data == "") {
+                    $rootScope.fn_show_toast(1, "评论不可以为空哦");
+                    return;
+                }
                 loading_service.show_loading();
                 var var_command_add = {
                     "userId": 0,

@@ -1,11 +1,5 @@
-app.controller('tabRadioCtrl',['$scope',function ($scope) {
-    // $scope.music_type = [
-    //
-    // ];
-    //
-    //
-    //
-    //
+app.controller('tabMusicCtrl',['$scope',function ($scope) {
+    // $scope.music_type = [];
     // $scope.show_play_box0 = false;
     // $scope.fn_change_show_play_box0 = function () {
     //     $scope.show_play_box1 = false;
@@ -39,6 +33,4 @@ app.controller('tabRadioCtrl',['$scope',function ($scope) {
     // };
     //
     // $scope.show_start_button = true;
-
-
 }]);
