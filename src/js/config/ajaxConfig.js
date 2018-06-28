@@ -1,7 +1,7 @@
 //统一接口注册
 app.service('ajax_service', function () {
 
-    var ROOT = 'http://192.168.199.229:8080';
+    var ROOT = 'http://192.168.2.86:8080';
     var ROOT_HTTP = ROOT + '/CMHSP'; //服务器地址
 
     // var ROOT_HTTP = '../../../../CMHSP'; //项目合并时用到

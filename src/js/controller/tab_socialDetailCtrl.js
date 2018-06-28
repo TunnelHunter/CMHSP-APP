@@ -1,6 +1,7 @@
 app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading', '$ionicPopup', '$timeout', 'loading_service',
     function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading, $ionicPopup, $timeout, loading_service) {
         loading_service.show_loading();
+        $scope.ctrlScope = $scope;
         $scope.item = {};
 
         $scope.item = angular.fromJson($stateParams.item);
@@ -12,8 +13,9 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         $scope.favorite_ok = false;
 
         $scope.arr_socialComments = [];
+        $scope.comment_data = '';
 
-        /*
+        /**
         根据socialId获取该动态的评论 （在进入socialDetail页面时调用）
         */
         $scope.fn_get_socialComments = function () {
@@ -49,7 +51,7 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         $scope.fn_get_socialComments();
 
 
-        /*
+        /**
           社区动态收藏
          */
         $scope.fn_socialFavoriteAdd = function () {
@@ -102,15 +104,19 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         };
 
 
-        /*
+        /**
           发布社区动态评论
           方法里用$scope要小心，可能会影响方法外的此变量
          */
-        $scope.comment_data = '';
         $scope.fn_socialCommentAdd = function () {
             if ($rootScope.judge_login()) {
-                if ($scope.comment_data == "") {
-                    $rootScope.fn_show_toast(1, "评论不可以为空哦");
+                if ($scope.comment_data === "") {
+                    $rootScope.fn_show_toast(4, "评论不可以为空哦");
+                    return;
+                }
+                if ($scope.comment_data.length > 20) {
+                    $rootScope.fn_show_toast(4, "评论最多20个字哦");
+                    $scope.comment_data = '';
                     return;
                 }
                 loading_service.show_loading();
@@ -133,12 +139,11 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                 var_command_add.socialId = $scope.item.socialId;
                 var_command_add.commentData = $scope.comment_data;
                 var_command_add.commentTime = loading_service.get_time();
-
+                $scope.comment_data = '';
 
                 arr_comment.cuserName = var_command_add.userName;
                 arr_comment.cuserImg = var_command_add.userImage;
                 arr_comment.commentData = var_command_add.commentData;
-                $scope.comment_data = '';
 
                 $http({
                     method: "post",

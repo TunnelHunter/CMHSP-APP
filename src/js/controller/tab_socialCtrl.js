@@ -313,9 +313,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                             }
                             $scope.arr_last_sociaalId = $scope.items[$scope.items.length - 1].socialId;
                             console.log('111--'+$scope.arr_last_sociaalId);
-                            setTimeout(function () {
-                                $rootScope.fn_show_toast(1, "最新动态加载完成");
-                            }, 500);
+                            // setTimeout(function () {
+                            //     $rootScope.fn_show_toast(1, "最新动态加载完成");
+                            // }, 500);
                         } else {
                             var a = $scope.items[0].socialId;
                             var b = newItems[0].socialId;

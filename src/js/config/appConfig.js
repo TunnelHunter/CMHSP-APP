@@ -81,18 +81,18 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
         $httpProvider.interceptors.push(httpInterceptor);
 
         //路由配置
-        $urlRouterProvider.otherwise("/slides");
+        $urlRouterProvider.otherwise("/tabs/test");
         $stateProvider
-            .state('slides', {
-                url: "/slides",
-                // prefetchTemplate:"",//按需加载html文件 对项目请求进行优化
-                views: {
-                    'main': {
-                        templateUrl: "html/hello_slides.html"
-                    }
-                }
-
-            })
+            // .state('slides', {
+            //     url: "/slides",
+            //     // prefetchTemplate:"",//按需加载html文件 对项目请求进行优化
+            //     views: {
+            //         'main': {
+            //             templateUrl: "html/hello_slides_modal.html"
+            //         }
+            //     }
+            //
+            // })
             .state('tabs', {
                 url: "/tabs",
                 views: {
@@ -297,7 +297,6 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
             })
             .state('tabs.facts2', {
                 url: "/facts2",
-
                 views: {
                     'home-tab': {
                         prefetchTemplate: false, //按需加载

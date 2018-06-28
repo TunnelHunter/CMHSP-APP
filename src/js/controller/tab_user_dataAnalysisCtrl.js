@@ -5,7 +5,7 @@ app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPop
 
         $scope.show_dataAnalysis = false;
 
-        /*
+        /**
          从localstorage 中取出 用户Id、名字、头像
         */
 
@@ -82,7 +82,6 @@ app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPop
             $http({
                 method: "post",
                 url: ajax_service.get_userAnalysis(),
-                //url:"http://localhost:8080/ti/1",
                 data: JSON.stringify({userId: userId}),
                 headers: {
                     'Content-Type': 'json'

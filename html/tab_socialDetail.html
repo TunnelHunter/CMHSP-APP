@@ -14,7 +14,7 @@
                     <h2>{{item.userName}}</h2>
                     <p>{{item.socialAddTime}}</p>
                 </div>
-                <div ng-click="fn_socialFavoriteAdd()" ng-class="favorite_ok?'favorite':'not_favorite'" style="display: inline-block;font-size: 35px;position: absolute;bottom: 15px;right:20px;">
+                <div ng-click="fn_socialFavoriteAdd()" ng-class="favorite_ok?'favorite':'not_favorite'" style="display: inline-block;font-size: 35px;position: absolute;bottom: 18px;right:20px;">
                 <i class="icon ion-heart"></i>
                 </div>
             </div>
@@ -52,15 +52,10 @@
 
         <div class="list card"
              style="border-radius: 17px !important;box-shadow: 0px 0px 10px 0px #33333394;">
-            <div class="item item-avatar" style="height: 1px;">
-                <div style="font-size: 35px;position: absolute;left: 23px;bottom: 16px; color: #21ABA5;">
-                    <i class="icon ion-chatbubble-working"></i>
-                </div>
-                <span style="position: absolute;font-size: 16px;bottom: 24px;">评论（{{item.comments.length}}）</span>
-                <!--<div ng-click="showPopup()"-->
-                <!--style="font-size: 25px;position: absolute;right: 23px;bottom: 20px; color: #21ABA5;">-->
-                <!--<i class="icon ion-edit"></i>-->
-                <!--</div>-->
+            <div class="item item-input">
+                <input type="text" placeholder="评论({{arr_socialComments.length}})  写评论 . . ." style="font-size: 15px;height: 40px;" ng-model="ctrlScope.comment_data">
+                <div class="icon ion-edit " style="font-size: 24px;right: 21px;position: relative;color: #22aca5" ng-click="fn_socialCommentAdd()"></div>
+
             </div>
             <div class="item list" style="background: linear-gradient(to bottom right, #fff , #fff);width: 105%;">
 
@@ -79,16 +74,5 @@
         </div>
 
     </ion-content>
-    <ion-footer-bar style="background:rgba(0, 0, 0, 0);">
-        <div class="item-input-inset" style="width: 100%;">
-            <label class="item-input-wrapper" style="height: 34px;background: rgba(0, 0, 0, 0.6);">
-                <input style="color:#fff" ng-model="comment_data" type="text" placeholder="写评论...">
-            </label>
-            <button ng-click="fn_socialCommentAdd()" class="button button-small" style="background: rgba(0, 0, 0, 0.6);
-    color: #fff;">
-                评 论
-            </button>
-        </div>
-    </ion-footer-bar>
 
 </ion-view>

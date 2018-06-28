@@ -1,10 +1,10 @@
-app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'loading_service', 'ionicToast',
-    function ($rootScope, $timeout, $ionicModal, $http, ajax_service, loading_service, ionicToast) {
+app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicViewSwitcher', 'ajax_service', 'loading_service', 'ionicToast',
+    function ($rootScope, $timeout, $ionicModal, $http, $state, $ionicViewSwitcher, ajax_service, loading_service, ionicToast) {
 
-        /*
-        在$rootScope下创建
-        examinations_list 用以存放题库信息
-        examination_default 用以存放默认试题信息
+        /**
+         在$rootScope下创建
+         examinations_list 用以存放题库信息
+         examination_default 用以存放默认试题信息
          */
         $rootScope.examinations_list = [];
         $rootScope.examination_default = {};
@@ -22,31 +22,43 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
             "userPassword_again": ""
         };
 
-        /*
-        判断用户是否登陆，通过判断localStorage内是否有token字段来判断
+        /**
+         判断用户是否登陆，通过判断localStorage内是否有token字段来判断
          */
         $rootScope.judge_login = function () {
             return localStorage.hasOwnProperty('token');
         };
 
-        /*
-        toast提示窗口
+
+        /**
+         判断用户是否第一次打开，通过判断localStorage内是否有firstLoading字段来判断
+         */
+        $rootScope.judge_firstLoading = function () {
+            if (!localStorage.hasOwnProperty('firstLoading')) {
+                setTimeout(function () {
+                    $rootScope.openHelloSlidesModal();
+                },700);
+            }
+        };
+
+        /**
+         toast提示窗口
          */
         $rootScope.fn_show_toast = function (type, message) {
             <!-- ionicToast.show(type, message, position, stick(是否显示关闭按钮), time); -->
             if (type == 0) {
                 ionicToast.show(false, message, 'bottom', false, 2000);//下假
-            } else if(type == 1){
+            } else if (type == 1) {
                 ionicToast.show(true, message, 'top', false, 2000);//上真
-            }else if(type == 2){
+            } else if (type == 2) {
                 ionicToast.show(true, message, 'bottom', false, 2000);//下真
-            }else {
+            } else {
                 ionicToast.show(false, message, 'top', false, 2000);//上假
             }
         };
 
-        /*
-        登录方法
+        /**
+         登录方法
          */
         $rootScope.fn_login = function (name, password, time) {
             loading_service.show_loading();
@@ -76,8 +88,8 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                 })
         };
 
-        /*
-        注册方法
+        /**
+         注册方法
          */
         $rootScope.fn_register = function (name, password) {
             loading_service.show_loading();
@@ -111,8 +123,8 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
         };
 
 
-        /*
-        登录模态窗口 以及操作模态窗口方法
+        /**
+         登录模态窗口 以及操作模态窗口方法
          */
         $ionicModal.fromTemplateUrl('html/user_login_modal.html', {
             scope: $rootScope,
@@ -149,8 +161,8 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
         };
 
 
-        /*
-        注册模态窗口 以及操作模态窗口方法
+        /**
+         注册模态窗口 以及操作模态窗口方法
          */
         $ionicModal.fromTemplateUrl('html/user_register_modal.html', {
             scope: $rootScope,
@@ -195,6 +207,24 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', 'ajax_service', 'load
                 $rootScope.register_account.userPassword = "";
                 $rootScope.register_account.userPassword_again = "";
             }, 100)
+        };
+
+
+        /**
+         引导页窗口 以及操作模态窗口方法
+         */
+        $ionicModal.fromTemplateUrl('html/hello_slides_modal.html', {
+            scope: $rootScope,
+            animation: 'slide-in-left'
+        }).then(function (modal) {
+            $rootScope.helloSlides_modal = modal;
+        });
+        $rootScope.openHelloSlidesModal = function () {
+            $rootScope.helloSlides_modal.show();
+        };
+        $rootScope.closeHelloSlidesModal = function () {
+            $rootScope.helloSlides_modal.hide();
+            localStorage.setItem("firstLoading", "true");
         };
 
 

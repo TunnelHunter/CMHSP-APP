@@ -13,13 +13,14 @@ app.controller('tabTestCtrl', ['$scope', '$rootScope','$state', '$ionicViewSwitc
          */
 
         $scope.$on('$ionicView.loaded', function () {
+            $rootScope.judge_firstLoading();
             $scope.fn_show_particle();
             $scope.fn_get_examinations_list();
-
         });
         /*
         绘制粒子背景
          */
+        //配置
         $scope.fn_show_particle = function () {
             //配置
             var config = {
