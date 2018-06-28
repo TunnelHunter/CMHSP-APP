@@ -17,10 +17,25 @@
     width: 100%;
     height: 35.1%;">
 
-            <img class="Rotation" src="./imgs/music_circle.jpg"
-                 style="position: relative;height: 100%;border-radius: 60%;box-shadow: 0px 0px 20px 8px #333333ab;"
-                 ng-click="play_music()">
+            <img ng-class="music_control ? 'Rotation':''"  src="./imgs/music_circle.jpg"
+                 style="position: relative;height: 100%;border-radius: 60%;box-shadow: 0px 0px 20px 8px #333333ab;">
 
+        </div>
+        <div align="center" style="position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 18%;
+    z-index: 9999;">
+            <i ng-class="music_control ? 'music_start':'music_stop'" ng-click="fn_music_control()"></i>
+        </div>
+        <div align="center" style="position: absolute;
+    width: 100%;
+    height: 7%;
+    top: 43%;
+    z-index: 9999;">
+            <i class="music_previous"></i>
+            <i class="music_no_favorite"></i>
+            <i class="music_next"></i>
         </div>
 
         <audio id="musicPlayer" ng-src="http://www.ytmp3.cn/?down/38177.mp3"></audio>
@@ -28,25 +43,27 @@
 
         <div class="list card"
              style="position: relative;
-    border-radius: 17px !important;
+        border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     box-shadow: 0px 0px 10px 0px #33333394;
     top: 41%;
     background: #0000005c;height: 54%;margin-bottom: 0px;">
-            <div class="item item-avatar" style="height: 1px;background: #0000;">
-                <div style="font-size: 35px;position: absolute;left: 23px;bottom: 16px; color: #21ABA5;">
-                    <i class="icon ion-chatbubble-working"></i>
-                </div>
-                <span style="position: absolute;font-size: 16px;bottom: 24px;">播放列表（{{musicList.length}}）</span>
+            <div class="item item-avatar" style="height: 1px;background: #2f3549bd;border-bottom-style: hidden;">
             </div>
             <ion-scroll direction="y" scrollbar-y="false"
                         style="height: 80%;">
-                <div class="item list" style="background: #ffffffbf;;width: 105%;">
+                <div class="item list" style="background: #ffffffbf;">
 
-                    <a ng-repeat="music in musicList track by $index" class="item item-avatar" style="background: #0000;border-style: hidden;">
+                    <div ng-repeat="music in musicList track by $index" class="item item-avatar" style="background: #0000;border-style: hidden;">
                         <img ng-src="https://img.zcool.cn/community/013dce58d0a71ea801219c77d4227a.png">
+                        <div style="    position: absolute;
+    right: 0%;
+    font-size: 25px;
+    top: 35%;
+    font-weight: 200;">{{$index+1}}</div>
                         <h2>{{music.songName}}</h2>
                         <p>{{music.songAuthor}}</p>
-                    </a>
+                    </div>
                 </div>
             </ion-scroll>
         </div>

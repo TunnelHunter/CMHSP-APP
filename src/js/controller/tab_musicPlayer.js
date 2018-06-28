@@ -6,10 +6,16 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
         loading_service.show_loading();
         console.log($stateParams);
         console.log($scope.musicType);
+        var myAuto = document.getElementById('musicPlayer');
 
-        $scope.play_music = function () {
-            var myAuto = document.getElementById('musicPlayer');
-            myAuto.play();
+        $scope.music_control = false;
+        $scope.fn_music_control = function () {
+            $scope.music_control = !$scope.music_control;
+            if($scope.music_control){
+                myAuto.play();
+            }else {
+                myAuto.pause();
+            }
         };
 
         $scope.musicList = [];
