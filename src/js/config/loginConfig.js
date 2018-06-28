@@ -228,4 +228,46 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicView
         };
 
 
+        function filter() {
+
+            // 获取输入框的内容inputContent
+            var inputContent = input.value;
+
+            // 多个敏感词，这里直接以数组的形式展示出来
+            var arrMg = ["fuck", "tmd", "他妈的"];
+
+            // 显示的内容--showContent
+            var showContent = inputContent;
+
+            // 正则表达式
+            // \d 匹配数字
+
+            for (var i = 0; i < arrMg.length; i++) {
+
+                // 创建一个正则表达式
+                var r = new RegExp(arrMg[i], "ig");
+
+                showContent = showContent.replace(r, "*");
+            }
+            // 显示的内容--showInput
+            showInput.value = showContent;
+        }
+
+        function filtion(){
+            var inputContent = input.value;
+
+            // 多个敏感词
+            var arrMg = ["fuck", "tmd", "他妈的"];
+
+            var showContent = inputContent;
+
+            for (var i = 0; i < arrMg.length; i++) {
+
+                // replace 只会替换第一个，后面如果还有相同的内容，就不会替换了
+                showContent = showContent.replace(arrMg[i], "*");
+            }
+
+            showInput.value = showContent;
+        }
+
     }]);

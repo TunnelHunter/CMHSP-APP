@@ -17,16 +17,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="tab_user_dataAnalysis.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/tab_user_dataAnalysis.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,21 +81,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tab_socialDetailCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tab_socialDetailCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/controller/tab_socialDetailCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="195" column="42" lean-forward="true" selection-start-line="195" selection-start-column="42" selection-end-line="195" selection-end-column="42" />
+            <state relative-caret-position="1122">
+              <caret line="127" column="38" lean-forward="true" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginConfig.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loginConfig.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/config/loginConfig.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4186">
-              <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
+            <state relative-caret-position="556">
+              <caret line="252" column="42" lean-forward="true" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -227,12 +217,12 @@
         <option value="$PROJECT_DIR$/html/hello_slides_modal.html" />
         <option value="$PROJECT_DIR$/src/js/config/appConfig.js" />
         <option value="$PROJECT_DIR$/src/js/controller/tab_testCtrl.js" />
-        <option value="$PROJECT_DIR$/src/js/config/loginConfig.js" />
         <option value="$PROJECT_DIR$/src/js/controller/tab_user_dataAnalysisCtrl.js" />
         <option value="$PROJECT_DIR$/src/js/config/ajaxConfig.js" />
         <option value="$PROJECT_DIR$/src/js/controller/tab_socialCtrl.js" />
         <option value="$PROJECT_DIR$/html/tab_socialDetail.html" />
         <option value="$PROJECT_DIR$/src/js/controller/tab_socialDetailCtrl.js" />
+        <option value="$PROJECT_DIR$/src/js/config/loginConfig.js" />
       </list>
     </option>
   </component>
@@ -268,7 +258,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -321,13 +311,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dev-CMHSP-APP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dev-CMHSP-APP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -435,12 +418,12 @@
       <workItem from="1529994915853" duration="278000" />
       <workItem from="1529995865335" duration="8562000" />
       <workItem from="1530064742327" duration="22823000" />
-      <workItem from="1530149708906" duration="17791000" />
+      <workItem from="1530149708906" duration="19820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424369000" />
+    <option name="totallyTimeSpent" value="426398000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -452,8 +435,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1897038" sideWeight="0.355" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17386723" sideWeight="0.645" order="3" side_tool="false" content_ui="combo" />
@@ -513,13 +495,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/tab_user_information_settings_setRegion_modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/controller/tab_userCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1556,14 +1531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/config/loginConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4186">
-          <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/tab_readingList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1586,8 +1553,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/controller/tab_socialDetailCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="195" column="42" lean-forward="true" selection-start-line="195" selection-start-column="42" selection-end-line="195" selection-end-column="42" />
+        <state relative-caret-position="1122">
+          <caret line="127" column="38" lean-forward="true" selection-start-line="127" selection-start-column="38" selection-end-line="127" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/config/toastConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/config/loginConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="252" column="42" lean-forward="true" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
           <folding />
         </state>
       </provider>
