@@ -1,22 +1,17 @@
-app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope',
-    function ($scope,$state, $ionicSlideBoxDelegate, $ionicLoading, ajax_service, $http, $timeout, $rootScope) {
+app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  'ajax_service', '$http', '$timeout', '$rootScope',
+    function ($scope,$state, $ionicSlideBoxDelegate, ajax_service, $http, $timeout, $rootScope,loading_service) {
 
+        /**
+         * 进入页面就启动轮播图
+         */
         $scope.$on('$ionicView.enter', function () {
-
-            // console.log(1111);
             $ionicSlideBoxDelegate.start();
 
         });
-        $scope.slide_index = 0;
-
-        $scope.click_slide_page = function (slide_index) {
-            // console.log(slide_index);
-        };
-
-
-        //获取首屏信息
+        /**
+         *MOCK数据
+         */
         $scope.arr_read_firstPage = {};
-
         $scope.arr_read_firstPage = {
             "slide": [
                 {
@@ -144,15 +139,15 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate', '
 
         };
 
-
+        /**
+         * 获取首屏信息
+         */
         $scope.fn_read_firstPage = function () {
             $http({
                 method: "get",
                 url: ajax_service.get_readFirstPage(),
-                // url:"http://localhost:8080/ti/1",
-                //data: JSON.stringify(get_questions_data),
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             })
                 .success(function (response) {
@@ -162,19 +157,27 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate', '
                         //第一句是在获取数据之后先让<ion-slide-box>更新一下，第二句是设置循环播放为true。
                         $ionicSlideBoxDelegate.update();
                         $ionicSlideBoxDelegate.loop(true);
-                        // console.log($scope.arr_read_firstPage);
+
+                    }else {
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(0, "网络错误");
+                        }, 500);
                     }
 
                 })
                 .error(function (response) {
-                    //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
+                    setTimeout(function () {
+                        $rootScope.fn_show_toast(0, "网络错误");
+                    }, 500);
 
                 });
         };
         $scope.fn_read_firstPage();
 
 
-        //传递每个阅读信息 给readDetail页面进行展示
+        /**
+         * 传递每个阅读信息 给readDetail页面进行展示
+         */
         $scope.fn_readDetail = function (read) {
             console.log(read);
             console.log(angular.toJson(read));

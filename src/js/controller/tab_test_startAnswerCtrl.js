@@ -1,15 +1,16 @@
 app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'loading_service', 'ajax_service', '$http', '$timeout', '$rootScope',
     function ($scope, $ionicSlideBoxDelegate, loading_service, ajax_service, $http, $timeout, $rootScope) {
-
-
-        // loading_service.show_loading();
-
-        //只要进入页面就禁止slide手动滑动
+        /**
+         * 只要进入页面就禁止slide手动滑动
+         */
         $scope.$on('$ionicView.beforeEnter', function () {
             $ionicSlideBoxDelegate.enableSlide(false);
         });
 
-        //点击选项自动滑动页面进入下一题
+        /**
+         * 点击选项自动滑动页面进入下一题
+         * @param num
+         */
         $scope.nextSlide = function (num) {
 
             if (num == 0) {
@@ -25,7 +26,10 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
 
         $scope.total_score = 0;
 
-        //计算分数 - 每次点击选项按钮，累加选项分数
+        /**
+         * 计算分数 - 每次点击选项按钮，累加选项分数
+         * @param option_score
+         */
         $scope.fn_calculate_score = function (option_score) {
             $scope.total_score = $scope.total_score + option_score;
             console.log($scope.total_score);
@@ -44,7 +48,10 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
         $scope.last_conclusionId = 0;
         $scope.last_summary = '';
 
-        //根据计算分数 查看测评结果
+        /**
+         * 根据计算分数 查看测评结果
+         * @param sum_score
+         */
         $scope.fn_view_results = function (sum_score) {
             // $scope.show_view_results = true;
             for (var i = 0, len = questionsConclusion.length; i < len; i++) {
@@ -59,7 +66,9 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
             }
         };
 
-        //返回用户测试结果信息
+        /**
+         * 返回用户测试结果信息
+         */
         $scope.user_test_results = {
             "userId": 0,
             "userName": "",
@@ -69,10 +78,9 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
             "summary": '',
             "examinationConclusionId": 0
         };
-
         $scope.fn_return_user_test_results = function () {
             $scope.fn_view_results($scope.total_score);
-            if($scope.last_summary == ""){
+            if ($scope.last_summary == "") {
                 return;
             }
             //赋值

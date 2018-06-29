@@ -3,7 +3,9 @@ app.controller('tabTestExaminationsBankCtrl', ['$scope', '$rootScope', '$state',
 
         loading_service.show_loading();
 
-        //默认选中
+        /**
+         * 默认选中
+         */
         $scope.default_examination = $rootScope.examination_default.examinationName;
 
         $scope.examinationChange = function (examination) {

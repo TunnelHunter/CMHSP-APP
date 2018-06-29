@@ -290,7 +290,8 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
         });
         $scope.noMorePage = false;
         $scope.arr_last_sociaalId = -1;
-        /*
+
+        /**
         下拉刷新
          */
         $scope.doRefreshDown = function () {
@@ -362,10 +363,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
 
         };
 
-        /*
+        /**
         上拉加载
          */
-
         $scope.doFreshUp = function () {
             if($scope.arr_last_sociaalId < 0 ){
                 return;
@@ -413,7 +413,7 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
 
         };
 
-        /*
+        /**
         向socialDetail页面传值
          */
         $scope.fn_socialDetail = function (item) {
@@ -428,7 +428,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
             "textData": ""
         };
 
-        //发布动态 模态窗口
+        /**
+         * 发布动态 模态窗口
+         */
         $ionicModal.fromTemplateUrl('html/tab_social_add_modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -505,7 +507,9 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
 
         };
 
-        //打开发布动态模态窗口，如果用户已登陆则显示发布页面，没登陆则弹出登陆界面
+        /**
+         * 打开发布动态模态窗口，如果用户已登陆则显示发布页面，没登陆则弹出登陆界面
+         */
         $scope.open_social_add_modal = function () {
 
             if($rootScope.judge_login()){

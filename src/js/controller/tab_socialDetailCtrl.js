@@ -1,23 +1,19 @@
 app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading', '$ionicPopup', '$timeout', 'loading_service',
     function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading, $ionicPopup, $timeout, loading_service) {
+        /**
+         * 获取页面传来的参数，定义作用域变量
+         */
         loading_service.show_loading();
         $scope.ctrlScope = $scope;
         $scope.item = {};
-
         $scope.item = angular.fromJson($stateParams.item);
-
-        console.log($scope.item);
-
-
-
         $scope.favorite_ok = false;
-
         $scope.arr_socialComments = [];
         $scope.comment_data = '';
 
         /**
-        根据socialId获取该动态的评论 （在进入socialDetail页面时调用）
-        */
+         根据socialId获取该动态的评论 （在进入socialDetail页面时调用）
+         */
         $scope.fn_get_socialComments = function () {
 
             var var_socialId = $scope.item.socialId;
@@ -52,7 +48,7 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
 
 
         /**
-          社区动态收藏
+         社区动态收藏
          */
         $scope.fn_socialFavoriteAdd = function () {
             if ($rootScope.judge_login()) {
@@ -82,7 +78,7 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
                             setTimeout(function () {
                                 $rootScope.fn_show_toast(1, "收藏动态成功");
                             }, 500);
-                        } else if(response.error_code == 1){
+                        } else if (response.error_code == 1) {
                             setTimeout(function () {
                                 $rootScope.fn_show_toast(1, "动态已收藏");
                             }, 500);
@@ -105,8 +101,8 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
 
 
         /**
-          发布社区动态评论
-          方法里用$scope要小心，可能会影响方法外的此变量
+         发布社区动态评论
+         方法里用$scope要小心，可能会影响方法外的此变量
          */
         $scope.fn_socialCommentAdd = function () {
             if ($rootScope.judge_login()) {
@@ -179,8 +175,8 @@ app.controller('tabSocialDetailCtrl', ['$scope', '$rootScope', '$state', '$state
         };
 
 
-        /*
-           弹框式 用户在弹出框内输入评论
+        /**
+         * 弹框式 用户在弹出框内输入评论
          */
         $scope.showPopup = function () {
             $scope.data = {};

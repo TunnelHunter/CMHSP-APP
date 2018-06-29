@@ -6,12 +6,15 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
         loading_service.show_loading();
         console.log($stateParams);
         console.log($scope.musicType);
+        $scope.myAuto = document.getElementById('musicPlayer');
 
         /**
          *获取当前场景音乐列表
          */
         $scope.music_url = "";
         $scope.musicList = [];
+        $scope.music_name = '';
+        $scope.music_auther = '';
         $scope.fn_get_sceneMusicList = function () {
             var id = $scope.musicType.musicsceneId;
             var name = $scope.musicType.musicsceneName;
@@ -29,7 +32,9 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
                 .success(function (response) {
                     if (response.error_code == 0) {
                         $scope.musicList = response.data;
-                        $('audio').attr('src',$scope.musicList[0].songContext);
+                        $('audio').attr('src', $scope.musicList[0].songContext);
+                        $scope.music_name = $scope.musicList[0].songName;
+                        $scope.music_auther = $scope.musicList[0].songAuthor;
                         // $scope.music_url = $scope.musicList[0].songContext;
                         console.log($scope.music_url);
                     } else {
@@ -62,53 +67,139 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
         };
 
 
-        //音乐播放、暂停
+        /**
+         *音乐播放、暂停
+         */
         $scope.music_control = false;
-        $scope.fn_music_control = function () {
-            var myAuto = document.getElementById('musicPlayer');
-            $scope.music_control = !$scope.music_control;
-            if ($scope.music_control) {
-                myAuto.play();
-            } else {
-                myAuto.pause();
+        $scope.fn_music_control = function (value) {
+            if (value == 0) {
+                $scope.music_control = true;
+                $scope.myAuto.play();
+            } else if (1) {
+                $scope.music_control = false;
+                $scope.myAuto.pause();
+            } else if (value == true) {
+                $scope.music_control = false;
+            } else if (value == false) {
+                $scope.music_control = true;
             }
         };
-        $scope.fn_music_control();
+        $scope.fn_music_control(0);
 
-        //下一首、上一首
+        /**
+         * 下一首、上一首
+         */
         $scope.fn_change_music_url = function (url) {
-            $('audio').attr('src',url);
+            // $scope.myAuto.setAttribute('src', url);
+            $('audio').attr('src', url);
         };
 
+        /**
+         * 切歌 自动切歌
+         */
         $scope.music_index = 0;
+        $scope.myAuto.addEventListener('ended', function () {
+            $scope.fn_change_music($scope.music_index, 'next');
+            console.log($scope.music_index);
+        }, false);
         $scope.fn_change_music = function (index, direction) {
-            $scope.fn_music_control();
-            console.log("index: "+index);
-            console.log("direction: "+direction);
-            if(direction == ''){
+            // $scope.fn_music_control(1);
+            console.log("index: " + index);
+            console.log("direction: " + direction);
+            if (direction == '') {
+                $scope.yes_favorite = false;
                 $scope.music_index = index;
-                $scope.fn_change_music_url($scope.musicList[index].songContext);
-                $scope.fn_music_control();
-                console.log("src: "+$scope.musicList[index].songContext);
-            }else {
+                $('audio').attr('src', $scope.musicList[index].songContext);
+                $scope.music_name = $scope.musicList[index].songName;
+                $scope.music_auther = $scope.musicList[index].songAuthor;
+                $scope.fn_music_control(0);
+                console.log("src: " + $scope.musicList[index].songContext);
+            } else {
                 if (direction === "next") {
-                    if ($scope.musicList[index + 1] != null) {
+                    if (index + 1 < $scope.musicList.length) {
+                        $scope.yes_favorite = false;
                         $scope.fn_change_music_url($scope.musicList[index + 1].songContext);
-                        $scope.fn_music_control();
+                        $scope.music_name = $scope.musicList[index + 1].songName;
+                        $scope.music_auther = $scope.musicList[index + 1].songAuthor;
+                        $scope.music_index++;
+                        $scope.fn_music_control(0);
                     } else {
-                        $scope.fn_change_music_url($scope.musicList[0].songContext);
-                        $scope.fn_music_control();
+
+                        $scope.fn_change_music_url($scope.musicList[$scope.musicList.length-1].songContext);
+                        $scope.music_name = $scope.musicList[$scope.musicList.length-1].songName;
+                        $scope.music_auther = $scope.musicList[$scope.musicList.length-1].songAuthor;
+                        $scope.fn_music_control(0);
+
                     }
                 } else if (direction === "previous") {
-                    if ($scope.musicList[index - 1] != null) {
+                    if (index - 1 > 0) {
+                        $scope.yes_favorite = false;
                         $scope.fn_change_music_url($scope.musicList[index - 1].songContext);
-                        $scope.fn_music_control();
+                        $scope.music_name = $scope.musicList[index - 1].songName;
+                        $scope.music_auther = $scope.musicList[index - 1].songAuthor;
+                        $scope.music_index--;
+                        $scope.fn_music_control(0);
                     } else {
-                        $scope.fn_change_music_url($scope.musicList[$scope.musicList.length].songContext);
-                        $scope.fn_music_control();
+
+                        $scope.fn_change_music_url($scope.musicList[0].songContext);
+                        $scope.music_name = $scope.musicList[0].songName;
+                        $scope.music_auther = $scope.musicList[0].songAuthor;
+                        $scope.fn_music_control(0);
                     }
-                }s
+                }
             }
+        };
+
+        /**
+         * 收藏歌曲
+         */
+        $scope.yes_favorite = false;
+        $scope.fn_musicFavorite = function () {
+            if ($rootScope.judge_login()) {
+                loading_service.show_loading();
+                var userId = localStorage.getItem('userId');
+                var userName = localStorage.getItem('userName');
+                var songId = $scope.musicList[$scope.music_index].songId;
+                $http({
+                    method: "post",
+                    url: ajax_service.add_musicFavorite(),
+                    data: JSON.stringify({
+                        userId: userId,
+                        userName: userName,
+                        songId:songId
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
+                    }
+                })
+                    .success(function (response) {
+                        if (response.error_code == 0) {
+                            $scope.yes_favorite = true;
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(1, "收藏成功");
+                            }, 500);
+                        } else if(response.error_code == 1){
+                            $scope.yes_favorite = true;
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(0, "此歌曲已收藏");
+                            }, 500);
+                        } else {
+                            setTimeout(function () {
+                                $rootScope.fn_show_toast(0, "网络错误");
+                            }, 500);
+                        }
+
+                    })
+                    .error(function () {
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(0, "网络错误");
+                        }, 500);
+                    })
+            } else {
+                $rootScope.openLoginModal();
+            }
+
         };
 
 
@@ -295,9 +386,8 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
 //         }
 //     })
 //     $(document).ready(getChannel())
-
-
-        // JavaScript Document
+//
+// JavaScript Document
 //     var currentIndex = 0;
 //     var mlist = ["http://qzone.haoduoge.com/music2/Meghan Trainor - All About That Bass.mp3","http://sc1.111ttt.com/2014/1/11/11/4111319506.mp3","http://qzone.haoduoge.com/music2/2014-12-13/1418401256.mp3","http://qzone.haoduoge.com/music2/2014-10-03/1412280314.mp3","http://qzone.haoduoge.com/music2/2014-11-29/1417258107.mp3"];
 //     var audio = document.getElementById('audio');
@@ -380,14 +470,7 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
 //             };
 //         }
 //     };
-        /*function num(){
-            var n = document.getElementById("lt").getElementsByTagName("div")
-                for(i=0;i<n.length;i++){
-                    n.item(i).onclick=function(){
-                        alert(this.getAttribute("index"));
-                        }
-                    }
-            }*/
+
 
 
     }]);

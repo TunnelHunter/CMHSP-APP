@@ -24,7 +24,9 @@
 
 
             <div class="item item-body" style="background: linear-gradient(to bottom right, #fff , #fff);" ng-click="fn_socialDetail(item)">
-                <p style="margin-top: 0px;font-size: 16px;">{{item.textData.substr(0,67)}} <span ng-show="item.textData != item.textData.substr(0,67)"> . . . 展开 >></span></p>
+                <p style="margin-top: 0px;font-size: 16px;text-align: justify;
+    line-height: 24px;
+    text-indent: 33px;">{{item.textData.substr(0,67)}} <span ng-show="item.textData != item.textData.substr(0,67)"> . . . 展开 >></span></p>
 
                 <img class="full-image" style="height:150px; width:100% ;border-radius: 10px;"
                      ng-src="{{item.imageData}}">

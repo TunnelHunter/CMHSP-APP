@@ -1,103 +1,112 @@
-app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$rootScope', '$state','$stateParams','loading_service',
-    function ($scope, $ionicLoading, ajax_service, $http, $timeout, $rootScope, $state,$stateParams,loading_service) {
+app.controller('tabReadingDetailCtrl', ['$scope', '$rootScope', '$ionicLoading', 'ajax_service', '$http', '$timeout', '$state', '$stateParams', 'loading_service',
+    function ($scope, $rootScope, $ionicLoading, ajax_service, $http, $timeout, $state, $stateParams, loading_service) {
 
+        /**
+         *获取跳转之前页面，返回按钮使用
+         *获取阅读类型
+         */
         $scope.read = {};
-
+        $scope.readContext = '';
         $scope.read = angular.fromJson($stateParams.read);
-
-        // console.log($scope.read);
-
-
-        console.log($stateParams);
         $scope.arr_fromPage = $stateParams.fromPage;
-
         $scope.arr_readType = $stateParams.readType;
 
-        //
-        $scope.fn_go_back = function () {
-
-            if ($scope.arr_fromPage == 'reading') {
-                $state.go('tabs.reading');
-            } else if ($scope.arr_fromPage == 'readingList') {
-                $state.go('tabs.readingList', {'readType': $scope.arr_readType});
-            }
-
-
-        };
-
+        /**
+         * 进入readDetail页面调用
+         */
         $scope.$on('$ionicView.beforeEnter', function () {
             $scope.readId = angular.fromJson($stateParams.read).readId;
             $scope.fn_get_readList($scope.readId);
 
         });
 
-        $scope.readContext = '';
-        $scope.arr_0 = '抑郁症又称抑郁障碍，以显著而持久的心境低落为主要临床特征，是心境障碍的主要类型。' +
-            '临床可见心境低落与其处境不相称，情绪的消沉可以从闷闷不乐到悲痛欲绝，自卑抑郁，甚至悲观厌世，可有自杀企图或行为；甚至发生木僵；部分病例有明显的焦虑和运动性激越；严重者可出现幻觉、妄想等精神病性症状。' +
-            '每次发作持续至少2周以上、长者甚或数年，多数病例有反复发作的倾向，每次发作大多数可以缓解，部分可有残留症状或转为慢性。';
+        /**
+         * 返回按钮，根据$scope.arr_fromPage 判断跳转之前页面
+         */
+        $scope.fn_go_back = function () {
+            if ($scope.arr_fromPage == 'reading') {
+                $state.go('tabs.reading');
+            } else if ($scope.arr_fromPage == 'readingList') {
+                $state.go('tabs.readingList', {'readType': $scope.arr_readType});
+            }
+        };
 
-        //获取读物详细信息
-        $scope.fn_get_readList = function (value) {
+        /**
+         * 获取读物详细信息
+         * @param readId
+         */
+        $scope.fn_get_readList = function (readId) {
             $http({
                 method: "post",
                 url: ajax_service.get_readDetil(),
-                // url:"http://localhost:8080/ti/1",
-                data: JSON.stringify({readId: value}),
+                data: JSON.stringify({readId: readId}),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
                 .success(function (response) {
-
                     if (response.error_code == 0) {
                         $scope.readContext = response.data.readContext;
-                        console.log($scope.readContext);
-
+                    } else {
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(0, "网络错误");
+                        }, 500);
                     }
 
                 })
                 .error(function (response) {
-                    //$rootScope.fn_common_showAlertTxt($rootScope.var_common_notAllowString, 1);
-
-                    $scope.readContext = $scope.arr_0;
-
+                    setTimeout(function () {
+                        $rootScope.fn_show_toast(0, "网络错误");
+                    }, 500);
                 });
         };
 
 
-        //收藏阅读
+        /**
+         * 收藏阅读
+         */
         $scope.fn_readingFavoriteAdd = function () {
-            loading_service.show_loading();
-            var var_favorite_add = {
-                "userId": 0,
-                "userName": "",
-                "readId": 0
-            };
-
-            // var_favorite_add.userId = window.localStorage.getItem("userId");
-            // var_favorite_add.readId = $scope.read.readId;
-
-            var_favorite_add.userId = 1;
-            var_favorite_add.userName = "小薛";
-            var_favorite_add.readId = 1;
-
-            $http({
-                method: "post",
-                url: ajax_service.add_readFavorite(),
-                //url:"http://localhost:8080/ti/1",
-                data: JSON.stringify(var_favorite_add),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .success(function (response) {
-                    console.log(response.data);
-
+            if ($rootScope.judge_login()) {
+                loading_service.show_loading();
+                var var_favorite_add = {
+                    "userId": 0,
+                    "readId": 0
+                };
+                var_favorite_add.userId = window.localStorage.getItem("userId");
+                var_favorite_add.readId = $scope.read.readId;
+                $http({
+                    method: "post",
+                    url: ajax_service.add_readFavorite(),
+                    data: JSON.stringify(var_favorite_add),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
+                    }
                 })
-                .error(function (response) {
-                    console.log("收藏成功");
+                    .success(function (response) {
+                       if(response.error_code == 0){
+                           setTimeout(function () {
+                               $rootScope.fn_show_toast(1, "收藏动态成功");
+                           }, 500);
+                       } else if(response.error_code == 1){
+                           setTimeout(function () {
+                               $rootScope.fn_show_toast(1, "动态已收藏");
+                           }, 500);
+                       } else {
+                           setTimeout(function () {
+                               $rootScope.fn_show_toast(3, "收藏动态失败");
+                           }, 500);
+                       }
 
-                });
+                    })
+                    .error(function (response) {
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(3, "收藏动态失败");
+                        }, 500);
+                    });
+            } else {
+                $rootScope.openLoginModal();
+            }
         }
 
 
