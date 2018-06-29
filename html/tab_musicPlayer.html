@@ -5,7 +5,6 @@
         <h1 class="title">音乐播放</h1>
     </ion-header-bar>
     <ion-content overflow-scroll="true" style="background-image: url({{musicType.background}}); background-size: 100% 100%; bottom: 49px; ">
-        <!--<span style="font-size: 25px;position: relative;top: 20px;font-family: cursive;color: #fff;">快乐</span>-->
         <div align="center" style="position: absolute;
         margin-left: -5px;
     width: 100%;
@@ -31,14 +30,14 @@
         <div align="center" style="position: absolute;
     width: 100%;
     height: 7%;
-    top: 43%;
+    top: 43.5%;
     z-index: 9999;">
             <i class="music_previous"></i>
             <i class="music_no_favorite"></i>
             <i class="music_next"></i>
         </div>
 
-        <audio id="musicPlayer" ng-src="http://www.ytmp3.cn/?down/38177.mp3"></audio>
+        <audio id="musicPlayer" ng-src=""></audio>
 
 
         <div class="list card"
@@ -52,13 +51,13 @@
             </div>
             <ion-scroll direction="y" scrollbar-y="false"
                         style="height: 80%;">
-                <div class="item list" style="background: #ffffffbf;">
+                <div class="item list" style="background: #ffffffbf;width: 104%;">
 
-                    <div ng-repeat="music in musicList track by $index" class="item item-avatar" style="background: #0000;border-style: hidden;">
+                    <div ng-repeat="music in musicList track by $index" style="border-style: hidden;background: #0000" class="item item-avatar" ng-style="music_index == $index ? 'music-selected':''" ng-click="fn_change_music($index,'')">
                         <img ng-src="https://img.zcool.cn/community/013dce58d0a71ea801219c77d4227a.png">
                         <div style="    position: absolute;
-    right: 0%;
-    font-size: 25px;
+    right: 4%;
+    font-size: 20px;
     top: 35%;
     font-weight: 200;">{{$index+1}}</div>
                         <h2>{{music.songName}}</h2>

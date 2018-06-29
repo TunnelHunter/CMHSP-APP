@@ -240,8 +240,8 @@ a{
 }
 .music_previous {
   display: inline-block;
-  width: 55px;
-  height: 57px;
+  width: 50px;
+  height: 53px;
   background: url(../imgs/music_player/previous.png) no-repeat;
   background-size: 85%;
   margin-right: 45px;
@@ -249,8 +249,8 @@ a{
 }
 .music_next {
   display: inline-block;
-  width: 55px;
-  height: 57px;
+  width: 50px;
+  height: 53px;
   background: url(../imgs/music_player/next.png) no-repeat;
   background-size: 85%;
   z-index: 9999;
@@ -258,17 +258,26 @@ a{
 }
 .music_yes_favorite {
   display: inline-block;
-  width: 45px;
-  height: 58px;
+  width: 35px;
+  height: 50px;
   background: url(../imgs/music_player/yes_favorite.png) no-repeat;
   background-size: 100%;
   z-index: 9999;
 }
 .music_no_favorite {
   display: inline-block;
-  width: 45px;
-  height: 58px;
+  width: 35px;
+  height: 50px;
   background: url(../imgs/music_player/no_favorite.png) no-repeat;
   background-size: 100%;
   z-index: 9999;
+}
+
+/*音乐选中样式*/
+.music_selected {
+  background: #0000002e !important;
+
+}
+.music_not_selected {
+  background: #0000 !important;
 }

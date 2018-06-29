@@ -133,7 +133,6 @@ app.controller('tabReadingListCtrl', ['$scope', '$state', '$ionicLoading', 'ajax
             $http({
                 method: "post",
                 url: ajax_service.read_search(),
-                // url:"http://localhost:8080/ti/1",
                 data: JSON.stringify({readType: $stateParams.readType, searchKeyword: keywords}),
                 headers: {
                     'Content-Type': 'application/json'

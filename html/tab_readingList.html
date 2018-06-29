@@ -18,7 +18,7 @@
 
         <!--<img ng-src="imgs/wuhezhizhong.jpg" /> 正确引用图片方式-->
 
-        <div ng-show="arr_readType == 0" ng-repeat="book in arr_readList" class=" card" ng-click="fn_readDetail(book,0)"
+        <div ng-show="arr_readType == 1" ng-repeat="book in arr_readList" class=" card" ng-click="fn_readDetail(book,1)"
              style="    width: 29%;display:inline-block;border-radius: 10px;margin-left: 3.25%;margin-right: 0%;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;">
 
             <img class="full-image" style="height:120px; width:100% ;border-radius: 10px;"
@@ -33,7 +33,7 @@
         </div>
 
 
-        <div ng-show="arr_readType == 1" class="list card" ng-click="fn_readDetail(essay,1)"
+        <div ng-show="arr_readType == 0" class="list card" ng-click="fn_readDetail(essay,0)"
              style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; "
              ng-repeat="essay in arr_readList">
             <div class="item " style="padding: 0px;">

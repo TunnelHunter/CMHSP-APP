@@ -71,7 +71,7 @@ app.controller('tabReadingDetailCtrl', ['$scope', '$ionicLoading', 'ajax_service
             var var_favorite_add = {
                 "userId": 0,
                 "userName": "",
-                "readId": 0,
+                "readId": 0
             };
 
             // var_favorite_add.userId = window.localStorage.getItem("userId");

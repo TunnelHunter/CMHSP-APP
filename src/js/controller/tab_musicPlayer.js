@@ -1,26 +1,17 @@
-app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading',  '$timeout', 'loading_service',
-    function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading,  $timeout, loading_service) {
+app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'ajax_service', '$ionicLoading', '$timeout', 'loading_service',
+    function ($scope, $rootScope, $state, $stateParams, $http, ajax_service, $ionicLoading, $timeout, loading_service) {
         $scope.musicType = {};
         $scope.musicType = angular.fromJson($stateParams.musicType);
 
         loading_service.show_loading();
         console.log($stateParams);
         console.log($scope.musicType);
-        var myAuto = document.getElementById('musicPlayer');
 
-        $scope.music_control = false;
-        $scope.fn_music_control = function () {
-            $scope.music_control = !$scope.music_control;
-            if($scope.music_control){
-                myAuto.play();
-            }else {
-                myAuto.pause();
-            }
-        };
-
+        /**
+         *获取当前场景音乐列表
+         */
+        $scope.music_url = "";
         $scope.musicList = [];
-
-        // 获取当前场景音乐列表
         $scope.fn_get_sceneMusicList = function () {
             var id = $scope.musicType.musicsceneId;
             var name = $scope.musicType.musicsceneName;
@@ -38,8 +29,13 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
                 .success(function (response) {
                     if (response.error_code == 0) {
                         $scope.musicList = response.data;
+                        $('audio').attr('src',$scope.musicList[0].songContext);
+                        // $scope.music_url = $scope.musicList[0].songContext;
+                        console.log($scope.music_url);
                     } else {
-
+                        setTimeout(function () {
+                            $rootScope.fn_show_toast(0, "网络错误");
+                        }, 500);
                     }
 
                 })
@@ -52,6 +48,70 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
 
         };
         $scope.fn_get_sceneMusicList();
+
+        /**
+         *操作音乐方法: 播放、暂停、上一首、下一首、收藏
+         */
+        $scope.music_selected = {
+            "background": "#0000002e !important"
+
+        };
+        $scope.music_not_selected = {
+            "background": "#0000 !important"
+
+        };
+
+
+        //音乐播放、暂停
+        $scope.music_control = false;
+        $scope.fn_music_control = function () {
+            var myAuto = document.getElementById('musicPlayer');
+            $scope.music_control = !$scope.music_control;
+            if ($scope.music_control) {
+                myAuto.play();
+            } else {
+                myAuto.pause();
+            }
+        };
+        $scope.fn_music_control();
+
+        //下一首、上一首
+        $scope.fn_change_music_url = function (url) {
+            $('audio').attr('src',url);
+        };
+
+        $scope.music_index = 0;
+        $scope.fn_change_music = function (index, direction) {
+            $scope.fn_music_control();
+            console.log("index: "+index);
+            console.log("direction: "+direction);
+            if(direction == ''){
+                $scope.music_index = index;
+                $scope.fn_change_music_url($scope.musicList[index].songContext);
+                $scope.fn_music_control();
+                console.log("src: "+$scope.musicList[index].songContext);
+            }else {
+                if (direction === "next") {
+                    if ($scope.musicList[index + 1] != null) {
+                        $scope.fn_change_music_url($scope.musicList[index + 1].songContext);
+                        $scope.fn_music_control();
+                    } else {
+                        $scope.fn_change_music_url($scope.musicList[0].songContext);
+                        $scope.fn_music_control();
+                    }
+                } else if (direction === "previous") {
+                    if ($scope.musicList[index - 1] != null) {
+                        $scope.fn_change_music_url($scope.musicList[index - 1].songContext);
+                        $scope.fn_music_control();
+                    } else {
+                        $scope.fn_change_music_url($scope.musicList[$scope.musicList.length].songContext);
+                        $scope.fn_music_control();
+                    }
+                }s
+            }
+        };
+
+
 //     //播放控制
 //     var myAudio = $("audio")[0];
 //     var lyricArr = [];
