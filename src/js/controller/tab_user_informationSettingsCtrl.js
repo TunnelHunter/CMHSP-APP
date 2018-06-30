@@ -1,14 +1,10 @@
-app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ionicModal', '$http', 'ajax_service', 'loading_service',
-    function ($scope, $rootScope, $ionicModal, $http, ajax_service, loading_service) {
+app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$state', '$ionicViewSwitcher', '$ionicModal', '$http', 'ajax_service', 'loading_service',
+    function ($scope, $rootScope, $state, $ionicViewSwitcher, $ionicModal, $http, ajax_service, loading_service) {
 
-        /*
-         从localstorage 中取出 用户头像、名字、性别、地区、个性签名 如果有就取值
-         没有就使用 $scope.user_information 中的默认信息
-        */
 
-        localStorage.clear();
-
-        //此对象在设置页面显示
+        /**
+         * 此对象在设置页面显示
+         */
         $scope.user_information = {
             'userId': '',
             'userImage': 'imgs/default_userImage.png',
@@ -18,7 +14,9 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
             'userSign': '点击设置'
         };
 
-        //此对象中参数与 各个模态窗口中的输入框 进行绑定
+        /**
+         * 此对象中参数与 各个模态窗口中的输入框 进行绑定
+         */
         $scope.arr_userInformation = {
             'arr_userImage': '',
             'arr_userName': '',
@@ -30,9 +28,14 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
             'arr_userSign': ''
         };
 
-        if (localStorage.hasOwnProperty('userId')) {
-            $scope.user_information.userId = localStorage.getItem('userId');
-
+        /**
+         从localstorage 中取出 用户头像、名字、性别、地区、个性签名 如果有就取值
+         没有就使用 $scope.user_information 中的默认信息
+         */
+        if ($rootScope.judge_login()) {
+            if (localStorage.hasOwnProperty('userId')) {
+                $scope.user_information.userId = localStorage.getItem('userId');
+            }
             if (localStorage.hasOwnProperty('userImage')) {
                 $scope.user_information.userImage = localStorage.getItem('userImage');
             }
@@ -51,7 +54,9 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         }
 
 
-        //在个性签名的字符串中 插入 ...
+        /**
+         * 在个性签名的字符串中 插入 ...
+         */
         function fn_string_insert(str, insert, index) {
             var start = str.substr(0, index);
             var end = str.substr(index, str.length);
@@ -59,46 +64,76 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         }
 
 
-        /*
-          更新用户信息 方法
-          参数列表: 类型 , 头像 , 名字 , 性别 , 地域 , 个性签名
-          index : 根据输入的数值来判断传入的参数是什么
-          userImage : 头像
-          userName : 名字
-          userSex : 性别
-          userRegion : 地域
-          userSign : 个性签名
+        /**
+         * 更新用户信息 方法
+         * 参数列表: 类型 , 头像 , 名字 , 性别 , 地域 , 个性签名
+         * index : 根据输入的数值来判断传入的参数是什么
+         * userImage : 头像
+         * userName : 名字
+         * userSex : 性别
+         * userRegion : 地域
+         * userSign : 个性签名
          */
         $scope.fn_set_userInformation = function (index, userId, userImage, userName, userSex, userRegion, userSign) {
-            if (index == 2) {
-                var sex_num = -1;
-                if (userSex == '男生') {
-                    sex_num = 0;
-                } else if (userSex == '女生') {
-                    sex_num = 1;
+            if ($rootScope.judge_login()) {
+                if (index == 2) {
+                    var sex_num = 0;
+                    if (userSex == '男生') {
+                        sex_num = 0;
+                    } else if (userSex == '女生') {
+                        sex_num = 1;
+                    }
                 }
-            }
-            loading_service.show_loading();
-            $http({
-                method: "post",
-                url: ajax_service.update_userMessages(),
-                // url:"http://localhost:8080/ti/1",
-                data: JSON.stringify({
-                    userId: userId,
-                    Image: userImage,
-                    userName: userName,
-                    Sex: sex_num,
-                    Region: userRegion,
-                    Sign: userSign
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .success(function (response) {
-                    if (response.error_code == 0) {
-                        console.log("修改成功");
+                loading_service.show_loading();
+                $http({
+                    method: "post",
+                    url: ajax_service.update_userMessages(),
+                    data: JSON.stringify({
+                        userId: userId,
+                        Image: userImage,
+                        userName: userName,
+                        Sex: sex_num,
+                        Region: userRegion,
+                        Sign: userSign
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
+                    }
+                })
+                    .success(function (response) {
+                        if (response.error_code == 0) {
+                            console.log("修改成功");
 
+                            if (index == 0) {
+                                $scope.user_information.userImage = userImage;
+                                localStorage.setItem('userImage', userImage);
+                            } else if (index == 1) {
+                                $scope.user_information.userName = userName;
+                                localStorage.setItem('userName', userName);
+                            } else if (index == 2) {
+                                $scope.user_information.userSex = userSex;
+                                localStorage.setItem('userSex', sex_num);
+                            } else if (index == 3) {
+                                $scope.user_information.userRegion = userRegion;
+                                localStorage.setItem('userRegion', userRegion);
+                            } else if (index == 4) {
+                                $scope.user_information.userSign = fn_string_insert(userSign, '...', 5);
+                                localStorage.setItem('userSign', userSign);
+                            }
+
+                        } else {
+                            console.log("修改失败")
+                        }
+
+                    })
+                    .error(function (response) {
+                        console.log("修改失败");
+                        console.log("userImage:" + userImage);
+                        console.log("userName:" + userName);
+                        console.log("userSex:" + userSex);
+                        console.log("userRegion:" + userRegion);
+                        console.log("userSign:" + userSign);
                         if (index == 0) {
                             $scope.user_information.userImage = userImage;
                             localStorage.setItem('userImage', userImage);
@@ -115,41 +150,15 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
                             $scope.user_information.userSign = fn_string_insert(userSign, '...', 5);
                             localStorage.setItem('userSign', userSign);
                         }
-
-                    } else {
-                        console.log("修改失败")
-                    }
-
-                })
-                .error(function (response) {
-                    console.log("修改失败");
-                    console.log("userImage:" + userImage);
-                    console.log("userName:" + userName);
-                    console.log("userSex:" + userSex);
-                    console.log("userRegion:" + userRegion);
-                    console.log("userSign:" + userSign);
-                    if (index == 0) {
-                        $scope.user_information.userImage = userImage;
-                        localStorage.setItem('userImage', userImage);
-                    } else if (index == 1) {
-                        $scope.user_information.userName = userName;
-                        localStorage.setItem('userName', userName);
-                    } else if (index == 2) {
-                        $scope.user_information.userSex = userSex;
-                        localStorage.setItem('userSex', sex_num);
-                    } else if (index == 3) {
-                        $scope.user_information.userRegion = userRegion;
-                        localStorage.setItem('userRegion', userRegion);
-                    } else if (index == 4) {
-                        $scope.user_information.userSign = fn_string_insert(userSign, '...', 5);
-                        localStorage.setItem('userSign', userSign);
-                    }
-                });
+                    });
+            } else {
+                return;
+            }
         };
 
 
-        /*
-        姓名设置 模态窗口
+        /**
+         * 姓名设置 模态窗口
          */
         $ionicModal.fromTemplateUrl('html/tab_user_information_settings_setName_modal.html', {
             scope: $scope,
@@ -180,8 +189,8 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         };
 
 
-        /*
-        性别设置 模态窗口
+        /**
+         * 性别设置 模态窗口
          */
         $ionicModal.fromTemplateUrl('html/tab_user_information_settings_setGender_modal.html', {
             scope: $scope,
@@ -193,6 +202,7 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         $scope.fn_set_gender = function () {
             //参数列表: 类型 , 头像 , 名字 , 性别 , 地域 , 个性签名
             if ($scope.arr_userInformation.arr_userSex == '') {
+                console.log($scope.arr_userInformation.arr_userSex);
                 return
             }
             $scope.fn_set_userInformation(2, $scope.user_information.userId, '', '', $scope.arr_userInformation.arr_userSex, '', '');
@@ -230,8 +240,8 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         // };
 
 
-        /*
-        地区设置 模态窗口  与模态窗口进行绑定的数据必须为对象形式 其他形式 失效
+        /**
+         * 地区设置 模态窗口  与模态窗口进行绑定的数据必须为对象形式 其他形式 失效
          */
         $scope.arr_china = [
             {
@@ -393,7 +403,7 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
                 return
             }
 
-            arr_concat_regin += ($scope.arr_userInformation.arr_userRegion.region.province + ' ' + $scope.arr_userInformation.arr_userRegion.city);
+            arr_concat_regin += ($scope.arr_userInformation.arr_userRegion.region.province + $scope.arr_userInformation.arr_userRegion.city);
 
             console.log(arr_concat_regin);
             //参数列表: 类型 , 头像 , 名字 , 性别 , 地域 , 个性签名
@@ -413,8 +423,8 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
         };
 
 
-        /*
-        个性签名设置 模态窗口
+        /**
+         * 个性签名设置 模态窗口
          */
         $ionicModal.fromTemplateUrl('html/tab_user_information_settings_setSignature_modal.html', {
             scope: $scope,
@@ -441,6 +451,19 @@ app.controller('tabUserInformationSettingsCtrl', ['$scope', '$rootScope', '$ioni
                 $scope.arr_userInformation.arr_userSign = '';
             }, 1000);
         };
+
+        /**
+         * 用户退出
+         */
+        $scope.fn_logout = function () {
+            loading_service.show_loading();
+            var firstLoading = localStorage.getItem("firstLoading");
+            localStorage.clear();
+            localStorage.setItem("firstLoading", firstLoading);
+            $state.go('tabs.user');
+            $ionicViewSwitcher.nextDirection("back");
+
+        }
 
 
     }]);

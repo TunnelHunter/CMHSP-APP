@@ -448,8 +448,8 @@ app.controller('tabSocialCtrl', ['$scope', '$rootScope', '$state', '$http', 'aja
                     "socialAddTime": "",
                 };
 
-                new_social.userId = window.localStorage.getItem("userId");
-                new_social.userName = window.localStorage.getItem("userName");
+                new_social.userId = localStorage.getItem("userId");
+                new_social.userName = localStorage.getItem("userName");
                 new_social.imageData = "https://img.zcool.cn/community/018cdc5b192e73a8012034f72fd3de.jpeg";
                 new_social.textData = $scope.new_social.textData;
                 new_social.socialAddTime = loading_service.get_time();

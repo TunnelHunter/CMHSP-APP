@@ -1,5 +1,5 @@
-app.controller('tabUserTestHistoryRecordsCtrl', ['$scope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
-    function ($scope, $ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
+app.controller('tabUserTestHistoryRecordsCtrl', ['$scope', '$rootScope','$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
+    function ($scope, $rootScope,$ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
 
         loading_service.show_loading();
         $scope.arr_test_historyRecords = [];
@@ -35,8 +35,8 @@ app.controller('tabUserTestHistoryRecordsCtrl', ['$scope', '$ionicLoading', '$io
         ];
 
 
-        /*
-        获取该用户的测试记录
+        /**
+         * 获取该用户的测试记录
          */
 
         $scope.$on('$ionicView.beforeEnter', function () {
@@ -46,32 +46,36 @@ app.controller('tabUserTestHistoryRecordsCtrl', ['$scope', '$ionicLoading', '$io
 
 
         $scope.fn_get_historyRecords = function () {
-
-            var userId = window.localStorage.getItem("userId");
-
-            $http({
-                method: "post",
-                url: ajax_service.get_userTestRecords(),
-                //url:"http://localhost:8080/ti/1",
-                data: JSON.stringify({userId: userId}),
-                headers: {
-                    'Content-Type': 'json'
-                }
-            })
-                .success(function (response) {
-                    if (response.error_code == 0) {
-                        $scope.arr_test_historyRecords = response.data;
+            if ($rootScope.judge_login()) {
+                var userId = window.localStorage.getItem("userId");
+                $http({
+                    method: "post",
+                    url: ajax_service.get_userTestRecords(),
+                    data: JSON.stringify({userId: userId}),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
 
                     }
-
                 })
-                .error(function (response) {
-                    $scope.arr_test_historyRecords = arr_test;
+                    .success(function (response) {
+                        if (response.error_code == 0) {
+                            $scope.arr_test_historyRecords = response.data;
 
-                })
+                        }
+
+                    })
+                    .error(function (response) {
+
+                    })
+            } else {
+                return
+            }
         };
 
-        //点击测试列表 弹框显示测试记录详细信息
+        /**
+         *点击测试列表 弹框显示测试记录详细信息
+         */
         $scope.showAlert = function (record) {
             var alertPopup = $ionicPopup.alert({
                 title: record.testName,

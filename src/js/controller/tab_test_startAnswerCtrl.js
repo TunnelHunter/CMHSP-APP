@@ -73,6 +73,7 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
             "userId": 0,
             "userName": "",
             "examinationId": 0,
+            "testTime": "",
             "examinationName": '',
             "examinationScore": 0,
             "summary": '',
@@ -87,6 +88,7 @@ app.controller('tabTestStartAnswerCtrl', ['$scope', '$ionicSlideBoxDelegate', 'l
             $scope.user_test_results.userId = parseInt(localStorage.getItem('userId'));
             $scope.user_test_results.userName = localStorage.getItem('userName');
             $scope.user_test_results.examinationId = examinationId;
+            $scope.user_test_results.testTime = loading_service.get_time();
             $scope.user_test_results.examinationName = examinationName;
             $scope.user_test_results.examinationScore = $scope.total_score;
             $scope.user_test_results.summary = $scope.last_summary;

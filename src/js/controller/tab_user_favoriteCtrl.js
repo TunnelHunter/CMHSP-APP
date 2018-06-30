@@ -1,5 +1,5 @@
-app.controller('tabUserFavoriteCtrl', ['$scope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
-    function ($scope, $ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
+app.controller('tabUserFavoriteCtrl', ['$scope','$rootScope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
+    function ($scope, $rootScope,$ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
 
         loading_service.show_loading();
         $scope.arr_userFavorites = [];
@@ -44,33 +44,36 @@ app.controller('tabUserFavoriteCtrl', ['$scope', '$ionicLoading', '$ionicPopup',
         ];
 
 
-        /*
-        获取该用户的测试记录
+        /**
+         *获取该用户的测试记录
          */
         $scope.fn_get_userFavorites = function () {
+            if ($rootScope.judge_login()) {
+                var userId = window.localStorage.getItem("userId");
 
-            var userId = window.localStorage.getItem("userId");
-
-            $http({
-                method: "post",
-                url: ajax_service.get_userFavorite(),
-                //url:"http://localhost:8080/ti/1",
-                data: JSON.stringify({userId: userId}),
-                headers: {
-                    'Content-Type': 'json'
-                }
-            })
-                .success(function (response) {
-                    if (response.error_code == 0) {
-                        $scope.arr_userFavorites = response.data;
-
+                $http({
+                    method: "post",
+                    url: ajax_service.get_userFavorite(),
+                    //url:"http://localhost:8080/ti/1",
+                    data: JSON.stringify({userId: userId}),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
                     }
-
                 })
-                .error(function (response) {
-                    $scope.arr_userFavorites = arr_favorites;
+                    .success(function (response) {
+                        if (response.error_code == 0) {
+                            $scope.arr_userFavorites = response.data;
 
-                })
+                        }
+
+                    })
+                    .error(function (response) {
+
+                    })
+            }else {
+                return;
+            }
         };
 
         $scope.fn_get_userFavorites();

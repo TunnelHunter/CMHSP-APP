@@ -1,5 +1,5 @@
-app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
-    function ($scope, $ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
+app.controller('tabUserDataAnalysisCtrl', ['$scope', '$rootScope', '$ionicLoading', '$ionicPopup', 'ajax_service', '$http', '$timeout', 'loading_service',
+    function ($scope, $rootScope, $ionicLoading, $ionicPopup, ajax_service, $http, $timeout, loading_service) {
 
         loading_service.show_loading();
 
@@ -7,11 +7,19 @@ app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPop
 
         /**
          从localstorage 中取出 用户Id、名字、头像
-        */
+         */
 
+        //此对象在页面显示 用户信息
+        $scope.user_information = {
+            'userImage': 'imgs/default_userImage.png',
+            'userName': '',
+            'userId': ''
+        };
+        //存储用户测试分析信息
+        $scope.arr_userAnalysis = {};
         if (localStorage.hasOwnProperty('userId')) {
             $scope.show_dataAnalysis = true;
-            scope.user_information.userId = localStorage.getItem('userId');
+            $scope.user_information.userId = localStorage.getItem('userId');
 
             if (localStorage.hasOwnProperty('userName')) {
                 $scope.user_information.userName = localStorage.getItem('userName');
@@ -23,17 +31,6 @@ app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPop
         } else {
             $scope.show_dataAnalysis = true;
         }
-
-
-        //此对象在页面显示 用户信息
-        $scope.user_information = {
-            'userImage': 'imgs/default_userImage.png',
-            'userName': '',
-            'userId': ''
-        };
-
-        //存储用户测试分析信息
-        $scope.arr_userAnalysis = {};
 
         //mock数据
         var analysis_data = {
@@ -75,29 +72,31 @@ app.controller('tabUserDataAnalysisCtrl', ['$scope', '$ionicLoading', '$ionicPop
 
         //获取用户测试分析信息
         $scope.fn_get_userAnalysis = function () {
-            console.log(1111);
+            if ($rootScope.judge_login()) {
+                var userId = window.localStorage.getItem("userId");
 
-            var userId = window.localStorage.getItem("userId");
-
-            $http({
-                method: "post",
-                url: ajax_service.get_userAnalysis(),
-                data: JSON.stringify({userId: userId}),
-                headers: {
-                    'Content-Type': 'json'
-                }
-            })
-                .success(function (response) {
-                    if (response.error_code == 0) {
-                        $scope.arr_userAnalysis = response.data;
-
+                $http({
+                    method: "post",
+                    url: ajax_service.get_userAnalysis(),
+                    data: JSON.stringify({userId: userId}),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'addToken': true
                     }
-
                 })
-                .error(function (response) {
-                    $scope.arr_userAnalysis = analysis_data;
+                    .success(function (response) {
+                        if (response.error_code == 0) {
+                            $scope.arr_userAnalysis = response.data;
 
-                })
+                        }
+
+                    })
+                    .error(function (response) {
+
+                    })
+            } else {
+                return;
+            }
         };
         $scope.fn_get_userAnalysis();
 

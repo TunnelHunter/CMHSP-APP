@@ -99,8 +99,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicView
                 //url:"http://localhost:8080/ti/1",
                 data: JSON.stringify({username: name, password: password}),
                 headers: {
-                    'Content-Type': 'json'
-                    // 'token': localStorage.getItem("token")
+                    'Content-Type': 'application/json'
                 }
             })
                 .success(function (response) {
