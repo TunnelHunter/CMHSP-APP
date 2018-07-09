@@ -3,7 +3,7 @@ app.service('ajax_service', function () {
 
     var ROOT = 'http://localhost:8080';
     var ROOT_HTTP = ROOT + '/CMHSP'; //服务器地址
-
+    // var ROOT = '../../../../CMHSP';
     // var ROOT_HTTP = '../../../../CMHSP'; //项目合并时用到
 
     var absoluteurl = ROOT_HTTP + '/';
@@ -150,7 +150,7 @@ app.service('ajax_service', function () {
         return update_userMessages;
     };
     //退出登录
-    var logout = ROOT+ '/user/logout';
+    var logout = ROOT + '/user/logout';
     this.logout = function () {
         return logout;
     };

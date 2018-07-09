@@ -10,14 +10,20 @@
         <div class="list card"
              style="border-radius: 12px !important;box-shadow: 0px 0px 10px 0px #33333394; " ng-repeat="favorite in arr_userFavorites track by $index">
             <div class="item item-thumbnail-left item-icon-right"  >
-                <img ng-src="{{favorite.image}}"
-                     style="border-radius: 6px !important;">
+                <img ng-show="favorite.type != 2" ng-src="{{favorite.image}}" style="border-radius: 6px !important;">
+                <img ng-show="favorite.type == 2" ng-src="imgs/music_logo2.jpg" style="border-radius: 6px !important;position: absolute;
+    top: 10px;
+    left: 10px;
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: 100%;">
                 <div style="margin-top: 10px;">
                     <h2>{{favorite.title}}</h2>
                     <p>{{favorite.context}}</p>
-                    <i ng-show="favorite.type == 0" class="icon ion-planet" style="color: #22aca5;font-size: 25px;"></i>
-                    <i ng-show="favorite.type == 1" class="icon ion-ios-musical-notes" style="color: #22aca5;font-size: 25px;"></i>
-                    <i ng-show="favorite.type == 2" class="icon ion-ios-bookmarks" style="color: #22aca5;font-size: 25px;"></i>
+                    <i ng-show="favorite.type == 1" class="icon ion-planet" style="color: #22aca5;font-size: 25px;"></i>
+                    <i ng-show="favorite.type == 2" class="icon ion-ios-musical-notes" style="color: #22aca5;font-size: 25px;"></i>
+                    <i ng-show="favorite.type == 3" class="icon ion-ios-bookmarks" style="color: #22aca5;font-size: 25px;"></i>
                 </div>
 
             </div>
