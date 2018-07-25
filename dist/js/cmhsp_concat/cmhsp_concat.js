@@ -107,6 +107,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/test",
                 views: {
                     'test-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_test.html",
                         controller: 'tabTestCtrl'
                     }
@@ -116,6 +117,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/examinationsBank",
                 views: {
                     'test-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_test_examinationsBank.html",
                         controller: 'tabTestExaminationsBankCtrl'
                     }
@@ -125,6 +127,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/startAnswer",
                 views: {
                     'test-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_test_startAnswer.html",
                         controller: 'tabTestStartAnswerCtrl'
                         // controller: 'tabTestCtrl'
@@ -135,6 +138,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/social",
                 views: {
                     'social-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_social.html",
                         controller: 'tabSocialCtrl'
                     }
@@ -145,6 +149,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 params: {'item': null},//设置为对象，用于接受对象型数据
                 views: {
                     'social-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_socialDetail.html",
                         controller: 'tabSocialDetailCtrl'
                     }
@@ -154,6 +159,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/music",
                 views: {
                     'music-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_music.html",
                         controller: 'tabMusicCtrl'
                     }
@@ -164,6 +170,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 params: {'musicType': null},
                 views: {
                     'music-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_musicPlayer.html",
                         controller: 'tabMusicPlayerCtrl'
                     }
@@ -173,6 +180,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/reading",
                 views: {
                     'reading-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_reading.html",
                         controller: 'tabReadingCtrl'
                     }
@@ -183,6 +191,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 params: {'readType': ''},
                 views: {
                     'reading-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_readingList.html",
                         controller: 'tabReadingListCtrl'
                     }
@@ -193,6 +202,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 params: {'read': null, 'fromPage': '', 'readType': ''},
                 views: {
                     'reading-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_readingDetail.html",
                         controller: 'tabReadingDetailCtrl'
                     }
@@ -202,6 +212,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/user",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user.html",
                         controller: 'tabUserCtrl'
                     }
@@ -211,6 +222,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/userMessages",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_messages.html",
                         controller: 'tabUserMessagesCtrl'
                     }
@@ -220,6 +232,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/systemMessages",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_messages_sysList.html",
                         controller: 'tabUserMessagesSysListCtrl'
                     }
@@ -229,6 +242,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/commentMessages",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_messages_comtList.html",
                         controller: 'tabUserMessagesComtListCtrl'
                     }
@@ -238,6 +252,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/userInformationSettings",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_information_settings.html",
                         controller: 'tabUserInformationSettingsCtrl'
                     }
@@ -247,6 +262,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/setHeadPicture",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_information_settings_set_head_picture.html",
                         controller: 'setHeadPictureCtrl'
                     }
@@ -256,6 +272,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/userTestHistoryRecords",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_testHistoryRecords.html",
                         controller: 'tabUserTestHistoryRecordsCtrl'
                     }
@@ -265,6 +282,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/userDataAnalysis",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_dataAnalysis.html",
                         controller: 'tabUserDataAnalysisCtrl'
                     }
@@ -274,6 +292,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/userFavorite",
                 views: {
                     'user-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/tab_user_favorite.html",
                         controller: 'tabUserFavoriteCtrl'
                     }
@@ -283,7 +302,8 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/appAbout",
                 views: {
                     'user-tab': {
-                        templateUrl: "dist/html/tab_user_appAbout.html",
+                        prefetchTemplate: false,
+                        templateUrl: "dist/html/tab_user_appAbout.html"
                     }
                 }
             })
@@ -291,6 +311,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/facts",
                 views: {
                     'home-tab': {
+                        prefetchTemplate: false,
                         templateUrl: "dist/html/facts.html"
                     }
                 }
@@ -299,7 +320,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 url: "/facts2",
                 views: {
                     'home-tab': {
-                        prefetchTemplate: false, //按需加载
+                        prefetchTemplate: false, //按需加载，表示不提前加载模板
                         templateUrl: "dist/html/facts2.html"
                     }
                 }
@@ -310,7 +331,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
 //统一接口注册
 app.service('ajax_service', function () {
 
-    var ROOT = 'http://localhost:8080';
+    var ROOT = 'http://39.104.125.71:8080/psychology-0.0.1-SNAPSHOT';
     var ROOT_HTTP = ROOT + '/CMHSP'; //服务器地址
     // var ROOT = '../../../../CMHSP';
     // var ROOT_HTTP = '../../../../CMHSP'; //项目合并时用到

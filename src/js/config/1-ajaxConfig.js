@@ -1,7 +1,7 @@
 //统一接口注册
 app.service('ajax_service', function () {
 
-    var ROOT = 'http://localhost:8080';
+    var ROOT = 'http://39.104.125.71:8080/psychology-0.0.1-SNAPSHOT';
     var ROOT_HTTP = ROOT + '/CMHSP'; //服务器地址
     // var ROOT = '../../../../CMHSP';
     // var ROOT_HTTP = '../../../../CMHSP'; //项目合并时用到
