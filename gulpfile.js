@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'), //根据设置浏览器版本自动处理浏览器前缀
     sass = require('gulp-ruby-sass'),
     imagemin = require('gulp-imagemin'),
+    smushit = require('gulp-smushit'),
     handlebars = require('gulp-handlebars'),
     wrap = require('gulp-wrap'),
     declare = require('gulp-declare'),
@@ -83,17 +84,16 @@ gulp.task('autoFx', function () {
 /**
  * js文件合并，js文件压缩，监控指定目录下的js文件，一变化就执行压缩方法
  */
-gulp.task('ConcatJs', function() {
-    return gulp.src(['src/js/config/*.js','src/js/controller/*.js'])
+gulp.task('ConcatJs', function () {
+    return gulp.src(['src/js/config/*.js', 'src/js/controller/*.js'])
         .pipe(concat('cmhsp_concat.js'))
         .pipe(gulp.dest('dist/js/cmhsp_concat'))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/cmhsp_concat'))
-        .pipe(notify({ message: 'ConcatJs task ok' }));
+        .pipe(notify({message: 'ConcatJs task ok'}));
 });
-gulp.watch(['src/js/config/*.js','src/js/controller/*.js'], ['ConcatJs']);
-
+gulp.watch(['src/js/config/*.js', 'src/js/controller/*.js'], ['ConcatJs']);
 
 
 /**
@@ -111,21 +111,20 @@ gulp.watch(['src/js/config/*.js','src/js/controller/*.js'], ['ConcatJs']);
 //         .pipe(gulp.dest('dist/css'));
 // });
 
-gulp.task('cssMin', function() {
+gulp.task('cssMin', function () {
     return gulp.src(['src/css/index.css'])
         .pipe(concat('main.css'))
         .pipe(gulp.dest('dist/css'))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(cssmin())
         .pipe(gulp.dest('dist/css'))
-        .pipe(notify({ message: 'cssMin task ok' }));
+        .pipe(notify({message: 'cssMin task ok'}));
 });
 gulp.watch(['src/css/*.css'], ['cssMin']);
 
 
-
 /**
- * 图片压缩
+ * 图片压缩 gulp-imagemin 方式一
  */
 gulp.task('imageMin', function () {
     gulp.src(['src/imgs/*.{png,jpg,gif,ico}',
@@ -135,10 +134,15 @@ gulp.task('imageMin', function () {
         'imgs/essay/*.{png,jpg,gif,ico}',
         'imgs/*.{png,jpg,gif,ico}'])
         .pipe(imagemin())
-        .pipe(gulp.dest('dist/img'));
+        .pipe(gulp.dest('dist/imgs'));
 
 
-    // gulp.src('src/img/*.{png,jpg,gif,ico}')
+    // gulp.src(['src/imgs/*.{png,jpg,gif,ico}',
+    //     'src/imgs/hello_slides/*.{png,jpg,gif,ico}',
+    //     'src/imgs/music_background/*.{png,jpg,gif,ico}',
+    //     'src/imgs/music_player/*.{png,jpg,gif,ico}',
+    //     'imgs/essay/*.{png,jpg,gif,ico}',
+    //     'imgs/*.{png,jpg,gif,ico}'])
     //     .pipe(imagemin({
     //         optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
     //         progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
@@ -156,12 +160,23 @@ gulp.task('imageMin', function () {
     //     })))
     //     .pipe(gulp.dest('dist/img'));
 });
-gulp.watch(['src/imgs/*.{png,jpg,gif,ico}',
-    'src/imgs/hello_slides/*.{png,jpg,gif,ico}',
-    'src/imgs/music_background/*.{png,jpg,gif,ico}',
-    'src/imgs/music_player/*.{png,jpg,gif,ico}',
-    'imgs/essay/*.{png,jpg,gif,ico}',
-    'imgs/*.{png,jpg,gif,ico}'], ['imageMin']);
+// gulp.watch(['src/imgs/*.{png,jpg,gif,ico}',
+//     'src/imgs/hello_slides/*.{png,jpg,gif,ico}',
+//     'src/imgs/music_background/*.{png,jpg,gif,ico}',
+//     'src/imgs/music_player/*.{png,jpg,gif,ico}',
+//     'imgs/essay/*.{png,jpg,gif,ico}',
+//     'imgs/*.{png,jpg,gif,ico}'], ['imageMin']);
+
+/**
+ * 图片压缩 gulp-smushit 方式二 只能压缩jpg,png  压缩比例高
+ */
+gulp.task('smushit', function () {
+    return gulp.src(['src/**/*.{jpg,png}','imgs/**/*.{jpg,png}'])
+        .pipe(smushit({
+            verbose: true
+        }))
+        .pipe(gulp.dest('dist/imgs'));
+});
 
 
 /**
@@ -187,4 +202,4 @@ gulp.task('htmlMin', function () {
 /**
  * 执行默认任务 gulp
  */
-gulp.task('default', ['lessToCss', 'ConcatJs','cssMin','htmlMin','watchLessToCss']);
+gulp.task('default', ['lessToCss', 'ConcatJs', 'cssMin', 'htmlMin', 'smushit','watchLessToCss']);
