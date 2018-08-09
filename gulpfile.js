@@ -202,4 +202,4 @@ gulp.task('htmlMin', function () {
 /**
  * 执行默认任务 gulp
  */
-gulp.task('default', ['lessToCss', 'ConcatJs', 'cssMin', 'htmlMin', 'smushit','watchLessToCss']);
+gulp.task('default', ['lessToCss', 'ConcatJs', 'cssMin', 'htmlMin','watchLessToCss']);

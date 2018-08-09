@@ -43,7 +43,7 @@
                 <div ng-repeat="book in arr_read_firstPage.book" class=" card"
                      style="width: 120px;display:inline-block;position: relative;border-radius: 10px;margin-right: 6px;margin-top: 2%;box-shadow: 0px 0px 10px 0px #33333394;" ng-click="fn_readDetail(book)">
 
-                    <img class="full-image" style="height:120px; width:100% ;border-radius: 10px;"
+                    <img class="full-image" style="height:120px; width:100% ;"
                          ng-src="{{book.readImage}}">
 
                     <div class="item" style="height: 30px;text-align: center;">
@@ -82,7 +82,7 @@
 
 
                 <div class="item" style="height: 30px;bottom: 5px;">
-                    <span style="position: relative;top: -8px;font-size: 15px;font-weight: bold;">《{{essay.readTitle}}》</span>
+                    <span style="position: relative;top: -8px;font-size: 15px;font-weight: bold;">{{essay.readTitle}}</span>
                 </div>
             </div>
         </div>

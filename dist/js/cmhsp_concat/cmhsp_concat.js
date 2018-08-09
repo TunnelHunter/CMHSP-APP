@@ -547,7 +547,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicView
             if (!localStorage.hasOwnProperty('firstLoading')) {
                 setTimeout(function () {
                     $rootScope.openHelloSlidesModal();
-                },700);
+                }, 700);
             }
         };
 
@@ -737,6 +737,24 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicView
         };
 
 
+        /**
+         * tab子页面隐藏tab栏
+         * 页面跳转事件拦截 $stateChangeStart | $stateChangeSuccess | $stateChangeError
+         */
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+            if (toState.url == "/test"
+                || toState.url == "/social"
+                || toState.url == "/music"
+                || toState.url == "/reading"
+                || toState.url == "/user"
+                || toState.url == "/musicPlayer") { // 这两个页面不隐藏Tabs
+                $rootScope.hideTabs = false;
+            } else { // 其他页面隐藏Tabs
+                $rootScope.hideTabs = true;
+            }
+        });
+
+
         function filter() {
 
             // 获取输入框的内容inputContent
@@ -762,7 +780,7 @@ app.run(['$rootScope', '$timeout', '$ionicModal', '$http', '$state', '$ionicView
             showInput.value = showContent;
         }
 
-        function filtion(){
+        function filtion() {
             var inputContent = input.value;
 
             // 多个敏感词
@@ -3541,7 +3559,46 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
         /**
          *MOCK数据
          */
-        $scope.arr_read_firstPage = {};
+        $scope.arr_read_firstPage = {
+            slide: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 0,
+                "readImage": "src/imgs/read_loading/essay.png",
+                "readContext": ""
+            }],
+            book: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, {
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, {
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, ],
+            essay: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 0,
+                "readImage": "src/imgs/read_loading/essay.png",
+                "readContext": ""
+            }]
+        };
 
         /**
          * 获取首屏信息

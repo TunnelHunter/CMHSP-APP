@@ -83,3 +83,73 @@ br {
   font-size: 0;
   line-height: 0;
 }
+
+.book_class {
+  width: 50%;
+}
+.essay_class {
+  width: 100%;
+  height: 11rem;
+}
+/*音乐播放器样式*/
+.music_stop {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: url(../imgs/music_player/stop.png) no-repeat;
+  background-size: 100%;
+  z-index: 9999;
+}
+.music_start {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: url(../imgs/music_player/start.png) no-repeat;
+  background-size: 100%;
+  z-index: 9999;
+}
+.music_previous {
+  display: inline-block;
+  width: 55px;
+  height: 57px;
+  background: url(../imgs/music_player/previous.png) no-repeat;
+  background-size: 85%;
+  margin-right: 45px;
+  z-index: 9999;
+}
+.music_next {
+  display: inline-block;
+  width: 55px;
+  height: 57px;
+  background: url(../imgs/music_player/next.png) no-repeat;
+  background-size: 85%;
+  z-index: 9999;
+  margin-left: 45px;
+}
+.music_yes_favorite {
+  display: inline-block;
+  width: 45px;
+  height: 58px;
+  background: url(../imgs/music_player/yes_favorite.png) no-repeat;
+  background-size: 100%;
+  z-index: 9999;
+}
+.music_no_favorite {
+  display: inline-block;
+  width: 45px;
+  height: 58px;
+  background: url(../imgs/music_player/no_favorite.png) no-repeat;
+  background-size: 100%;
+  z-index: 9999;
+}
+@-webkit-keyframes rotation{
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
+.Rotation{
+  -webkit-transform: rotate(360deg);
+  animation: rotation 3s linear infinite;
+  -moz-animation: rotation 3s linear infinite;
+  -webkit-animation: rotation 3s linear infinite;
+  -o-animation: rotation 3s linear infinite;
+}

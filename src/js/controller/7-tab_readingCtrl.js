@@ -11,7 +11,46 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
         /**
          *MOCK数据
          */
-        $scope.arr_read_firstPage = {};
+        $scope.arr_read_firstPage = {
+            slide: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 0,
+                "readImage": "src/imgs/read_loading/essay.png",
+                "readContext": ""
+            }],
+            book: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, {
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, {
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 1,
+                "readImage": "src/imgs/read_loading/book.png",
+                "readContext": ""
+            }, ],
+            essay: [{
+                "readTitle": "",
+                "readId": "",
+                "readAuthor": "",
+                "readType": 0,
+                "readImage": "src/imgs/read_loading/essay.png",
+                "readContext": ""
+            }]
+        };
 
         /**
          * 获取首屏信息
