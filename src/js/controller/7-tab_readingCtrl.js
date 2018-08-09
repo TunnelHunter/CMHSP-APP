@@ -85,7 +85,9 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
 
                 });
         };
-        $scope.fn_read_firstPage();
+        setTimeout(function () {
+            $scope.fn_read_firstPage();
+        },900);
 
 
         /**
