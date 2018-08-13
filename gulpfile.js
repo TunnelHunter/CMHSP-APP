@@ -171,7 +171,7 @@ gulp.task('imageMin', function () {
  * 图片压缩 gulp-smushit 方式二 只能压缩jpg,png  压缩比例高
  */
 gulp.task('smushit', function () {
-    return gulp.src(['src/**/*.{jpg,png}','imgs/**/*.{jpg,png}'])
+    return gulp.src(['src/imgs/**/*.{jpg,png}','imgs/**/*.{jpg,png}'])
         .pipe(smushit({
             verbose: true
         }))
@@ -202,4 +202,4 @@ gulp.task('htmlMin', function () {
 /**
  * 执行默认任务 gulp
  */
-gulp.task('default', ['lessToCss', 'ConcatJs', 'cssMin', 'htmlMin','watchLessToCss']);
+gulp.task('default', ['lessToCss', 'ConcatJs', 'cssMin','htmlMin','watchLessToCss']);

@@ -17,7 +17,7 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 0,
-                "readImage": "src/imgs/read_loading/essay.png",
+                "readImage": "imgs/read_loading/essay.png",
                 "readContext": ""
             }],
             book: [{
@@ -25,21 +25,21 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, {
                 "readTitle": "",
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, {
                 "readTitle": "",
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, ],
             essay: [{
@@ -47,7 +47,7 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 0,
-                "readImage": "src/imgs/read_loading/essay.png",
+                "readImage": "imgs/read_loading/essay.png",
                 "readContext": ""
             }]
         };

@@ -98,7 +98,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'main': {
                         abstract: true,
-                        templateUrl: "dist/html/tabs.html",
+                        templateUrl: "html/tabs.html",
                         controller: 'tabsCtrl'
                     }
                 }
@@ -108,7 +108,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'test-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_test.html",
+                        templateUrl: "html/tab_test.html",
                         controller: 'tabTestCtrl'
                     }
                 }
@@ -118,7 +118,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'test-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_test_examinationsBank.html",
+                        templateUrl: "html/tab_test_examinationsBank.html",
                         controller: 'tabTestExaminationsBankCtrl'
                     }
                 }
@@ -128,7 +128,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'test-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_test_startAnswer.html",
+                        templateUrl: "html/tab_test_startAnswer.html",
                         controller: 'tabTestStartAnswerCtrl'
                         // controller: 'tabTestCtrl'
                     }
@@ -139,7 +139,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'social-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_social.html",
+                        templateUrl: "html/tab_social.html",
                         controller: 'tabSocialCtrl'
                     }
                 }
@@ -150,7 +150,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'social-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_socialDetail.html",
+                        templateUrl: "html/tab_socialDetail.html",
                         controller: 'tabSocialDetailCtrl'
                     }
                 }
@@ -160,7 +160,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'music-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_music.html",
+                        templateUrl: "html/tab_music.html",
                         controller: 'tabMusicCtrl'
                     }
                 }
@@ -171,7 +171,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'music-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_musicPlayer.html",
+                        templateUrl: "html/tab_musicPlayer.html",
                         controller: 'tabMusicPlayerCtrl'
                     }
                 }
@@ -181,7 +181,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'reading-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_reading.html",
+                        templateUrl: "html/tab_reading.html",
                         controller: 'tabReadingCtrl'
                     }
                 }
@@ -192,7 +192,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'reading-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_readingList.html",
+                        templateUrl: "html/tab_readingList.html",
                         controller: 'tabReadingListCtrl'
                     }
                 }
@@ -203,7 +203,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'reading-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_readingDetail.html",
+                        templateUrl: "html/tab_readingDetail.html",
                         controller: 'tabReadingDetailCtrl'
                     }
                 }
@@ -213,7 +213,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user.html",
+                        templateUrl: "html/tab_user.html",
                         controller: 'tabUserCtrl'
                     }
                 }
@@ -223,7 +223,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_messages.html",
+                        templateUrl: "html/tab_user_messages.html",
                         controller: 'tabUserMessagesCtrl'
                     }
                 }
@@ -233,7 +233,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_messages_sysList.html",
+                        templateUrl: "html/tab_user_messages_sysList.html",
                         controller: 'tabUserMessagesSysListCtrl'
                     }
                 }
@@ -243,7 +243,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_messages_comtList.html",
+                        templateUrl: "html/tab_user_messages_comtList.html",
                         controller: 'tabUserMessagesComtListCtrl'
                     }
                 }
@@ -253,7 +253,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_information_settings.html",
+                        templateUrl: "html/tab_user_information_settings.html",
                         controller: 'tabUserInformationSettingsCtrl'
                     }
                 }
@@ -263,7 +263,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_information_settings_set_head_picture.html",
+                        templateUrl: "html/tab_user_information_settings_set_head_picture.html",
                         controller: 'setHeadPictureCtrl'
                     }
                 }
@@ -273,7 +273,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_testHistoryRecords.html",
+                        templateUrl: "html/tab_user_testHistoryRecords.html",
                         controller: 'tabUserTestHistoryRecordsCtrl'
                     }
                 }
@@ -283,7 +283,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_dataAnalysis.html",
+                        templateUrl: "html/tab_user_dataAnalysis.html",
                         controller: 'tabUserDataAnalysisCtrl'
                     }
                 }
@@ -293,7 +293,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_favorite.html",
+                        templateUrl: "html/tab_user_favorite.html",
                         controller: 'tabUserFavoriteCtrl'
                     }
                 }
@@ -303,7 +303,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'user-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/tab_user_appAbout.html"
+                        templateUrl: "html/tab_user_appAbout.html"
                     }
                 }
             })
@@ -312,7 +312,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'home-tab': {
                         prefetchTemplate: false,
-                        templateUrl: "dist/html/facts.html"
+                        templateUrl: "html/facts.html"
                     }
                 }
             })
@@ -321,7 +321,7 @@ app.config(['$ionicConfigProvider', '$httpProvider', '$stateProvider', '$urlRout
                 views: {
                     'home-tab': {
                         prefetchTemplate: false, //按需加载，表示不提前加载模板
-                        templateUrl: "dist/html/facts2.html"
+                        templateUrl: "html/facts2.html"
                     }
                 }
             });
@@ -3021,40 +3021,40 @@ app.controller('tabMusicCtrl', ['$scope', '$rootScope', '$state','$ionicViewSwit
         $scope.arr_musicType = [
             {
                 "musicsceneId": "1",
-                "musicsceneImage": "src/imgs/music_background/music1.jpg",
-                "background": "src/imgs/music_background/musicType1.jpg",
+                "musicsceneImage": "imgs/music_background/music1.jpg",
+                "background": "imgs/music_background/musicType1.jpg",
                 "musicsceneText1": "NEW AGE 电子合成器音乐",
                 "musicsceneText2": "烘托氛围 治愈心灵",
                 "musicsceneName": "治愈"
             },
             {
                 "musicsceneId": "2",
-                "musicsceneImage": "src/imgs/music_background/music2.jpg",
-                "background": "src/imgs/music_background/musicType2.jpg",
+                "musicsceneImage": "imgs/music_background/music2.jpg",
+                "background": "imgs/music_background/musicType2.jpg",
                 "musicsceneText1": "悦耳节奏带感歌曲精选",
                 "musicsceneText2": "日常抖腿必备歌单",
                 "musicsceneName": "兴奋"
             },
             {
                 "musicsceneId": "3",
-                "musicsceneImage": "src/imgs/music_background/music3.jpg",
-                "background": "src/imgs/music_background/musicType3.jpg",
+                "musicsceneImage": "imgs/music_background/music3.jpg",
+                "background": "imgs/music_background/musicType3.jpg",
                 "musicsceneText1": "触发心灵的一刹那",
                 "musicsceneText2": "总有一首可以触动你的心房",
                 "musicsceneName": "感动"
             },
             {
                 "musicsceneId": "4",
-                "musicsceneImage": "src/imgs/music_background/music4.jpg",
-                "background": "src/imgs/music_background/musicType4.jpg",
+                "musicsceneImage": "imgs/music_background/music4.jpg",
+                "background": "imgs/music_background/musicType4.jpg",
                 "musicsceneText1": "享受美妙的音乐",
                 "musicsceneText2": "伴随你入睡 调整你的心情",
                 "musicsceneName": "安静"
             },
             {
                 "musicsceneId": "5",
-                "musicsceneImage": "src/imgs/music_background/music5.jpg",
-                "background": "src/imgs/music_background/musicType5.jpg",
+                "musicsceneImage": "imgs/music_background/music5.jpg",
+                "background": "imgs/music_background/musicType5.jpg",
                 "musicsceneText1": "有时候快乐很简单",
                 "musicsceneText2": "一丝微笑 永远不失孩子气",
                 "musicsceneName": "快乐"
@@ -3079,7 +3079,6 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
         console.log($stateParams);
         console.log($scope.musicType);
         $scope.myAuto = document.getElementById('musicPlayer');
-
         /**
          *获取当前场景音乐列表
          */
@@ -3565,7 +3564,7 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 0,
-                "readImage": "src/imgs/read_loading/essay.png",
+                "readImage": "imgs/read_loading/essay.png",
                 "readContext": ""
             }],
             book: [{
@@ -3573,21 +3572,21 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, {
                 "readTitle": "",
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, {
                 "readTitle": "",
                 "readId": "",
                 "readAuthor": "",
                 "readType": 1,
-                "readImage": "src/imgs/read_loading/book.png",
+                "readImage": "imgs/read_loading/book.png",
                 "readContext": ""
             }, ],
             essay: [{
@@ -3595,7 +3594,7 @@ app.controller('tabReadingCtrl', ['$scope', '$state','$ionicSlideBoxDelegate',  
                 "readId": "",
                 "readAuthor": "",
                 "readType": 0,
-                "readImage": "src/imgs/read_loading/essay.png",
+                "readImage": "imgs/read_loading/essay.png",
                 "readContext": ""
             }]
         };

@@ -7,7 +7,6 @@ app.controller('tabMusicPlayerCtrl', ['$scope', '$rootScope', '$state', '$stateP
         console.log($stateParams);
         console.log($scope.musicType);
         $scope.myAuto = document.getElementById('musicPlayer');
-
         /**
          *获取当前场景音乐列表
          */
