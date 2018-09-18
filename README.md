@@ -3,7 +3,4 @@
 
 > - #### $ git clone https://github.com/MountainC44/CMHSP-APP.git
 > - #### $ npm install hexo-pagination --save
-
-<div style="align: center">
-<img src="https://ws3.sinaimg.cn/large/006tNbRwly1fve1sfjhnhj31a17t1kjm.jpg/>
-</div>
+<img src="https://ws4.sinaimg.cn/large/006tNbRwly1fve2n1ix44j31a17t1tsv.jpg" />
