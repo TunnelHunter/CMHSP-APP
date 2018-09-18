@@ -2,5 +2,6 @@
 ### Comprehensive Mental Health Service Platform. The app features include: Privacy , Relax , Guide.
 
 > - #### $ git clone https://github.com/MountainC44/CMHSP-APP.git
-> - #### $ npm install hexo-pagination --save
-<img src="https://ws4.sinaimg.cn/large/006tNbRwly1fve2n1ix44j31a17t1tsv.jpg" />
+> - #### $ npm install
+
+<img src="https://ws2.sinaimg.cn/large/006tNbRwly1fve2qz89d1j31a17t1qv8.jpg" />
