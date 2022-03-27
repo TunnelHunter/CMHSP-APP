@@ -5,4 +5,4 @@
 > - #### $ git clone https://github.com/TunnelHunter/CMHSP-APP.git
 > - #### $ npm install
 
-<img src="https://raw.githubusercontent.com/TunnelHunter/ImgHub/master/uPic/2022/03/cmhsp-show_OfOzfI.jpg?token=AI33LK3UNNK4KZEDVLUKTXLCH7XV4" />
+<img src="../CMHSP-APP/imgs/cmhsp-show.jpg" />
